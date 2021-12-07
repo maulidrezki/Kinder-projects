@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :volunteerings
   has_many :messages
 
-  validates :first_name, :last_nmae, presence: true, length: { in: 2..26 }
+  validates :first_name, :last_name, presence: true, length: { in: 2..26 }
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
