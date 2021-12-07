@@ -6,8 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-
 require 'faker'
 require 'open-uri'
 require 'json'
@@ -18,16 +16,12 @@ Project.destroy_all
 User.destroy_all
 puts 'Database cleaned'
 
-# i = 0 ?
 12.times do |i|
   User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: "user_#{i + 1}@gmail.com",
     password: "123456",
-    phone_number: Faker::PhoneNumber.cell_phone_in_e164,
-    address: Faker::Address.street_address,
-    avatar: Faker::Avatar.image,
     about_me: Faker::Quote.famous_last_words,
     level: rand(0..100)
   ).save!
@@ -128,7 +122,7 @@ project_5 = Project.new(
 
 pic_1 = URI.open("https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80")
 pic_2 = URI.open("https://images.unsplash.com/photo-1616680214084-22670de1bc82?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80")
-pic_2 = URI.open("https://images.unsplash.com/photo-1569254982489-93e2fdf7fd45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80")
+pic_3 = URI.open("https://images.unsplash.com/photo-1569254982489-93e2fdf7fd45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80")
 
 
 project_5.photos.attach(io: pic_1, filename: "1.jpg", content_type: "image/jpg")
