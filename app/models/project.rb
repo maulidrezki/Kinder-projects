@@ -5,4 +5,5 @@ class Project < ApplicationRecord
   has_many :volunteers, through: :volunteerings, source: "user"
   has_many :messages
   has_many_attached :photos
+  
 end

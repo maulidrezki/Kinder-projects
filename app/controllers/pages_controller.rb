@@ -12,4 +12,12 @@ class PagesController < ApplicationController
   #     @projects = Project.all.first(5)
   #   end
   end
+
+   def dashboard
+    # My projects as sponsor
+    @my_projects = current_user.projects
+
+    # My projects as volunteer
+    @volunteer_projects = current_user.volunteer_projects
+  end
 end

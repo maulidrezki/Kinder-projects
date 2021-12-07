@@ -40,5 +40,5 @@ class ProjectsController < ApplicationController
                                     :start_tim,
                                     :end_time,
                                     photos: [])
-  end
+
 end
