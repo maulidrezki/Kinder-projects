@@ -12,6 +12,7 @@ require 'open-uri'
 require 'json'
 
 puts 'Cleaning up database...'
+<<<<<<< HEAD
 Volunteering.destroy_all
 Project.destroy_all
 User.destroy_all
@@ -184,3 +185,9 @@ volunteering_4 = Volunteering.new(
 	status: "rejected",
 )
 volunteering_4.save!
+=======
+Project.destroy_all
+User.destroy_all
+Volunteering.destroy_all
+puts 'Database cleaned'
+>>>>>>> master
