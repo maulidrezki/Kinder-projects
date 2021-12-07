@@ -1,9 +1,8 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    if user_signed_in?
-      redirect_to root_path
-    end
+    redirect_to root_path if user_signed_in?
 
     if params[:query].present?
       @query = params[:query]
