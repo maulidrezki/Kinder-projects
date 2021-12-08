@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    redirect_to projects_path if user_signed_in?
+    # redirect_to projects_path if user_signed_in?
 
     if params[:query].present?
       @query = params[:query]
@@ -13,11 +13,15 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    # My projects as sponsor
+    # My projects as a sponsor
     @my_projects = current_user.projects
 
-    # My projects as volunteer
+    # My projects as a volunteer
     @volunteer_projects = current_user.volunteer_projects
+
+    # My volunteers in a project, to review to accept or reject
+    # @my_volunteers = Project.volunteering each do |volunteers|
+
   end
 
   def profile
