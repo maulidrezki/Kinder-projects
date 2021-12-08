@@ -1,20 +1,32 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
 
 .navbar {
-  background-color: #333;
-  overflow: hidden;
+  justify-content: space-between;
+  background-color: #E3E4E5;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
+  justify-content: space-around;
+  color: #555255;
 }
+
+.icon {
+  color: #555255;
+  text-align: center;
+
+  .i {
+    font-size: 32px;
+  }
+
+  .text {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+}
+
+.a {
+  color: #555255;
+}
+
+// .search-bar {
+//   border-radius: 50%;
+// }
