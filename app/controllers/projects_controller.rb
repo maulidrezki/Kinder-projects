@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
     @volunteering = Volunteering.new
   end
 
-    def new
+  def new
     @project = Project.new
   end
 
@@ -56,3 +56,4 @@ class ProjectsController < ApplicationController
                                     :end_time,
                                     photos: [])
   end
+end
