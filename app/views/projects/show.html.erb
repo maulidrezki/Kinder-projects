@@ -1,7 +1,6 @@
 <%= link_to "Volunteer", project_volunteerings_path(@project), method: :post %>
 <%# <h1>Hello, this is the show page to see all the volunteers in my projects</h1> %>
 
-<%# code refactoring - maulid %>
 <div class="container mt-3">
   <div class="row">
     <div class="col-12"><h2><%= @project.title %></h2></div>
@@ -28,6 +27,5 @@
     <%= link_to "I'm interested!", project_volunteerings_path(@project), method: :post, class: "btn btn-secondary mr-2" %>
   </div>
 <% end %>
-<%# <h1>Hello, this is the show page to see all the volunteers in my projects</h1> %>
 
-<%= link_to ":og out", destroy_user_session_path, method: :delete %>
+<%= link_to "Log out", destroy_user_session_path, method: :delete %>
