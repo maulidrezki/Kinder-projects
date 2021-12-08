@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :avatar, :about_me])
   end
+
+  def destroy_user_session_path
+    redirect_to root
+  end
 end

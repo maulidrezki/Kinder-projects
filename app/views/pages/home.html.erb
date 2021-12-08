@@ -22,18 +22,20 @@
   </div>
 </div>
 
-<div class="content">
 
+<div class="text-center">
   <h2 class="title"> Inspiration for your Journey </h2>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <% @projects.each_with_index do |project, index| %>
           <div class="carousel-item <%= 'active' if index.zero? %>">
-            <div class="card-project">
-              <%= cl_image_tag project.photos.first.key, class: "card-project-img" %>
-              <div class="card-body">
-                <h5 class="card-title"> <%= project.title%> </h5>
-                <%= link_to "More info", class: "btn btn-primary" %>
+            <div class="d-flex justify-content-center">
+              <div class="card-project">
+                <%= cl_image_tag project.photos.first.key, class: "card-project-img" %>
+                <div class="card-body">
+                  <h5 class="card-title"> <%= project.title%> </h5>
+                  <%= link_to "More info", project_path(project), class: "btn btn-outline-secondary" %>
+                </div>
               </div>
             </div>
           </div>
@@ -51,11 +53,21 @@
 
   <h2 class="title"> Discover KINDER experiences </h2>
 
+  <div class="d-flex justify-content-center">
+    <div class="card-list">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path "volunteer-04.jpeg" %>)">
+        Breakfast
+      </div>
+    </div>
+  </div>
 
 
+
+  <%= image_tag "volunteer-01.jpeg", class: "about-sponsor" %>
 
 
 </div>
+
 
 
 
