@@ -39,5 +39,4 @@ class PagesController < ApplicationController
     @total_volunteered = @volunteered.size
   end
 
-
 end
