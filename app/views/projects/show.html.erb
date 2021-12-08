@@ -2,22 +2,13 @@
 <%# <h1>Hello, this is the show page to see all the volunteers in my projects</h1> %>
 
 <div class="container mt-3">
-  <div class="p-3">
-    <div class="row">
-      <div class="col-12">
-      <%# <h1>Project Details</h1> %>
-      </div>
-    </div>
   <div class="row">
-    <div class="col-12">
-      <h2><%= @project.title %></h2>
-    </div>
-    <div class="col-12">
-    <div class="project-pictures" style="background-image: url('<%= cl_image_path @project.photos.first.key %>')"></div>
-          </div>
-    </div>
+    <div class="col-12"><h2><%= @project.title %></h2></div>
+      <div class="col-12">
+        <div class="project-pictures" style="background-image: url('<%= cl_image_path @project.photos.first.key %>')"></div></div>
+      </div>
   </div>
-  </div>
+</div>
 <div class="main-container pb-5">
   <div class="container mt-5 mb-5">
     <ul>
@@ -27,9 +18,7 @@
       <li><%= @project.contact %></li>
       <li><%= @project.website_link || "No website" %></li>
     </ul>
-    <div class="flat-card-title">
-      <h4>About <%= @project.title %> </h4>
-    </div>
+    <div class="flat-card-title"><h4>About <%= @project.title %> </h4></div>
       <p><%= @project.description.gsub(".", "") %>
 </div>
 <% if @project.user == current_user %>
@@ -47,4 +36,4 @@
 <% if current_user != @project.user %>
   <%= link_to "Join this Project", project_volunteerings_path(@project), method: :post %>
 <% end %>
-<h1>Hello, this is the show page to see all the volunteers in my projects</h1>
+<%# <h1>Hello, this is the show page to see all the volunteers in my projects</h1> %>
