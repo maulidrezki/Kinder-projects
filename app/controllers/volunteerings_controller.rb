@@ -5,12 +5,13 @@ class VolunteeringsController < ApplicationController
     @volunteering.user = current_user
     @volunteering.project = @project
     @volunteering.status = "pending"
-
-    if @volunteering.save
-      redirect_to dashboard_path
-    else
-      redirect_to new_usser_session_path
-    end
+    @volunteering.save!
+    puts "Volunteered"
+    # if @volunteering.save
+    #   redirect_to dashboard_path
+    # else
+    #   redirect_to new_user_session_path
+    # end
   end
 
   def update
