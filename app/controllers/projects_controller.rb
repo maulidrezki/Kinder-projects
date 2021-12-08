@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @projects = Project.all
     if params[:query].present?
@@ -24,6 +26,17 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+  end
+
+  def create
+    @project = Project.new(project_params)
+    @project.status = "open"
+    @project.user = current_user
+    if @project.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
   end
 
   def edit

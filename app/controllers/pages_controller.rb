@@ -21,6 +21,10 @@ class PagesController < ApplicationController
 
     # My volunteers in a project, to review to accept or reject
     # @my_volunteers = Project.volunteering each do |volunteers|
+    @my_volunteers = []
+    @my_projects.each do |project|
+      @my_volunteers << Volunteering.find(project.id)
+    end
 
   end
 

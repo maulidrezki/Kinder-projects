@@ -1,10 +1,9 @@
-
 <div class="profile-header">
   <div class="profile-avatar">
     <% if @user.avatar.attached?%>
       <%= cl_image_tag @user.avatar.key, height: 100, width: 100, crop: :fill %>
     <% else %>
-      <%= cl_image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", size: "100", crop: :fill) %>
+      <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", size: "100", crop: :fill) %>
     <% end %>
   </div>
   <div class="name-edit">
@@ -31,3 +30,5 @@
     </div>
   </div>
 </div>
+<br><br><br>
+<%= link_to "Log out", destroy_user_session_path, method: :delete %>
