@@ -1,10 +1,9 @@
 class ProjectsController < ApplicationController
   def index
+    @projects = Project.all
     if params[:query].present?
       @query = params[:query]
       @projects = @projects.where("title iLike :query OR location iLike :query", query: "%#{params[:query]}%")
-    else
-      @projects = @projects.all
     end
 
     if params[:title].present?
@@ -23,7 +22,7 @@ class ProjectsController < ApplicationController
     @volunteering = Volunteering.new
   end
 
-    def new
+  def new
     @project = Project.new
   end
 

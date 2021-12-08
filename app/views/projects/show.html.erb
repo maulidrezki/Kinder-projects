@@ -2,7 +2,6 @@
 <%= link_to "Volunteer", project_volunteerings_path(@project), method: :post %>
 <%# <h1>Hello, this is the show page to see all the volunteers in my projects</h1> %>
 
-
 <div class="container mt-3">
 <div class="p-3">
   <div class="row">
@@ -90,3 +89,7 @@
 <div class="footer">
   <p>This website was coded with <i class="fas fa-heart"></i> at Le Wagon - Bali by Yeon, Maulid, Claudia, Michelle, Eye</p>
 </div>
+<% if current_user != @project.user %>
+  <%= link_to "Join this Project", project_volunteerings_path(@project), method: :post %>
+<% end %>
+<h1>Hello, this is the show page to see all the volunteers in my projects</h1>
