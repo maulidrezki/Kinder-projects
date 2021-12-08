@@ -1,34 +1,44 @@
 <div class="navbar">
   <div class="icon">
-    <%= link_to @project_path, method: :post do %>
+    <%= link_to projects_path, method: :get do %>
       <i class = "fas fa-search"></i>
       <p class="text">Explore</p>
     <% end %>
   </div>
   <div class="icon">
-    <%= link_to @dashboard_path, method: :post do %>
+    <%= link_to dashboard_path, method: :get do %>
       <i class="far fa-heart"></i>
       <p class="text">My page</p>
     <% end %>
   </div>
   <div class="icon">
-    <%= link_to @new_project_path, method: :post do %>
+    <%= link_to new_project_path, method: :get do %>
       <i class="fas fa-globe-asia"></i>
       <p class="text">Projects</p>
     <% end %>
   </div>
   <div class="icon">
-    <%= link_to "#", method: :post do %>
+    <%= link_to "#", method: :get do %>
       <i class="far fa-comment-alt"></i>
       <p class="text">Inbox</p>
     <% end %>
   </div>
-  <div class="icon">
-    <%= link_to "#", method: :post do %>
-      <i class="far fa-user-circle"></i>
-      <p class="text">Log in</p>
-    <% end %>
-  </div>
+  <% if user_signed_in? %>
+  <%# <% if @current_user.present? %>
+    <div class="icon">
+      <%= link_to profile_path(current_user), method: :get do %>
+        <i class="far fa-user-circle"></i>
+        <p class="text">Profile</p>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="icon">
+      <%= link_to new_user_session_path, method: :post do %>
+        <i class="far fa-user-circle"></i>
+        <p class="text">Log in</p>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 
