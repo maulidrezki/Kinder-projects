@@ -1,8 +1,4 @@
 class VolunteeringsController < ApplicationController
-  def edit
-    @volunteering = Volunteering.find(params[:id])
-  end
-
   def create
     @volunteering = Volunteering.new
     @project = Project.find(params[:project_id])
@@ -15,5 +11,14 @@ class VolunteeringsController < ApplicationController
     # else
     #   redirect_to new_user_session_path
     # end
+  end
+
+  def update
+    @volunteering = Volunteering.find(params[:id])
+    if @volunteering.update(status: params[:status])
+      redirect_to dashboard_path
+    else
+      render 'dashboard'
+    end
   end
 end
