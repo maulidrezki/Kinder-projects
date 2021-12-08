@@ -20,10 +20,11 @@ class PagesController < ApplicationController
     @volunteer_projects = current_user.volunteer_projects
 
     # My volunteers in a project, to review to accept or reject
+    # @my_volunteers = Project.volunteering each do |volunteers|
     @my_volunteers = []
-    @my_project.each do |project|
-      @query = project.id
-      @my_volunteers = Volunteering.where("project_id = :query", query: @query)
+    @my_projects.each do |project|
+      @my_volunteers << Volunteering.find(project.id)
+    end
   end
 
   def profile
@@ -36,5 +37,6 @@ class PagesController < ApplicationController
     @volunteered += Volunteering.where("user_id = :query", query: @query)
     @total_volunteered = @volunteered.size
   end
+
 
 end

@@ -4,11 +4,11 @@
     <% if @user.avatar.attached?%>
       <%= cl_image_tag @user.avatar.key, height: 100, width: 100, crop: :fill %>
     <% else %>
-      <%= cl_image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", size: "100", crop: :fill) %>
+      <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", size: "100", crop: :fill) %>
     <% end %>
   </div>
   <div class="name-edit">
-    <h4><%= @user.first_name %> <%= @user.last_name %></h4>
+    <h4><%= @user.id %> <%= @user.last_name %></h4>
     <%= link_to edit_user_registration_path(current_user), class: "edit-button-profile" do %>
       <i class = "fas fa-edit"></i>
     <% end %>
