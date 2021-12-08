@@ -26,6 +26,17 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def create
+    @project = Project.new(project_params)
+    @project.status = "open"
+    @project.user = current_user
+    if @project.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
+  end
+
   def edit
     @project = Project.find(params[:id])
   end
