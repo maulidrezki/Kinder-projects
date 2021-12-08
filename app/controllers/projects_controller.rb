@@ -23,6 +23,21 @@ class ProjectsController < ApplicationController
     @volunteering = Volunteering.new
   end
 
+    def new
+    @project = Project.new
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to dashboard_path
+  end
+
+
   private
 
   def project_params
@@ -40,5 +55,4 @@ class ProjectsController < ApplicationController
                                     :start_tim,
                                     :end_time,
                                     photos: [])
-
-end
+  end
