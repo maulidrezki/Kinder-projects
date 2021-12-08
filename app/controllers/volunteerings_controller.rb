@@ -1,5 +1,4 @@
 class VolunteeringsController < ApplicationController
-
   def create
     @volunteering = Volunteering.new
     @project = Project.find(params[:project_id])
@@ -22,7 +21,4 @@ class VolunteeringsController < ApplicationController
       render 'dashboard'
     end
   end
-  end
-
-
 end
