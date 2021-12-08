@@ -73,3 +73,24 @@
     <% end %>
   </div>
 </div>
+
+<%# TO DO: MY VOLUNTEERING - maulid's correction%>
+<div class="container mb-2">
+  <h2 class="title mb-2"> My Volunteers </h2>
+  <% if @my_volunteers.empty? %>
+  <p>You don't have any volunteering project yet!</p>
+  <% end %>
+  <div class="row">
+    <% @my_volunteers.each do |volunteer| %>
+      <div class="col-12">
+        <div class="my-project-card-dashboard">
+          <% if volunteer.user.avatar.attached?%>
+            <%= cl_image_tag volunteer.user.avatar.key, height: 100, width: 100, crop: :fill %>
+          <% else %>
+            <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", size: "100", crop: :fill) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
