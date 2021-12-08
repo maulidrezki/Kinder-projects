@@ -10,7 +10,7 @@
     <% @my_projects.each do |project| %>
       <div class="col-12">
         <div class="my-project-card-dashboard">
-          <%= cl_image_tag(project.photos.first.key, class: "project-card-image-dashboard") %>
+          <%= cl_image_tag(project.photos.key, class: "project-card-image-dashboard") %>
             <div class="project-card-info-dashboard">
               <h2><%= project.title %></h2>
               <p><%= project.description %></p>
