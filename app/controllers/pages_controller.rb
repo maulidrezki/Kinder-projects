@@ -20,8 +20,10 @@ class PagesController < ApplicationController
     @volunteer_projects = current_user.volunteer_projects
 
     # My volunteers in a project, to review to accept or reject
-    # @my_volunteers = Project.volunteering each do |volunteers|
-
+    @my_volunteers = []
+    @my_project.each do |project|
+      @query = project.id
+      @my_volunteers = Volunteering.where("project_id = :query", query: @query)
   end
 
   def profile
