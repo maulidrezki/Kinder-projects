@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :volunteerings, only: [:update, :edit, :show]
 
   get "dashboard", to: "pages#dashboard", as: "dashboard"
+  get "profile", to: "pages#profile", as: "profile"
 end
