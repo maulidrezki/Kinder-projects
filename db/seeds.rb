@@ -20,6 +20,7 @@ puts 'Database cleaned'
   User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
+    display_name: Faker::Name.first_name,
     email: "user_#{i + 1}@gmail.com",
     password: "123456",
     about_me: Faker::Quote.famous_last_words,
