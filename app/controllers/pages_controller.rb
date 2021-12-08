@@ -13,10 +13,14 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    # My projects as sponsor
+    # My projects as a sponsor
     @my_projects = current_user.projects
 
-    # My projects as volunteer
+    # My projects as a volunteer
     @volunteer_projects = current_user.volunteer_projects
+
+    # My volunteers in a project, to review to accept or reject
+    # @my_volunteers = Project.volunteering each do |volunteers|
+
   end
 end
