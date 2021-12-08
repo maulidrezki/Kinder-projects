@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @volunteer = Volunteer.new
+    @volunteering = Volunteering.new
   end
 
   def new

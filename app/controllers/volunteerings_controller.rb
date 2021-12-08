@@ -6,6 +6,7 @@ class VolunteeringsController < ApplicationController
     @volunteering.project = @project
     @volunteering.status = "pending"
     @volunteering.save!
+    puts "Volunteered"
     # if @volunteering.save
     #   redirect_to dashboard_path
     # else
