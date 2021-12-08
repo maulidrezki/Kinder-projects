@@ -1,6 +1,6 @@
 
 
 <% if current_user != @project.user %>
-  <%= link_to "Volunteer", project_volunteerings_path(@project), method: :post %>
+  <%= link_to "Join this Project", project_volunteerings_path(@project), method: :post %>
 <% end %>
 <h1>Hello, this is the show page to see all the volunteers in my projects</h1>
