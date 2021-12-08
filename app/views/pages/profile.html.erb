@@ -1,0 +1,33 @@
+
+<div class="profile-header">
+  <div class="profile-avatar">
+    <% if @user.avatar.attached?%>
+      <%= cl_image_tag @user.avatar.key, height: 100, width: 100, crop: :fill %>
+    <% else %>
+      <%= cl_image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", size: "100", crop: :fill) %>
+    <% end %>
+  </div>
+  <div class="name-edit">
+    <h4><%= @user.first_name %> <%= @user.last_name %></h4>
+    <%= link_to edit_user_registration_path(current_user), class: "edit-button-profile" do %>
+      <i class = "fas fa-edit"></i>
+    <% end %>
+  </div>
+</div>
+<p class="profile-about-me"><%= @user.about_me %></p>
+<div class="profile-numbers">
+  <div class="profile-level">
+    <p>KinderLevel</p>
+    <p><%= @user.level %></p>
+  </div>
+  <div class="profile-summary">
+    <div class="profile-listed">
+      <p>Listed</p>
+      <p><%= @total_listed_projects %></p>
+    </div>
+    <div class="profile-volunteered">
+      <p>Joined</p>
+      <p><%= @total_volunteered %></p>
+    </div>
+  </div>
+</div>
