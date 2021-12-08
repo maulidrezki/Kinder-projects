@@ -20,7 +20,7 @@
   <% @my_projects.each do |project| %>
     <div class="col-12">
       <div class="my-project-card-dashboard">
-        <div class="project-card-image-dashboard" style="background-image: url('<%= cl_image_path project.photos.first.key %>')">
+        <%= cl_image_tag(project.photos.first.key, class: "project-card-image-dashboard") %>
           <div class="project-card-info-dashboard">
             <h2><%= project.title %></h2>
             <p><%= project.description %></p>
@@ -38,24 +38,26 @@
   <% end %>
 </div>
 
+<%# TO DO: MY VOLUNTEERING %>
 <div class="container mb-2">
   <h2 class="title mb-2"> Volunteer Projects </h2>
   <% if @volunteer_projects.empty? %>
     <p>You don't have any project yet!</p>
   <% end %>
+  <div class="row">
   <% @volunteer_projects.each do |project| %>
-    <div class="card-volunteer mb-4">
-      <%#= cl_image_tag booking.flat.photos.first.key %>
-      <div class="card-volunteer-infos">
-        <h3> <%= project.title %> </h3>
-        <h2> <%= project.status.capitalize %> </h2>
-        <h2><%= project.start_date %> ~ <%= project.end_date %></h2>
-        <div class="more-info d-flex justify-content-between">
-          <div>
-            <%= link_to "More Info", "#", class: "btn btn-outline-secondary" %>
+    <div class="col-12">
+      <div class="my-project-card-dashboard">
+        <%= cl_image_tag(project.photos.first.key, class: "project-card-image-dashboard") %>
+        <div class="project-card-info-dashboard">
+          <h2><%= project.title %></h2>
+          <p><%= project.description %></p>
+          <div class="project-card-actions-dashboard">
+            <%= link_to 'More info',"#" %>
           </div>
         </div>
       </div>
     </div>
-    <% end %>
+  <% end %>
+</div>
 </div>
