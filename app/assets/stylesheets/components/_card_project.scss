@@ -1,12 +1,18 @@
 
 .card-project {
   width: 240px;
-  height: 360px;
+  height: 340px;
   background-color: white;
+  border-radius: 20px;
 }
 
 .card-project-img {
   width: 240px;
   height: 220px;
   background-size: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.card-title {
+  font-size: 16px;
 }

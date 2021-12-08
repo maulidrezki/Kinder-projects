@@ -3,9 +3,13 @@
   grid-template-columns: 1fr;
   grid-gap: 16px;
   width: 240px;
-  height: 360px;
+  height: 340px;
   background-size: cover;
   margin-bottom: 40px;
+}
+
+.card-list-img {
+  border-radius: 20px;
 }
 
 // Smallest device
