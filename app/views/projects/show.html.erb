@@ -1,83 +1,40 @@
-
 <%= link_to "Volunteer", project_volunteerings_path(@project), method: :post %>
 <%# <h1>Hello, this is the show page to see all the volunteers in my projects</h1> %>
 
 <div class="container mt-3">
-<div class="p-3">
-  <div class="row">
-    <div class="col-12">
-      <h1>Project Details</h1>
+  <div class="p-3">
+    <div class="row">
+      <div class="col-12">
+      <%# <h1>Project Details</h1> %>
+      </div>
     </div>
-  </div>
   <div class="row">
     <div class="col-12">
-      <h4><%= @project.title %></h4>
+      <h2><%= @project.title %></h2>
+    </div>
+    <div class="col-12">
+    <div class="project-pictures" style="background-image: url('<%= cl_image_path @project.photos.first.key %>')"></div>
+          </div>
     </div>
   </div>
   </div>
 <div class="main-container pb-5">
   <div class="container mt-5 mb-5">
+    <ul>
+      <li><%= @project.user.first_name %></li>
+      <li><%= @project.location %></li>
+      <li><%= @project.volunteers.size %></li>
+      <li><%= @project.contact %></li>
+      <li><%= @project.website_link || "No website" %></li>
+    </ul>
     <div class="flat-card-title">
-      <h4>A bit more about this project...</h4>
+      <h4>About <%= @project.title %> </h4>
     </div>
       <p><%= @project.description.gsub(".", "") %>
-      <p>We are located at <%= @project.location%></p>
-    <div class="row">
-        <div class="col-<%= @project.photos.second.nil? ? "12" : "6" %>">
-          <div class="project-pictures" style="background-image: url('<%= cl_image_path @project.photos.first.key %>')"></div>
-          </div>
-         <div class="col-6">
-          <div class="row">
-            <%unless @project.photos.second.nil?%>
-         <div class="col-<%= @project.photos.third.nil? ? "12" : "6" %>">
-            <% if @project.photos.size > 3 %>
-              <div class="booking-pictures-small" style="background-image: url('<%= cl_image_path @flat.photos.second.key %>')"></div>
-            <% else %>
-              <div class="project-pictures" style="background-image: url('<%= cl_image_path @project.photos.second.key %>')"></div>
-            <% end %>
-          </div>
-          <%end%>
-          <%unless @project.photos.third.nil?%>
-          <div class="col-6">
-            <% if @project.photos.size > 3 %>
-              <div class="booking-pictures-small" style="background-image: url('<%= cl_image_path @flat.photos.third.key %>')"></div>
-            <% else %>
-              <div class="project-pictures" style="background-image: url('<%= cl_image_path @project.photos.third.key %>')"></div>
-            <% end %>
-          </div>
-          <%end%>
-          <%unless @project.photos.fourth.nil?%>
-          <div class="col-6">
-            <div class="booking-pictures-small" style="background-image: url('<%= cl_image_path @flat.photos.fourth.key %>')"></div>
-          </div>
-          <%end%>
-          <%unless @project.photos.fifth.nil?%>
-          <div class="col-6">
-            <div class="booking-pictures-small" style="background-image: url('<%= cl_image_path @flat.photos.fifth.key %>')"></div>
-          </div>
-          <%end%>
-          </div>
-          </div>
-        </div>
-      </div>
-  </div>
- <% if @project.user != current_user %>
-  <div class="booking-page mt-2 p-2">
-    <%= simple_form_for([@flat, @booking]) do |b| %>
-    <%= b.input :start_date, html5: true %>
-    <%= b.input :end_date, html5: true %>
-    <div class="create-booking-button">
-    <%= b.submit %>
-    </div>
-    <% end %>
-<% end %>
-  </div>
 </div>
-
 <% if @project.user == current_user %>
   <div class="edit-btn d-flex justify-content-center mt-3 p-4">
-    <%= link_to "Edit", edit_project_path, class: "btn btn-secondary mr-2" %>
-    <%= link_to "Remove", project_path(@project),class: "btn btn-secondary mr-2", method: :delete, data: { confirm: "Are you sure you want to delete the flat?"} %>
+    <%= link_to "Join", "#", class: "btn btn-secondary mr-2" %>
   </div>
 <% end %>
 
@@ -86,9 +43,7 @@
     <div id="map" style="width: 870px; height: 400px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 </div>
 
-<div class="footer">
-  <p>This website was coded with <i class="fas fa-heart"></i> at Le Wagon - Bali by Yeon, Maulid, Claudia, Michelle, Eye</p>
-</div>
+
 <% if current_user != @project.user %>
   <%= link_to "Join this Project", project_volunteerings_path(@project), method: :post %>
 <% end %>
