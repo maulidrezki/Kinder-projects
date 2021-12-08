@@ -56,3 +56,4 @@ class ProjectsController < ApplicationController
                                     :end_time,
                                     photos: [])
   end
+end
