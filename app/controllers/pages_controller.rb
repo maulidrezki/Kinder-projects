@@ -33,6 +33,8 @@ class PagesController < ApplicationController
     @user = current_user
     @total_listed_projects = current_user.projects.length
     @total_volunteered = current_user.volunteerings.length
+    @my_last_project = current_user.projects.last
+    @my_last_volunteer = current_user.volunteerings.last
   end
 
 end
