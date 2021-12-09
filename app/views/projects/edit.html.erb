@@ -1,14 +1,21 @@
-<div class="container mt-3">
-  <div class="form-headers-projects">
-    <h1>Edit your project</h1>
-  </div>
+<div class="d-flex justify-content-center">
+    <div class="new-project" style="background-image: url(<%= image_path "volunteer-01.jpeg" %>)">
+    </div>
+</div>
 
+<div class="container">
+  <div class="form-headers-projects">
+    <h1 class="title mt-1" style="text-align: center;">Let's list your project!</h1>
+  </div>
   <div>
     <%= simple_form_for(@project) do |project| %>
-      <%= project.input :display_name %>
+      <div class="form-group">
+        <label class="string optional">Display name</label>
+        <input class="form-control string optional" type="text" value="<%=current_user.display_name%>" readonly disabled>
+      </div>
       <%= project.input :contact %>
       <%= project.input :title %>
-      <%= project.input :description%>
+      <%= project.input :description, input_html: {placeholder: "minimum 65 characters", class: "placeholder-tint"}%>
       <%= project.input :location %>
       <%= project.input :capacity %>
       <%= project.input :start_date, html5: true %>
@@ -27,3 +34,5 @@
     <% end %>
   </div>
 </div>
+
+<%= render "shared/footer" %>

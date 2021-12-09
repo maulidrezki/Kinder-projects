@@ -8,7 +8,8 @@ class Project < ApplicationRecord
 
   PROJECT_STATUS = %w[open closed cancelled]
 
-  validates :title, :location, :photos, :start_date, presence: true
+  validates :title, :location, :photos, :start_date, :description, presence: true
+  validates :description, length: { minimum: 65 }
   validates :status, presence: true, inclusion: { in: PROJECT_STATUS }
   validate :end_date_after_start_date?, :start_date_after_today?
 
@@ -19,7 +20,7 @@ class Project < ApplicationRecord
   end
 
   def start_date_after_today?
-    if start_date <= Date.today
+    if start_date && start_date < Date.today
       errors.add :start_date, "must be after today"
     end
   end

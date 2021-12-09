@@ -11,3 +11,14 @@
   display: flex;
   justify-content: center;
 }
+
+.placeholder-tint::placeholder {
+  font-style: italic;
+  color: rgb(185, 181, 181);
+}
+
+.new-project {
+  width: 100vw;
+  height: 240px;
+  background-size: cover;
+}
