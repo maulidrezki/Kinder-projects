@@ -7,10 +7,25 @@
     background-color: rgba(76, 151, 123, 0.5) !important;
   }
 }
-.volunteer-status {
-  background: #F5A833;
-  padding: 2px 4px;
+.volunteer-status-pending {
+  background: #F5A833 !important;
+  padding: 2px 10px;
+  color: white ;
+  border-radius: 20px;
+}
 
+.volunteer-status-confirmed {
+  background: #4C977B !important;
+  padding: 2px 10px;
+  color: white;
+  border-radius: 20px;
+}
+
+.volunteer-status-rejected {
+  color: white;
+  background: black !important;
+  padding: 2px 10px;
+  border-radius: 20px;
 }
 
 .volunteer-avatar {
