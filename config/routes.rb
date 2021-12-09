@@ -11,6 +11,6 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "pages#dashboard", as: "dashboard"
   get "profile", to: "pages#profile", as: "profile"
-  get '/users/:id', to: 'users#show'
+  get '/users/:id', to: 'users#show', as: "users"
 
 end
