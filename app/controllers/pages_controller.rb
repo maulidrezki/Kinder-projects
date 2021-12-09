@@ -14,16 +14,18 @@ class PagesController < ApplicationController
 
   def dashboard
     # My projects as a sponsor
-    @my_projects = current_user.projects
+    @my_projects = current_user.projects.where(status: "open")
+    @my_past_projects = current_user.projects.where(status: ["closed", "cancelled"])
 
     # My projects as a volunteer
-    @volunteer_projects = current_user.volunteer_projects
+    @volunteer_projects = current_user.volunteer_projects.where(status: "open")
+    @my_volunteer_past_projects = current_user.volunteer_projects.where(status: ["closed", "cancelled"])
 
     # My volunteers in a project, to review to accept or reject
     # @my_volunteers = Project.volunteering each do |volunteers|
     @my_volunteers = []
     @my_projects.each do |project|
-      @my_volunteers << Volunteering.find(project.id)
+      @my_volunteers << { volunteers: project.volunteerings, project: project }
     end
   end
 
