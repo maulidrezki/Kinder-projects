@@ -1,9 +1,20 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "banner";
+@import "dashboard";
 
 .project-list {
   margin-top: 40px;
   margin-bottom: 40px;
 }
-@import "dashboard";
+
+.search-guide {
+  color: #555255;
+  margin-left: 48px;
+  margin-top: 20px;
+
+  .p {
+    font-size: 10px;
+    margin-bottom: 0;
+  }
+}
