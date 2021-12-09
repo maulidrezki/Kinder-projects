@@ -13,24 +13,73 @@
     <% end %>
   </div>
 </div>
-<p class="profile-about-me"><%= @user.about_me %></p>
-<div class="profile-numbers">
-  <div class="profile-level">
-    <p>KinderLevel</p>
-    <p><%= @user.level %></p>
-  </div>
-  <div class="profile-summary">
+
+<%# about me %>
+<div class="profile-about-me">
+  <h4>ABOUT ME</h4>
+  <p><%= @user.about_me %></p>
+</div>
+
+<div class="sumary-user">
+  <div class="profile-numbers">
+    <div class="profile-level">
+      <h3>MY KINDER LEVEL</h3>
+      <h3><%= @user.level %></h3>
+    </div>
     <div class="profile-listed">
-      <p>Listed</p>
-      <p><%= @total_listed_projects %></p>
+      <h4>TOTAL LISTED PROJECTS</h4>
+      <h4><%= @total_listed_projects %></h4>
     </div>
     <div class="profile-volunteered">
-      <p>Joined</p>
-      <p><%= @total_volunteered %></p>
+      <h4>TOTAL JOINED PROJECTS</h4>
+      <h4><%= @total_volunteered %></h4>
     </div>
   </div>
 </div>
-<br><br><br>
+
+
+<%# my last project %>
+<% unless @my_last_project.nil? %>
+  <div class="container mb-2">
+    <h4 class="title mb-2"> My Last Project </h4>
+    <div class="row">
+        <div class="col-12">
+          <div class="my-project-card-dashboard">
+            <%= cl_image_tag(@my_last_project.photos.key, class: "project-card-image-dashboard") %>
+            <div class="project-card-info-dashboard">
+              <h2><%= @my_last_project.title %></h2>
+              <p><%= @my_last_project.description.truncate(36) %></p>
+              <div class="project-card-actions-dashboard">
+                <%= link_to 'More info', project_path(@my_last_project.id) %>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+<% end %>
+
+<%# my last volunteer %>
+<% unless @my_last_volunteer.nil? %>
+  <div class="container mb-2">
+    <h4 class="title mb-2"> My Last Volunteer </h4>
+    <div class="row">
+        <div class="col-12">
+          <div class="my-project-card-dashboard">
+            <%= cl_image_tag(@my_last_volunteer.project.photos.key, class: "project-card-image-dashboard") %>
+            <div class="project-card-info-dashboard">
+              <h2><%= @my_last_volunteer.project.title %></h2>
+              <p><%= @my_last_volunteer.project.description.truncate(36) %></p>
+              <div class="project-card-actions-dashboard">
+                <%= link_to 'More info', project_path(@my_last_volunteer.id) %>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+<% end %>
+
 <%= link_to destroy_user_session_path, method: :delete, class: "exit-button-profile" do %>
   <p>Log out  <i class = "fas fa-sign-out-alt"></i></p>
 <% end %>
