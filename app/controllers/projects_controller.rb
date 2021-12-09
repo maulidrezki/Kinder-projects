@@ -2,20 +2,11 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @projects = Project.all
     if params[:query].present?
       @query = params[:query]
-      @projects = @projects.where("title iLike :query OR location iLike :query", query: "%#{params[:query]}%")
-    end
-
-    if params[:title].present?
-      @query = params[:title]
-      @projects = @projects.where("title >= :query", query: @query)
-    end
-
-    if params[:location].present?
-      @query = params[:location]
-      @projects = @projects.where("location <= :query", query: @query)
+      @projects = Project.where("title iLike :query OR location iLike :query OR description iLike :query", query: "%#{params[:query]}%")
+    else
+      @projects = Project.all
     end
   end
 
