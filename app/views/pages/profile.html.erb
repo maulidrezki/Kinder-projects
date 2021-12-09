@@ -13,24 +13,32 @@
     <% end %>
   </div>
 </div>
-<p class="profile-about-me"><%= @user.about_me %></p>
-<div class="profile-numbers">
-  <div class="profile-level">
-    <p>KinderLevel</p>
-    <p><%= @user.level %></p>
-  </div>
-  <div class="profile-summary">
+
+<%# about me %>
+<div class="profile-about-me">
+  <h4>ABOUT ME</h4>
+  <p><%= @user.about_me %></p>
+</div>
+
+
+<%# user summary %>
+<div class="sumary-user">
+  <div class="profile-numbers">
+    <div class="profile-level">
+      <h3>MY KINDER LEVEL</h3>
+      <h3><%= @user.level %></h3>
+    </div>
     <div class="profile-listed">
-      <p>Listed</p>
-      <p><%= @total_listed_projects %></p>
+      <h4>TOTAL LISTED PROJECTS</h4>
+      <h4><%= @total_listed_projects %></h4>
     </div>
     <div class="profile-volunteered">
-      <p>Joined</p>
-      <p><%= @total_volunteered %></p>
+      <h4>TOTAL JOINED PROJECTS</h4>
+      <h4><%= @total_volunteered %></h4>
     </div>
   </div>
 </div>
-<br><br><br>
+<br><br>
 <%= link_to destroy_user_session_path, method: :delete, class: "exit-button-profile" do %>
   <p>Log out  <i class = "fas fa-sign-out-alt"></i></p>
 <% end %>
