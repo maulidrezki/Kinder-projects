@@ -1,30 +1,23 @@
-
 <div class="banner vh-100" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "volunteer-02.png" %>);">
   <div class="container">
-
-
+    <%# search %>
     <div class="search-bar">
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Where is your tribe?" aria-label="Search">
       </form>
     </div>
-
+    <%# text %>
     <div class="banner-text">
-      <h1 class="banner-title">Ready to start your journey?</h1>
-      <p class="perfect">Perfect</p>
-
-      <div class="arrows-down">
-        <i class="fas fa-chevron-down"></i>
-      </div>
+      <h5>Ready to start your journey?</h5>
+      <h5>Perfect</h5>
+      <i class="fas fa-chevron-down"></i>
     </div>
-
   </div>
 </div>
 
-
 <div class="text-center">
   <h2 class="title"> Inspiration for your Journey </h2>
+  <div class="d-flex justify-content-center">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <% @projects.each_with_index do |project, index| %>
@@ -33,7 +26,7 @@
               <%= cl_image_tag project.photos.key, class: "card-project-img" %>
               <div class="card-body">
                 <h5 class="card-title"> <%= project.title%> </h5>
-                <%= link_to "More info", class: "btn btn-primary" %>
+                <%= link_to "More info", project_path(project), class: "btn btn-outline-secondary" %>
               </div>
             </div>
           </div>
@@ -48,25 +41,24 @@
         </a>
       </div>
     </div>
+  </div>
 
   <h2 class="title"> Discover KINDER experiences </h2>
-
   <div class="d-flex justify-content-center">
     <div class="card-list">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path "volunteer-04.jpeg" %>)">
-        Breakfast
+      <div class="card-list-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path "volunteer-04.jpeg" %>)">
+        <p class="card-list-text">Tribes in town</p>
+        <%= link_to "Browse Projects", projects_path, class: "btn btn-outline-light" %>
       </div>
     </div>
   </div>
 
-
-
-  <%= image_tag "volunteer-01.jpeg", class: "about-sponsor" %>
-
-
+  <div class="d-flex justify-content-center">
+    <div class="about-sponsor" style="background-image: url(<%= image_path "volunteer-01.jpeg" %>)">
+      <p class="question">Question about Sponsoring?</p>
+      <%= link_to "More Information", new_project_path, class: "btn btn-outline-light" %>
+    </div>
+  </div>
 </div>
-
-
-
 
 <%= render "shared/footer" %>
