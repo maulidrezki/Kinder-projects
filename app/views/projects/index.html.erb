@@ -1,31 +1,42 @@
-
 <div class="search-bar">
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Where is your tribe?" aria-label="Search">
+  <form class="form-inline" action="/projects">
+    <input class="form-control mr-sm-2" type="search" name="query" placeholder="Where is your tribe?" aria-label="Search">
   </form>
 </div>
 
-
+<div class="search-guide">
+  <% if @query.present? %>
+    <p> You searched for "<strong><%= @query %></strong>" </p>
+  <% else %>
+    <p> What are you looking for next? <strong>Search!</strong> </p>
+  <% end %>
+</div>
 
 <div class="project-list">
   <div class="d-flex flex-wrap justify-content-center">
     <% @projects.each do |project| %>
-      <br>
-      <div class="card-product mb-3 mt-3">
-        <%= cl_image_tag project.photos.key, class: "card-product-img" %>
-        <div class="card-product-infos">
-          <h2> <%= project.title %> </h2>
-          <p> <i class="fas fa-map-marker-alt" style="color: #4C977B"></i> <%= project.location %> </p>
-          <% if project.status == "open" %>
-            <p> <i class="fas fa-users" style="color: #4C977B" ></i> <%= project.status %> </p>
-          <% else %>
-            <p> <i class="fas fa-users" style="color: #423D52" ></i> <%= project.status %> </p>
-          <% end %>
-          <div class="card-product-dt">
-            <%= link_to "More info", project_path(project), class: "text-secondary" %>
+      <%= link_to project, class: "text-dark text-decoration-none" do %>
+        <div class="card-product mb-3 mt-3">
+          <%= cl_image_tag project.photos.key, class: "card-product-img" %>
+          <div class="card-product-infos">
+            <h2> <%= project.title %> </h2>
+            <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= project.location %> </p>
+            <p> <i class="fas fa-calendar-check" style="colot: #555255"></i> <%= project.start_date%> ~ <%= project.end_date%> </p>
+            <div class="d-flex justify-content-between">
+              <div class="project-status">
+                <% if project.status == "open" %>
+                  <p> <i class="fas fa-users" style="color: #4C977B" ></i> <%= project.status %> </p>
+                <% else %>
+                  <p> <i class="fas fa-users" style="color: #423D52" ></i> <%= project.status %> </p>
+                <% end %>
+              </div>
+              <div class="my-fav">
+                <p> <i class="far fa-heart"></i> </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

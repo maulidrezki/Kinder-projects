@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  resources :projects, only: :index
   resources :projects do
     resources :volunteerings, only: [:create]
   end
@@ -10,6 +11,6 @@ Rails.application.routes.draw do
 
   get "dashboard", to: "pages#dashboard", as: "dashboard"
   get "profile", to: "pages#profile", as: "profile"
-  get '/users/:id', to: 'users#show'
+  get '/users/:id', to: 'users#show', as: "users"
 
 end

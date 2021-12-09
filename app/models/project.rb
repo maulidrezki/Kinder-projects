@@ -20,7 +20,7 @@ class Project < ApplicationRecord
   end
 
   def start_date_after_today?
-    if start_date <= Date.today
+    if start_date && start_date < Date.today
       errors.add :start_date, "must be after today"
     end
   end

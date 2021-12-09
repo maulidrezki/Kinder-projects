@@ -9,6 +9,15 @@
       </div>
   </div>
 </div>
+
+<div class="container mt-5 mb-5">
+  <div>
+      <% if @project.user == current_user %>
+      <%= link_to "Edit project", edit_project_path(@project), class: "btn btn-secondary mr-2"%>
+      <% end %>
+  </div>
+</div>
+
 <div class="main-container pb-5">
   <div class="container mt-5 mb-5">
     <ul class="list-unstyled">

@@ -2,20 +2,11 @@ class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @projects = Project.all
     if params[:query].present?
       @query = params[:query]
-      @projects = @projects.where("title iLike :query OR location iLike :query", query: "%#{params[:query]}%")
-    end
-
-    if params[:title].present?
-      @query = params[:title]
-      @projects = @projects.where("title >= :query", query: @query)
-    end
-
-    if params[:location].present?
-      @query = params[:location]
-      @projects = @projects.where("location <= :query", query: @query)
+      @projects = Project.where("title iLike :query OR location iLike :query OR description iLike :query", query: "%#{params[:query]}%")
+    else
+      @projects = Project.all
     end
   end
 
@@ -43,6 +34,12 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  def update
+    @project = Project.find(params[:id])
+    @project.update(project_params)
+    redirect_to project_path(@project)
+  end
+
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
@@ -64,8 +61,8 @@ class ProjectsController < ApplicationController
                                     :linkedin_link,
                                     :start_date,
                                     :end_date,
-                                    :start_tim,
+                                    :start_time,
                                     :end_time,
-                                    photos: [])
+                                    :photos)
   end
 end
