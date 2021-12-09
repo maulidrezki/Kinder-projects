@@ -1,49 +1,82 @@
 <div class="navbar">
-  <div class="icon">
-    <% if controller_name == "projects" %>
-      <%= link_to root_path, method: :get, class: "navbar-link" do %>
-        <i class = "fas fa-search"></i>
-        <p class="text">Home</p>
-      <% end %>
-    <% else %>
-      <%= link_to projects_path, method: :get, class: "navbar-link" do %>
-        <i class = "fas fa-search"></i>
-        <p class="text">Explore</p>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="icon">
-    <%= link_to dashboard_path, method: :get, class: "navbar-link" do %>
-      <i class="far fa-heart"></i>
-      <p class="text">My page</p>
-    <% end %>
-  </div>
-  <div class="icon">
-    <%= link_to new_project_path, method: :get, class: "navbar-link" do %>
-      <i class="fas fa-globe-asia"></i>
-      <p class="text">Projects</p>
-    <% end %>
-  </div>
-  <div class="icon">
-    <%= link_to "#", method: :get, class: "navbar-link" do %>
-      <i class="far fa-comment-alt"></i>
-      <p class="text">Inbox</p>
-    <% end %>
-  </div>
-  <% if user_signed_in? %>
-  <%# <% if @current_user.present? %>
+
+  <% if controller_name == "projects" %>
     <div class="icon">
-      <%= link_to profile_path(current_user), method: :get, class: "navbar-link" do %>
-        <i class="far fa-user-circle"></i>
-        <p class="text">Profile</p>
+      <%= link_to root_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class = "fas fa-search" style="color: #CE326A"></i>
+        <p class="text" style="color: #CE326A">Home</p>
       <% end %>
     </div>
   <% else %>
     <div class="icon">
-      <%= link_to new_user_session_path, method: :get , class: "navbar-link" do %>
+      <%= link_to projects_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class = "fas fa-search"></i>
+        <p class="text">Explore</p>
+      <% end %>
+    </div>
+  <% end %>
+
+
+  <% if controller_name == "pages" && action_name == "dashboard" %>
+    <div class="icon">
+      <%= link_to dashboard_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class="fas fa-heart" style="color: #CE326A"></i>
+        <p class="text" style="color: #CE326A">My page</p>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="icon">
+      <%= link_to dashboard_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class="far fa-heart"></i>
+        <p class="text">My page</p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if controller_name == "projects" && action_name == "new" %>
+    <div class="icon">
+      <%= link_to new_project_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class="fas fa-globe-asia" style="color: #CE326A"></i>
+        <p class="text" style="color: #CE326A">Projects</p>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="icon">
+      <%= link_to new_project_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class="fas fa-globe-asia"></i>
+        <p class="text">Projects</p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="icon">
+    <%= link_to "#", method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+      <i class="far fa-comment-alt"></i>
+      <p class="text">Inbox</p>
+    <% end %>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="icon">
+      <% if controller_name == "pages" && action_name == "profile" %>
+        <%= link_to profile_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+          <i class="far fa-user-circle" style="color: #CE326A"></i>
+          <p class="text" style="color: #CE326A">Profile</p>
+        <% end %>
+      <% else %>
+        <%= link_to profile_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+          <i class="far fa-user-circle"></i>
+          <p class="text">Profile</p>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="icon">
+      <%= link_to new_user_session_path, method: :get , class: "navbar-link text-dark text-decoration-none" do %>
         <i class="far fa-user-circle"></i>
         <p class="text">Log in</p>
       <% end %>
     </div>
   <% end %>
+
 </div>

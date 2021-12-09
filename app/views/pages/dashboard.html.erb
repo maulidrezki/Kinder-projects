@@ -23,8 +23,8 @@
               <%= cl_image_tag(project.photos.key, class: "project-card-image-dashboard") %>
               <div class="project-card-info-dashboard">
                 <div>
-                  <h2><%= link_to project.title, project_path(project) %></h2>
-                  <p class ="mt-4"><%= project.description.truncate(48) %></p>
+                  <h2><%= link_to project.title, project_path(project), class: "text-dark text-decoration-none"  %></h2>
+                  <p><%= project.description.truncate(48) %></p>
                 </div>
                 <div class="project-card-actions-dashboard">
                   <p>
@@ -102,7 +102,7 @@
                     <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "project-card-image-dashboard") %>
                   <% end %>
                   <div class="project-card-info-dashboard">
-                    <%= link_to users_path(volunteering.user.id, volunteering: volunteering.id) do %>
+                    <%= link_to users_path(volunteering.user.id), class: "text-dark text-decoration-none" do %>
                       <h2><%= volunteering.user.first_name %> <%= volunteering.user.last_name %></h2>
                     <% end  %>
                     <p><%= volunteer[:project].title %></p>
