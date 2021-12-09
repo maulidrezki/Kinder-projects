@@ -15,8 +15,12 @@
         <%= cl_image_tag project.photos.key, class: "card-product-img" %>
         <div class="card-product-infos">
           <h2> <%= project.title %> </h2>
-          <p> <%= project.description.first(50)... %> </p>
-          <br>
+          <p> <i class="fas fa-map-marker-alt" style="color: #4C977B"></i> <%= project.location %> </p>
+          <% if project.status == "open" %>
+            <p> <i class="fas fa-users" style="color: #4C977B" ></i> <%= project.status %> </p>
+          <% else %>
+            <p> <i class="fas fa-users" style="color: #423D52" ></i> <%= project.status %> </p>
+          <% end %>
           <div class="card-product-dt">
             <%= link_to "More info", project_path(project), class: "text-secondary" %>
           </div>
