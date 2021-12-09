@@ -37,18 +37,21 @@
   <% end %>
   <div class="row">
     <% @volunteer_projects.each do |project| %>
+    <%= link_to project_path(project), class: "text-dark text-decoration-none" do%>
       <div class="col-12">
         <div class="my-project-card-dashboard">
           <%= cl_image_tag(project.photos.key, class: "project-card-image-dashboard") %>
           <div class="project-card-info-dashboard">
             <h2><%= project.title %></h2>
+            <p><%=Volunteering.find_by(user: current_user, project: project).status%></p>
             <p><%= project.description.truncate(36) %></p>
-            <div class="project-card-actions-dashboard">
-              <%= link_to 'More info', project_path(project) %>
+            <%# <div class="project-card-actions-dashboard"> %>
+              <%# <%= link_to 'More info', project_path(project) %> %>
             </div>
           </div>
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -57,7 +60,7 @@
 <div class="container mb-2">
   <h2 class="title mb-2"> Who Wants To Join </h2>
   <% if @my_volunteers.empty? %>
-  <p>You don't have any volunteering project yet!</p>
+  <p>You don't have any volunteers yet!</p>
   <% end %>
   <div class="row">
     <% @my_volunteers.each do |volunteer| %>
