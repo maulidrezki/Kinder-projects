@@ -16,6 +16,7 @@ class VolunteeringsController < ApplicationController
   def update
     @volunteering = Volunteering.find(params[:id])
     if @volunteering.update(status: params[:status])
+      flash[:notice] = "#{@volunteering.user.first_name} has been #{@volunteering.status}"
       redirect_to dashboard_path
     else
       render 'dashboard'

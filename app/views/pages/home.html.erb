@@ -2,8 +2,8 @@
   <div class="container">
     <%# search %>
     <div class="search-bar">
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Where is your tribe?" aria-label="Search">
+      <form class="form-inline" action="/projects">
+        <input class="form-control mr-sm-2" type="search" name="query" placeholder="Where is your tribe?" aria-label="Search">
       </form>
     </div>
     <%# text %>
@@ -22,13 +22,15 @@
       <div class="carousel-inner">
         <% @projects.each_with_index do |project, index| %>
           <div class="carousel-item <%= 'active' if index.zero? %>">
-            <div class="card-project">
-              <%= cl_image_tag project.photos.key, class: "card-project-img" %>
-              <div class="card-body">
-                <h5 class="card-title"> <%= project.title%> </h5>
-                <%= link_to "More info", project_path(project), class: "btn btn-outline-secondary" %>
+            <%= link_to project, class: "text-dark text-decoration-none" do %>
+              <div class="card-project">
+                <%= cl_image_tag project.photos.key, class: "card-project-img" %>
+                <div class="card-body">
+                  <h5 class="card-title"> <strong><%= project.title%></strong> </h5>
+                  <%= link_to "More info", project_path(project), class: "btn btn-outline-secondary" %>
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
