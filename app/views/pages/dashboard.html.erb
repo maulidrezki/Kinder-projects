@@ -22,8 +22,10 @@
             <div class="my-project-card-dashboard">
               <%= cl_image_tag(project.photos.key, class: "project-card-image-dashboard") %>
               <div class="project-card-info-dashboard">
-                <h2><%= link_to project.title, project_path(project), class: "text-dark text-decoration-none"  %></h2>
-                <p><%= project.description.truncate(48) %></p>
+                <div>
+                  <h2><%= link_to project.title, project_path(project), class: "text-dark text-decoration-none"  %></h2>
+                  <p><%= project.description.truncate(48) %></p>
+                </div>
                 <div class="project-card-actions-dashboard">
                   <p>
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,8 +59,10 @@
             <div class="my-project-card-dashboard">
               <%= cl_image_tag(project.photos.key, class: "project-card-image-dashboard") %>
               <div class="project-card-info-dashboard">
-                <h2><%= project.title %></h2>
-                <p><%= project.description.truncate(36) %></p>
+                <div>
+                  <h2><%= project.title.truncate(30) %></h2>
+                  <p class ="mt-4"><%= project.description.truncate(36) %></p>
+                </div>
                 <div class="project-card-actions-dashboard">
                   <p>
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -109,9 +113,19 @@
                         </svg>
                         <%= volunteer[:project].location.truncate(20) %>
                       </p>
-                      <p class ="volunteer-status">
-                        <%= volunteering.status %>
-                      </p>
+                      <% if volunteering.status == "pending" %>
+                        <p class ="volunteer-status-pending font-weight-lighter">
+                        <%= volunteering.status.capitalize %>
+                        </p>
+                      <% elsif volunteering.status == "confirmed" %>
+                        <p class ="volunteer-status-confirmed font-weight-lighter">
+                        <%= volunteering.status.capitalize %>
+                        </p>
+                      <% else %>
+                        <p class ="volunteer-status-rejected font-weight-lighter">
+                        <%= volunteering.status.capitalize %>
+                        </p>
+                      <% end %>
                     </div>
                   </div>
                 </div>

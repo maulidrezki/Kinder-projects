@@ -1,6 +1,6 @@
 .my-project-card-dashboard {
   width: 337px;
-  height: 86px;
+  height: 120px;
   margin: 20px 0px;
   border-radius: 20px;
   border-color:black;
@@ -10,7 +10,7 @@
 
 .project-card-image-dashboard {
   width: 92px;
-  height: 86px;
+  height: 120px;
   background-size: cover;
 }
 .project-card-info-dashboard {
@@ -19,6 +19,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .project-card-info-dashboard h2 {
   font-size: 16px;
