@@ -8,7 +8,8 @@ class Project < ApplicationRecord
 
   PROJECT_STATUS = %w[open closed cancelled]
 
-  validates :title, :location, :photos, :start_date, presence: true
+  validates :title, :location, :photos, :start_date, :description, presence: true
+  validates :description, length: { minimum: 65 }
   validates :status, presence: true, inclusion: { in: PROJECT_STATUS }
   validate :end_date_after_start_date?, :start_date_after_today?
 
