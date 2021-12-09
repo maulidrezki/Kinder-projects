@@ -1,1 +1,22 @@
-<h1>Projects#index</h1>
+
+<div class="search-bar">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Where is your tribe?" aria-label="Search">
+  </form>
+</div>
+
+
+<% @projects.each do |project| %>
+  <br>
+  <div class="card-product">
+    <%= cl_image_tag project.photos.key, class: "card-product-img" %>
+    <div class="card-product-infos">
+      <h2> <%= project.title %> </h2>
+      <p> <%= project.description.first(50)... %> </p>
+      <br>
+      <div class="card-product-dt">
+        <%= link_to "More info", project_path(project), class: "text-secondary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
