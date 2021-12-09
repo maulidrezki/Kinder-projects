@@ -31,13 +31,8 @@ class PagesController < ApplicationController
 
   def profile
     @user = current_user
-    @query = @user.id
-    @listed = []
-    @listed += Project.where("user_id = :query", query: @query)
-    @total_listed_projects = @listed.size
-    @volunteered = []
-    @volunteered += Volunteering.where("user_id = :query", query: @query)
-    @total_volunteered = @volunteered.size
+    @total_listed_projects = current_user.projects.length
+    @total_volunteered = current_user.volunteerings.length
   end
 
 end

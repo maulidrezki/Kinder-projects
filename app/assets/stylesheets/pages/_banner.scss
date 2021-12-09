@@ -4,20 +4,17 @@
 }
 
 .banner-text {
-  text-align: bottom;
   color: white;
+  text-align: center;
+  margin-top: 480px;
 }
 
-.banner-title {
-  text-align: center;
-  font-size: 20px;
+.search-bar {
+  display: flex;
+  justify-content: center;
 }
 
-.perfect {
-  text-align: center;
-  font-size: 16px;
-}
-
-.arrows-down {
-  text-align: center;
+.form-inline {
+  margin-top: 40px;
+  width: 80%;
 }
