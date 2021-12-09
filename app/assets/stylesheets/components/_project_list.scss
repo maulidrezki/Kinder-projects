@@ -1,5 +1,6 @@
 
 
+
 .card-product {
   // overflow: hidden;
   height: 120px;
@@ -8,7 +9,6 @@
   justify-content: center;
   width: 360px;
   border-radius: 20px;
-  margin-left: 7%;
 }
 
 .card-product-img {
@@ -43,4 +43,5 @@
 .card-product-dt {
   text-align: right;
   align-items: flex-end;
+  margin-top: 0;
 }

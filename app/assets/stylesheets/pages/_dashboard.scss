@@ -1,0 +1,18 @@
+.dashboard-tabs {
+  justify-content: center;
+}
+
+.dashboard-tab {
+  &.active {
+    background-color: rgba(76, 151, 123, 0.5) !important;
+  }
+}
+.volunteer-status {
+  background: #F5A833;
+  padding: 2px 4px;
+
+}
+
+.volunteer-avatar {
+  height: 100%;
+}
