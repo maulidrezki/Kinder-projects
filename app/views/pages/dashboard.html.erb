@@ -96,7 +96,9 @@
                     <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", size: "100", crop: :fill, class: "volunteer-avatar") %>
                   <% end %>
                   <div class="project-card-info-dashboard">
-                    <h2><%= volunteering.user.first_name %> <%= volunteering.user.last_name %></h2>
+                    <%= link_to users_path(volunteering.user.id) do %>
+                      <h2><%= volunteering.user.first_name %> <%= volunteering.user.last_name %></h2>
+                    <% end  %>
                     <p><%= volunteer[:project].title %></p>
                     <div class="project-card-actions-dashboard">
                       <p>
