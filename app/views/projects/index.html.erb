@@ -6,17 +6,24 @@
 </div>
 
 
-<% @projects.each do |project| %>
-  <br>
-  <div class="card-product">
-    <%= cl_image_tag project.photos.key, class: "card-product-img" %>
-    <div class="card-product-infos">
-      <h2> <%= project.title %> </h2>
-      <p> <%= project.description.first(50)... %> </p>
+
+<div class="project-list">
+  <div class="d-flex flex-wrap justify-content-center">
+    <% @projects.each do |project| %>
       <br>
-      <div class="card-product-dt">
-        <%= link_to "More info", project_path(project), class: "text-secondary" %>
+      <div class="card-product mb-3 mt-3">
+        <%= cl_image_tag project.photos.key, class: "card-product-img" %>
+        <div class="card-product-infos">
+          <h2> <%= project.title %> </h2>
+          <p> <%= project.description.first(50)... %> </p>
+          <br>
+          <div class="card-product-dt">
+            <%= link_to "More info", project_path(project), class: "text-secondary" %>
+          </div>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+
+<%= render "shared/footer" %>
