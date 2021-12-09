@@ -25,7 +25,6 @@ class PagesController < ApplicationController
     @my_projects.each do |project|
       @my_volunteers << Volunteering.find(project.id)
     end
-
   end
 
   def profile
