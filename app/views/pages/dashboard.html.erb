@@ -93,9 +93,9 @@
               <div class="col-12">
                 <div class="my-project-card-dashboard">
                   <% if volunteering.user.avatar.attached?%>
-                    <%= cl_image_tag volunteering.user.avatar.key, height: 100, width: 100, crop: :fill %>
+                    <%= cl_image_tag volunteering.user.avatar.key, class: "project-card-image-dashboard" %>
                   <% else %>
-                    <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", size: "100", crop: :fill, class: "volunteer-avatar") %>
+                    <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "project-card-image-dashboard") %>
                   <% end %>
                   <div class="project-card-info-dashboard">
                     <%= link_to users_path(volunteering.user.id) do %>
