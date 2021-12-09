@@ -1,11 +1,26 @@
 // Specific CSS for your home-page
+
 .title {
-  font-size: 24px;
-  margin: 20px;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.card-list-text {
+  font-size: 20px;
+  color: white;
+  margin-top: 20px;
 }
 
 .about-sponsor {
   width: 100vw;
   height: 240px;
   background-size: cover;
+  margin-bottom: 40px;
+}
+
+.question {
+  font-size: 20px;
+  color: white;
+  margin-top: 120px;
 }

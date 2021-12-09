@@ -55,6 +55,29 @@
 
 <%# my volunteers column %>
 <div class="container mb-2">
+  <h2 class="title mb-2"> Who Wants To Join </h2>
+  <% if @volunteer_projects.empty? %>
+  <p>You don't have any volunteer yet!</p>
+  <% end %>
+  <div class="row">
+    <% @volunteer_projects.each do |project| %>
+      <div class="col-12">
+        <div class="my-project-card-dashboard">
+          <%#= cl_image_tag(user.avatar.first.key, class: "project-card-image-dashboard") %>
+          <div class="project-card-info-dashboard">
+            <h2><%= project.title %></h2>
+            <p><%= project.description.truncate(48) %></p>
+            <div class="project-card-actions-dashboard">
+              <%= link_to 'More info', project_path(project) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container mb-2">
   <h2 class="title mb-2"> My Volunteers </h2>
   <% if @my_volunteers.empty? %>
   <p>You don't have any volunteering project yet!</p>
