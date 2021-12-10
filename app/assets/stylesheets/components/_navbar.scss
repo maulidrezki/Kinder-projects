@@ -1,4 +1,52 @@
+// Top nav
+.navbar-top {
+  flex-grow: 0;
+  padding: 20px 20px 0 20px;
+}
 
+.navbar-top-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  text-decoration: none;
+}
+
+.navbar-top-back {
+  align-items: center;
+
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.navbar-brand {
+  text-decoration: none;
+  color: #555255;
+  font-size: 16px;
+}
+
+.navbar-top-text {
+  text-align: right;
+  margin-right: 20px;
+
+
+  .p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+  }
+}
+
+.navbar-top-avatar-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+// Bottom nav
 .navbar {
   justify-content: space-between;
   background-color: #E3E4E5;
