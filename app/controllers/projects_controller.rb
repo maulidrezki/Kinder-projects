@@ -48,13 +48,6 @@ class ProjectsController < ApplicationController
     redirect_to dashboard_path
   end
 
-  # def my_volunteers
-  #   # My volunteers in a project, to review to accept or reject
-  #   # @my_volunteers = Project.volunteering each do |volunteers|
-  #   @project = Project.find(params[:id])
-
-  # end
-
 
   private
 
