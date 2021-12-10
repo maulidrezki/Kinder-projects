@@ -20,27 +20,40 @@
       </div>
     </div>
 
-    <div class="container mt-5 mb-5">
+<div class="main-container pb-5">
+  <div class="container mt-5 mb-5">
+
+    <div class= "d-flex w-100 justify-content-between my-3">
       <div>
-          <% if @project.user == current_user %>
-          <%= link_to "Edit project", edit_project_path(@project), class: "btn btn-secondary mr-2"%>
-          <% end %>
+        <% if @project.user == current_user %>
+        <%= link_to "Edit project", edit_project_path(@project), class: "btn btn-secondary mr-2"%>
+        <% end %>
+      </div>
+
+      <div>
+        <% if @project.user == current_user && @project.status != "cancelled" %>
+        <%= link_to "Cancel project", project_path(@project, project: {status: "cancelled"}), method: :patch,  class: "btn btn-secondary"%>
+        <% end %>
       </div>
     </div>
 
-    <div class="main-container pb-5">
-      <div class="container mt-5 mb-5">
-        <ul class="list-unstyled">
-          <li>
-            <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 4C12 1.79 10.21 0 8 0C5.79 0 4 1.79 4 4C4 6.21 5.79 8 8 8C10.21 8 12 6.21 12 4ZM14 6V8H17V11H19V8H22V6H19V3H17V6H14ZM0 14V16H16V14C16 11.34 10.67 10 8 10C5.33 10 0 11.34 0 14Z" fill="#4C977B"/>
-            </svg>
-            <%= @project.user.first_name %>
-          </li>
-          <li>
-            <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill="#4C977B" d="M13 6C13 2.69 10.31 0 7 0C3.69 0 1 2.69 1 6C1 10.5 7 17 7 17C7 17 13 10.5 13 6ZM5 6C5 4.9 5.9 4 7 4C8.1 4 9 4.9 9 6C9 7.1 8.11 8 7 8C5.9 8 5 7.1 5 6ZM0 18V20H14V18H0Z"/>
-            </svg>
+    <ul class="list-unstyled">
+      <li>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.99166 1.66666C5.39166 1.66666 1.65833 5.39999 1.65833 9.99999C1.65833 14.6 5.39166 18.3333 9.99166 18.3333C14.5917 18.3333 18.325 14.6 18.325 9.99999C18.325 5.39999 14.5917 1.66666 9.99166 1.66666ZM13 6.94999C13.8917 6.94999 14.6083 7.66666 14.6083 8.55832C14.6083 9.44999 13.8917 10.1667 13 10.1667C12.1083 10.1667 11.3917 9.44999 11.3917 8.55832C11.3833 7.66666 12.1083 6.94999 13 6.94999ZM7.99999 5.63332C9.08333 5.63332 9.96666 6.51666 9.96666 7.59999C9.96666 8.68332 9.08333 9.56666 7.99999 9.56666C6.91666 9.56666 6.03333 8.68332 6.03333 7.59999C6.03333 6.50832 6.90833 5.63332 7.99999 5.63332ZM7.99999 13.2417V16.3667C5.99999 15.7417 4.41666 14.2 3.71666 12.2333C4.59166 11.3 6.77499 10.825 7.99999 10.825C8.44166 10.825 8.99999 10.8917 9.58333 11.0083C8.21666 11.7333 7.99999 12.6917 7.99999 13.2417ZM9.99166 16.6667C9.76666 16.6667 9.54999 16.6583 9.33332 16.6333V13.2417C9.33332 12.0583 11.7833 11.4667 13 11.4667C13.8917 11.4667 15.4333 11.7917 16.2 12.425C15.225 14.9 12.8167 16.6667 9.99166 16.6667Z" fill="#4C977B"/>
+        </svg>
+        <%= @project.status %>
+      </li>
+      <li>
+        <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4C12 1.79 10.21 0 8 0C5.79 0 4 1.79 4 4C4 6.21 5.79 8 8 8C10.21 8 12 6.21 12 4ZM14 6V8H17V11H19V8H22V6H19V3H17V6H14ZM0 14V16H16V14C16 11.34 10.67 10 8 10C5.33 10 0 11.34 0 14Z" fill="#4C977B"/>
+        </svg>
+        <%= @project.user.display_name %>
+      </li>
+      <li>
+        <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#4C977B" d="M13 6C13 2.69 10.31 0 7 0C3.69 0 1 2.69 1 6C1 10.5 7 17 7 17C7 17 13 10.5 13 6ZM5 6C5 4.9 5.9 4 7 4C8.1 4 9 4.9 9 6C9 7.1 8.11 8 7 8C5.9 8 5 7.1 5 6ZM0 18V20H14V18H0Z"/>
+        </svg>
 
             <%= @project.location %>
           </li>
@@ -73,6 +86,9 @@
 
   </div>
 
+<<<<<<< HEAD
+<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+=======
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <%# Pending Volunteers %>
     <div class="container mb-5">
@@ -236,3 +252,4 @@
   </div>
   </div>
 </div>
+>>>>>>> daefa6c444f96feb61b2471ba2ef696f118f229b
