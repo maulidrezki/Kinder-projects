@@ -15,6 +15,23 @@
   </div>
 </div>
 
+<%# status buttons %>
+
+<div class="status-buttons">
+  <div class="button">
+    <% if params[:volunteering].present? %>
+      <%= link_to "Reject",  volunteering_path(params[:volunteering], status: "rejected"), method: :patch, class: "btn btn-secondary mr-2 button-reject" %>
+    <% end %>
+  </div>
+  <div class="button">
+    <% if params[:volunteering].present? %>
+      <%= link_to "Confirm",  volunteering_path(params[:volunteering], status: "confirmed"), method: :patch, class: "btn btn-secondary mr-2 button-confirm" %>
+    <% end %>
+  </div>
+</div>
+<br>
+
+
 <%# about me %>
 <div class="profile-about-me">
   <h4>ABOUT ME</h4>
@@ -63,19 +80,4 @@
     </div>
   </div>
 <% end %>
-
-
-<%# status buttons %>
-<br>
-<div class="status-buttons">
-  <div class="button">
-    <% if params[:volunteering].present? %>
-      <%= link_to "Reject",  volunteering_path(params[:volunteering], status: "rejected"), method: :patch, class: "btn btn-secondary mr-2 button-reject" %>
-    <% end %>
-  </div>
-  <div class="button">
-    <% if params[:volunteering].present? %>
-      <%= link_to "Confirm",  volunteering_path(params[:volunteering], status: "confirmed"), method: :patch, class: "btn btn-secondary mr-2 button-confirm" %>
-    <% end %>
-  </div>
-</div>
+<%= render "shared/footer" %>
