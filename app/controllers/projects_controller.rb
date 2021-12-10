@@ -13,6 +13,8 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @volunteering = Volunteering.new
+    @my_volunteers = []
+    @my_volunteers << { volunteers: @project.volunteerings, project: @project }
   end
 
   def new
@@ -45,6 +47,13 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to dashboard_path
   end
+
+  # def my_volunteers
+  #   # My volunteers in a project, to review to accept or reject
+  #   # @my_volunteers = Project.volunteering each do |volunteers|
+  #   @project = Project.find(params[:id])
+
+  # end
 
 
   private
