@@ -14,6 +14,8 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @volunteering = Volunteering.new
+    @my_volunteers = []
+    @my_volunteers << { volunteers: @project.volunteerings, project: @project }
   end
 
   def new

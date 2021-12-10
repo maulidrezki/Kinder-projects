@@ -1,17 +1,19 @@
 .my-project-card-dashboard {
-  width: 337px;
+  width: 360px;
   height: 120px;
   margin: 20px 0px;
   border-radius: 20px;
   border-color:black;
-  background-color: gainsboro;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
 }
 
 .project-card-image-dashboard {
-  width: 92px;
+  width: 120px;
   height: 120px;
   background-size: cover;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 .project-card-info-dashboard {
   width: 100%;
