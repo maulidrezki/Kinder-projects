@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :volunteerings, only: [:create]
   end
-  resources :volunteerings, only: [:update, :edit, :show]
+  resources :volunteerings, only: [:update, :edit, :show, :destroy]
 
   get "dashboard", to: "pages#dashboard", as: "dashboard"
   get "profile", to: "pages#profile", as: "profile"

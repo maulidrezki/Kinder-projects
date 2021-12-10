@@ -112,11 +112,19 @@
       </div>
     </div>
 
-    <% if current_user != @project.user %>
-      <div class="edit-btn d-flex justify-content-center mt-3 p-3">
+    <% if current_user != @project.user && ((current_user && !@project.volunteers.find(current_user.id)) || !user_signed_in?) %>
+      <div class="edit-btn d-flex justify-content-center mt-3 p-4">
+
         <%= link_to "I'm interested!", project_volunteerings_path(@project), method: :post, class: "btn btn-secondary mr-2" %>
+      <% elsif (current_user && Volunteering.find_by(user: current_user, project: @project)) %>
+        <<%= link_to "Cancel", volunteering_path(Volunteering.find_by(user: current_user, project: @project)),method: :delete,  class: "btn btn-secondary mr-2"%>
       </div>
     <% end %>
+<%# </div>  if the user already "interested" the button
+      <h2 class="title mb-2"> My Project </h2>
+      <% if @my_past_projects.empty? %>
+      <%# <p>You don't have any project yet!</p>become cancel%>
+  <%# <%= link_to "Edit project", edit_project_path(@project), class: "btn btn-secondary mr-2"%>
 
     <%= render "shared/footer" %>
 
