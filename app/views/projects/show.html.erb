@@ -21,6 +21,14 @@
       </div>
     </div>
   </div>
+<% else %>
+  <div class="navbar-top">
+    <div class="navbar-top-info">
+      <div class="navbar-top-back">
+        <p class="mb-0"> <i class="fas fa-chevron-left mr-1"></i> <%= link_to "List", projects_path, class: "navbar-brand" %> </p>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 <%# Menu: DETAILS / VOLUNTEERS %>
