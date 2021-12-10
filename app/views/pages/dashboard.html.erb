@@ -16,70 +16,59 @@
       <% if @my_projects.empty? %>
       <p>You don't have any project yet!</p>
       <% end %>
-      <div class="row">
+      <div class="d-flex flex-wrap justify-content-center">
         <% @my_projects.each do |project| %>
-          <div class="col-12">
+          <%= link_to project_path(project), class: "text-dark text-decoration-none" do  %>
             <div class="my-project-card-dashboard">
               <%= cl_image_tag(project.photos.key, class: "project-card-image-dashboard") %>
               <div class="project-card-info-dashboard">
                 <div>
-                  <h2><%= link_to project.title, project_path(project), class: "text-dark text-decoration-none"  %></h2>
-                  <p><%= project.description.truncate(48) %></p>
+                  <h2> <%= project.title %> </h2>
+                  <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= project.location %> </p>
+                  <p> <i class="fas fa-calendar-check" style="colot: #555255"></i> <%= project.start_date%> ~ <%= project.end_date%> </p>
                 </div>
                 <div class="project-card-actions-dashboard">
                   <p>
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 1.66663C6.50004 1.66663 3.33337 4.34996 3.33337 8.49996C3.33337 11.2666 5.55837 14.5416 10 18.3333C14.4417 14.5416 16.6667 11.2666 16.6667 8.49996C16.6667 4.34996 13.5 1.66663 10 1.66663ZM10 9.99996C9.08337 9.99996 8.33337 9.24996 8.33337 8.33329C8.33337 7.41663 9.08337 6.66663 10 6.66663C10.9167 6.66663 11.6667 7.41663 11.6667 8.33329C11.6667 9.24996 10.9167 9.99996 10 9.99996Z" fill="#4C977B"/>
+                  <path d="M9.99166 1.66663C5.39166 1.66663 1.65833 5.39996 1.65833 9.99996C1.65833 14.6 5.39166 18.3333 9.99166 18.3333C14.5917 18.3333 18.325 14.6 18.325 9.99996C18.325 5.39996 14.5917 1.66663 9.99166 1.66663ZM13 6.94996C13.8917 6.94996 14.6083 7.66663 14.6083 8.55829C14.6083 9.44996 13.8917 10.1666 13 10.1666C12.1083 10.1666 11.3917 9.44996 11.3917 8.55829C11.3833 7.66663 12.1083 6.94996 13 6.94996ZM7.99999 5.63329C9.08333 5.63329 9.96666 6.51663 9.96666 7.59996C9.96666 8.68329 9.08333 9.56663 7.99999 9.56663C6.91666 9.56663 6.03333 8.68329 6.03333 7.59996C6.03333 6.50829 6.90833 5.63329 7.99999 5.63329ZM7.99999 13.2416V16.3666C5.99999 15.7416 4.41666 14.2 3.71666 12.2333C4.59166 11.3 6.77499 10.825 7.99999 10.825C8.44166 10.825 8.99999 10.8916 9.58333 11.0083C8.21666 11.7333 7.99999 12.6916 7.99999 13.2416ZM9.99166 16.6666C9.76666 16.6666 9.54999 16.6583 9.33333 16.6333V13.2416C9.33333 12.0583 11.7833 11.4666 13 11.4666C13.8917 11.4666 15.4333 11.7916 16.2 12.425C15.225 14.9 12.8167 16.6666 9.99166 16.6666Z" fill="#4C977B"/>
                   </svg>
-                  <%= project.location.truncate(21) %>
-                  </p>
-                  <p>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.99166 1.66663C5.39166 1.66663 1.65833 5.39996 1.65833 9.99996C1.65833 14.6 5.39166 18.3333 9.99166 18.3333C14.5917 18.3333 18.325 14.6 18.325 9.99996C18.325 5.39996 14.5917 1.66663 9.99166 1.66663ZM13 6.94996C13.8917 6.94996 14.6083 7.66663 14.6083 8.55829C14.6083 9.44996 13.8917 10.1666 13 10.1666C12.1083 10.1666 11.3917 9.44996 11.3917 8.55829C11.3833 7.66663 12.1083 6.94996 13 6.94996ZM7.99999 5.63329C9.08333 5.63329 9.96666 6.51663 9.96666 7.59996C9.96666 8.68329 9.08333 9.56663 7.99999 9.56663C6.91666 9.56663 6.03333 8.68329 6.03333 7.59996C6.03333 6.50829 6.90833 5.63329 7.99999 5.63329ZM7.99999 13.2416V16.3666C5.99999 15.7416 4.41666 14.2 3.71666 12.2333C4.59166 11.3 6.77499 10.825 7.99999 10.825C8.44166 10.825 8.99999 10.8916 9.58333 11.0083C8.21666 11.7333 7.99999 12.6916 7.99999 13.2416ZM9.99166 16.6666C9.76666 16.6666 9.54999 16.6583 9.33333 16.6333V13.2416C9.33333 12.0583 11.7833 11.4666 13 11.4666C13.8917 11.4666 15.4333 11.7916 16.2 12.425C15.225 14.9 12.8167 16.6666 9.99166 16.6666Z" fill="#4C977B"/>
-                    </svg>
-                    Open
+                  <% if  project.volunteerings.size == 0 %>
+                    0
+                  <% else %>
+                    <%= project.volunteerings.size %> / <%= project.capacity %> Confirmed
+                  <% end %>
                   </p>
                 </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
 
-    <div class="container mb-2">
+    <div class="container mb-5">
       <h2 class="title mb-2"> My Volunteering </h2>
       <% if @volunteer_projects.empty? %>
       <p>You don't have any volunteering project yet!</p>
       <% end %>
-      <div class="row">
+      <div class="d-flex flex-wrap justify-content-center">
         <% @volunteer_projects.each do |project| %>
           <%= link_to project_path(project), class: "text-dark text-decoration-none" do%>
-          <div class="col-12">
             <div class="my-project-card-dashboard">
               <%= cl_image_tag(project.photos.key, class: "project-card-image-dashboard") %>
               <div class="project-card-info-dashboard">
                 <div>
-                  <h2><%= project.title.truncate(30) %></h2>
-                  <p class ="mt-4"><%= project.description.truncate(36) %></p>
+                  <h2> <%= project.title.truncate(30) %> </h2>
+                  <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= project.location %> </p>
+                  <p> <i class="fas fa-calendar-check" style="colot: #555255"></i> <%= project.start_date%> ~ <%= project.end_date%> </p>
                 </div>
                 <div class="project-card-actions-dashboard">
-                  <p>
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 1.66663C6.50004 1.66663 3.33337 4.34996 3.33337 8.49996C3.33337 11.2666 5.55837 14.5416 10 18.3333C14.4417 14.5416 16.6667 11.2666 16.6667 8.49996C16.6667 4.34996 13.5 1.66663 10 1.66663ZM10 9.99996C9.08337 9.99996 8.33337 9.24996 8.33337 8.33329C8.33337 7.41663 9.08337 6.66663 10 6.66663C10.9167 6.66663 11.6667 7.41663 11.6667 8.33329C11.6667 9.24996 10.9167 9.99996 10 9.99996Z" fill="#4C977B"/>
-                  </svg>
-                  <%= project.location %>
-                  </p>
-                  <p>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.99166 1.66663C5.39166 1.66663 1.65833 5.39996 1.65833 9.99996C1.65833 14.6 5.39166 18.3333 9.99166 18.3333C14.5917 18.3333 18.325 14.6 18.325 9.99996C18.325 5.39996 14.5917 1.66663 9.99166 1.66663ZM13 6.94996C13.8917 6.94996 14.6083 7.66663 14.6083 8.55829C14.6083 9.44996 13.8917 10.1666 13 10.1666C12.1083 10.1666 11.3917 9.44996 11.3917 8.55829C11.3833 7.66663 12.1083 6.94996 13 6.94996ZM7.99999 5.63329C9.08333 5.63329 9.96666 6.51663 9.96666 7.59996C9.96666 8.68329 9.08333 9.56663 7.99999 9.56663C6.91666 9.56663 6.03333 8.68329 6.03333 7.59996C6.03333 6.50829 6.90833 5.63329 7.99999 5.63329ZM7.99999 13.2416V16.3666C5.99999 15.7416 4.41666 14.2 3.71666 12.2333C4.59166 11.3 6.77499 10.825 7.99999 10.825C8.44166 10.825 8.99999 10.8916 9.58333 11.0083C8.21666 11.7333 7.99999 12.6916 7.99999 13.2416ZM9.99166 16.6666C9.76666 16.6666 9.54999 16.6583 9.33333 16.6333V13.2416C9.33333 12.0583 11.7833 11.4666 13 11.4666C13.8917 11.4666 15.4333 11.7916 16.2 12.425C15.225 14.9 12.8167 16.6666 9.99166 16.6666Z" fill="#4C977B"/>
-                    </svg>
-                    <%= project.volunteerings.size %> / <%= project.capacity %>
+                  <p class ="volunteer-status-<%= project.volunteerings.find_by(user: current_user).status %> font-weight-lighter">
+                    <%= project.volunteerings.find_by(user: current_user).status %>
                   </p>
                 </div>
               </div>
             </div>
-          </div>
           <% end %>
         <% end %>
       </div>
