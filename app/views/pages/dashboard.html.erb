@@ -12,7 +12,7 @@
           </div>
           <div class="navbar-top-avatar">
             <% if current_user.avatar.attached?%>
-              <%= cl_image_tag @user.avatar.key, class: "navbar-top-avatar-img" %>
+              <%= cl_image_tag current_user.avatar.key, class: "navbar-top-avatar-img" %>
             <% else %>
               <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "navbar-top-avatar-img") %>
             <% end %>
