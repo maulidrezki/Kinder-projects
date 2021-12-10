@@ -74,52 +74,160 @@
   </div>
 
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <%# Volunteers %>
+    <%# Pending Volunteers %>
     <div class="container mb-5">
-      <h2 class="title mb-2"> Who Wants To Join </h2>
+      <h2 class="title mb-2"> Pending actions </h2>
       <% if @my_volunteers.empty? %>
-      <p>You don't have any volunteer yet!</p>
+      <p>You don't have any pending applications to confirm.</p>
       <% end %>
       <div class="row">
         <% @my_volunteers.each do |volunteer| %>
           <% if volunteer[:volunteers].length > 0 %>
             <% volunteer[:volunteers].each do |volunteering| %>
-              <div class="col-12">
-                <div class="my-project-card-dashboard">
-                  <% if volunteering.user.avatar.attached?%>
-                    <%= cl_image_tag volunteering.user.avatar.key, class: "project-card-image-dashboard" %>
-                  <% else %>
-                    <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "project-card-image-dashboard") %>
-                  <% end %>
-                  <div class="project-card-info-dashboard">
-                    <%= link_to users_path(volunteering.user.id, volunteering: volunteering.id), class: "text-dark text-decoration-none" do %>
-                      <h2><%= volunteering.user.first_name %> <%= volunteering.user.last_name %></h2>
-                    <% end  %>
-                    <p><%= volunteer[:project].title %></p>
-                    <div class="project-card-actions-dashboard">
-                      <p>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M10 1.66663C6.50004 1.66663 3.33337 4.34996 3.33337 8.49996C3.33337 11.2666 5.55837 14.5416 10 18.3333C14.4417 14.5416 16.6667 11.2666 16.6667 8.49996C16.6667 4.34996 13.5 1.66663 10 1.66663ZM10 9.99996C9.08337 9.99996 8.33337 9.24996 8.33337 8.33329C8.33337 7.41663 9.08337 6.66663 10 6.66663C10.9167 6.66663 11.6667 7.41663 11.6667 8.33329C11.6667 9.24996 10.9167 9.99996 10 9.99996Z" fill="#4C977B"/>
-                        </svg>
-                        <%= volunteer[:project].location.truncate(20) %>
-                      </p>
-                      <% if volunteering.status == "pending" %>
-                        <p class ="volunteer-status-pending font-weight-lighter">
-                        <%= volunteering.status.capitalize %>
+              <% if volunteering.status = "pending" %>
+                <div class="col-12">
+                  <div class="my-project-card-dashboard">
+                    <% if volunteering.user.avatar.attached?%>
+                      <%= cl_image_tag volunteering.user.avatar.key, class: "project-card-image-dashboard" %>
+                    <% else %>
+                      <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "project-card-image-dashboard") %>
+                    <% end %>
+                    <div class="project-card-info-dashboard">
+                      <%= link_to users_path(volunteering.user.id, volunteering: volunteering.id), class: "text-dark text-decoration-none" do %>
+                        <h2><%= volunteering.user.first_name %> <%= volunteering.user.last_name %></h2>
+                      <% end  %>
+                      <p><%= volunteer[:project].title %></p>
+                      <div class="project-card-actions-dashboard">
+                        <p>
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 1.66663C6.50004 1.66663 3.33337 4.34996 3.33337 8.49996C3.33337 11.2666 5.55837 14.5416 10 18.3333C14.4417 14.5416 16.6667 11.2666 16.6667 8.49996C16.6667 4.34996 13.5 1.66663 10 1.66663ZM10 9.99996C9.08337 9.99996 8.33337 9.24996 8.33337 8.33329C8.33337 7.41663 9.08337 6.66663 10 6.66663C10.9167 6.66663 11.6667 7.41663 11.6667 8.33329C11.6667 9.24996 10.9167 9.99996 10 9.99996Z" fill="#4C977B"/>
+                          </svg>
+                          <%= volunteer[:project].location.truncate(20) %>
                         </p>
-                      <% elsif volunteering.status == "confirmed" %>
-                        <p class ="volunteer-status-confirmed font-weight-lighter">
-                        <%= volunteering.status.capitalize %>
-                        </p>
-                      <% else %>
-                        <p class ="volunteer-status-rejected font-weight-lighter">
-                        <%= volunteering.status.capitalize %>
-                        </p>
-                      <% end %>
+                        <% if volunteering.status == "pending" %>
+                          <p class ="volunteer-status-pending font-weight-lighter">
+                          <%= volunteering.status.capitalize %>
+                          </p>
+                        <% elsif volunteering.status == "confirmed" %>
+                          <p class ="volunteer-status-confirmed font-weight-lighter">
+                          <%= volunteering.status.capitalize %>
+                          </p>
+                        <% else %>
+                          <p class ="volunteer-status-rejected font-weight-lighter">
+                          <%= volunteering.status.capitalize %>
+                          </p>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%# Confirmed Volunteers %>
+    <div class="container mb-5">
+      <h2 class="title mb-2"> Confirmed volunteers </h2>
+      <% if @my_volunteers.empty? %>
+      <p>You don't have any confirmed applicationss.</p>
+      <% end %>
+      <div class="row">
+        <% @my_volunteers.each do |volunteer| %>
+          <% if volunteer[:volunteers].length > 0 %>
+            <% volunteer[:volunteers].each do |volunteering| %>
+              <% if volunteering.status = "confirmed" %>
+                <div class="col-12">
+                  <div class="my-project-card-dashboard">
+                    <% if volunteering.user.avatar.attached?%>
+                      <%= cl_image_tag volunteering.user.avatar.key, class: "project-card-image-dashboard" %>
+                    <% else %>
+                      <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "project-card-image-dashboard") %>
+                    <% end %>
+                    <div class="project-card-info-dashboard">
+                      <%= link_to users_path(volunteering.user.id, volunteering: volunteering.id), class: "text-dark text-decoration-none" do %>
+                        <h2><%= volunteering.user.first_name %> <%= volunteering.user.last_name %></h2>
+                      <% end  %>
+                      <p><%= volunteer[:project].title %></p>
+                      <div class="project-card-actions-dashboard">
+                        <p>
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 1.66663C6.50004 1.66663 3.33337 4.34996 3.33337 8.49996C3.33337 11.2666 5.55837 14.5416 10 18.3333C14.4417 14.5416 16.6667 11.2666 16.6667 8.49996C16.6667 4.34996 13.5 1.66663 10 1.66663ZM10 9.99996C9.08337 9.99996 8.33337 9.24996 8.33337 8.33329C8.33337 7.41663 9.08337 6.66663 10 6.66663C10.9167 6.66663 11.6667 7.41663 11.6667 8.33329C11.6667 9.24996 10.9167 9.99996 10 9.99996Z" fill="#4C977B"/>
+                          </svg>
+                          <%= volunteer[:project].location.truncate(20) %>
+                        </p>
+                        <% if volunteering.status == "pending" %>
+                          <p class ="volunteer-status-pending font-weight-lighter">
+                          <%= volunteering.status.capitalize %>
+                          </p>
+                        <% elsif volunteering.status == "confirmed" %>
+                          <p class ="volunteer-status-confirmed font-weight-lighter">
+                          <%= volunteering.status.capitalize %>
+                          </p>
+                        <% else %>
+                          <p class ="volunteer-status-rejected font-weight-lighter">
+                          <%= volunteering.status.capitalize %>
+                          </p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%# Rejected Volunteers %>
+    <div class="container mb-5">
+      <h2 class="title mb-2"> Rejected volunteers </h2>
+      <% if @my_volunteers.empty? %>
+      <p>You don't have any rejected applicationss.</p>
+      <% end %>
+      <div class="row">
+        <% @my_volunteers.each do |volunteer| %>
+          <% if volunteer[:volunteers].length > 0 %>
+            <% volunteer[:volunteers].each do |volunteering| %>
+              <% if volunteering.status = "rejected" %>
+                <div class="col-12">
+                  <div class="my-project-card-dashboard">
+                    <% if volunteering.user.avatar.attached?%>
+                      <%= cl_image_tag volunteering.user.avatar.key, class: "project-card-image-dashboard" %>
+                    <% else %>
+                      <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "project-card-image-dashboard") %>
+                    <% end %>
+                    <div class="project-card-info-dashboard">
+                      <%= link_to users_path(volunteering.user.id, volunteering: volunteering.id), class: "text-dark text-decoration-none" do %>
+                        <h2><%= volunteering.user.first_name %> <%= volunteering.user.last_name %></h2>
+                      <% end  %>
+                      <p><%= volunteer[:project].title %></p>
+                      <div class="project-card-actions-dashboard">
+                        <p>
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 1.66663C6.50004 1.66663 3.33337 4.34996 3.33337 8.49996C3.33337 11.2666 5.55837 14.5416 10 18.3333C14.4417 14.5416 16.6667 11.2666 16.6667 8.49996C16.6667 4.34996 13.5 1.66663 10 1.66663ZM10 9.99996C9.08337 9.99996 8.33337 9.24996 8.33337 8.33329C8.33337 7.41663 9.08337 6.66663 10 6.66663C10.9167 6.66663 11.6667 7.41663 11.6667 8.33329C11.6667 9.24996 10.9167 9.99996 10 9.99996Z" fill="#4C977B"/>
+                          </svg>
+                          <%= volunteer[:project].location.truncate(20) %>
+                        </p>
+                        <% if volunteering.status == "pending" %>
+                          <p class ="volunteer-status-pending font-weight-lighter">
+                          <%= volunteering.status.capitalize %>
+                          </p>
+                        <% elsif volunteering.status == "confirmed" %>
+                          <p class ="volunteer-status-confirmed font-weight-lighter">
+                          <%= volunteering.status.capitalize %>
+                          </p>
+                        <% else %>
+                          <p class ="volunteer-status-rejected font-weight-lighter">
+                          <%= volunteering.status.capitalize %>
+                          </p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
