@@ -112,7 +112,7 @@
       </div>
     </div>
 
-    <% if current_user != @project.user && ((current_user && !@project.volunteers.find(current_user.id)) || !user_signed_in?) %>
+    <% if current_user != @project.user && ((current_user && !Volunteering.find_by(user: current_user, project: @project)) || !user_signed_in?) %>
       <div class="edit-btn d-flex justify-content-center mt-3 p-4">
 
         <%= link_to "I'm interested!", project_volunteerings_path(@project), method: :post, class: "btn btn-secondary mr-2" %>
