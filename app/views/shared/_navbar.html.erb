@@ -85,12 +85,21 @@
       <% end %>
     </div>
   <% else %>
-    <div class="icon">
-      <%= link_to new_user_session_path, method: :get , class: "navbar-link text-dark text-decoration-none" do %>
-        <i class="far fa-user-circle"></i>
-        <p class="text">Log in</p>
-      <% end %>
-    </div>
+    <% if controller_name == "sessions" && action_name == "new" %>
+      <div class="icon">
+        <%= link_to new_user_session_path, method: :get , class: "navbar-link text-dark text-decoration-none" do %>
+          <i class="far fa-user-circle" style="color: #CE326A"></i>
+          <p class="text" style="color: #CE326A">Log in</p>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="icon">
+        <%= link_to new_user_session_path, method: :get , class: "navbar-link text-dark text-decoration-none" do %>
+          <i class="far fa-user-circle"></i>
+          <p class="text">Log in</p>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 
 </div>
