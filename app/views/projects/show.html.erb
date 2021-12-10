@@ -10,11 +10,21 @@
   </div>
 </div>
 
-<div class="container mt-5 mb-5">
-  <div>
-      <% if @project.user == current_user %>
-      <%= link_to "Edit project", edit_project_path(@project), class: "btn btn-secondary mr-2"%>
-      <% end %>
+<div class= "d-flex">
+  <div class="container mt-5 mb-5">
+    <div>
+        <% if @project.user == current_user %>
+        <%= link_to "Edit project", edit_project_path(@project), class: "btn btn-secondary mr-2"%>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="container mt-5 mb-5">
+    <div>
+        <% if @project.user == current_user && @project.status != "cancelled" %>
+        <%= link_to "Cancel project", project_path(@project, project: {status: "cancelled"}), method: :patch,  class: "btn btn-secondary mr-2"%>
+        <% end %>
+    </div>
   </div>
 </div>
 

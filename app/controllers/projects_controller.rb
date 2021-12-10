@@ -4,9 +4,10 @@ class ProjectsController < ApplicationController
   def index
     if params[:query].present?
       @query = params[:query]
-      @projects = Project.where("title iLike :query OR location iLike :query OR description iLike :query", query: "%#{params[:query]}%")
+      @projects = Project.where.not(status: "cancelled")
+      @projects = @projects.where("title iLike :query OR location iLike :query OR description iLike :query", query: "%#{params[:query]}%")
     else
-      @projects = Project.all
+      @projects = Project.where.not(status: "cancelled")
     end
   end
 
