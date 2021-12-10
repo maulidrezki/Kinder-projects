@@ -25,7 +25,7 @@
 
     <div class= "d-flex w-100 justify-content-between my-3">
       <div>
-        <% if @project.user == current_user %>
+        <% if @project.user == current_user && @project.status != "cancelled" %>
         <%= link_to "Edit project", edit_project_path(@project), class: "btn btn-secondary mr-2"%>
         <% end %>
       </div>
@@ -86,9 +86,6 @@
 
   </div>
 
-<<<<<<< HEAD
-<%= link_to "Log out", destroy_user_session_path, method: :delete %>
-=======
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <%# Pending Volunteers %>
     <div class="container mb-5">
@@ -252,4 +249,3 @@
   </div>
   </div>
 </div>
->>>>>>> daefa6c444f96feb61b2471ba2ef696f118f229b
