@@ -4,15 +4,18 @@ class ProjectsController < ApplicationController
   def index
     if params[:query].present?
       @query = params[:query]
-      @projects = Project.where("title iLike :query OR location iLike :query OR description iLike :query", query: "%#{params[:query]}%")
+      @projects = Project.where.not(status: "cancelled")
+      @projects = @projects.where("title iLike :query OR location iLike :query OR description iLike :query", query: "%#{params[:query]}%")
     else
-      @projects = Project.all
+      @projects = Project.where.not(status: "cancelled")
     end
   end
 
   def show
     @project = Project.find(params[:id])
     @volunteering = Volunteering.new
+    @my_volunteers = []
+    @my_volunteers << { volunteers: @project.volunteerings, project: @project }
   end
 
   def new
@@ -45,7 +48,6 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to dashboard_path
   end
-
 
   private
 
