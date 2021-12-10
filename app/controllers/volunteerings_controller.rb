@@ -22,4 +22,11 @@ class VolunteeringsController < ApplicationController
       render 'dashboard'
     end
   end
+
+    def destroy
+    @volunteering = Volunteering.find(params[:id])
+    @volunteering.destroy
+    redirect_to dashboard_path
+  end
+
 end
