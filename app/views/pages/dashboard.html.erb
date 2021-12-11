@@ -25,15 +25,15 @@
 
 <ul class="nav nav-tabs dashboard-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <a class="nav-link dashboard-tab active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Projects</a>
+    <a class="nav-link dashboard-tab active" id="project-tab" data-toggle="tab" href="#project" role="tab" aria-controls="projecct" aria-selected="true">Projects</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link dashboard-tab" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">History</a>
+    <a class="nav-link dashboard-tab" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false">History</a>
   </li>
 </ul>
 
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="project-tab">
     <%# Projects %>
     <div class="container">
       <h2 class="title ml-3"> My Project </h2>
@@ -95,7 +95,7 @@
     </div>
   </div>
 
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="history-tab">
     <div class="container mb-2">
       <h2 class="title ml-3"> My Project </h2>
       <% if @my_past_projects.empty? %>

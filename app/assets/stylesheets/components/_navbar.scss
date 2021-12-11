@@ -44,6 +44,7 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
+  background-size: cover;
 }
 
 // Bottom nav
@@ -73,5 +74,11 @@
 }
 
 .navbar-link {
+  color: #555255;
+}
+
+// Dashboard mini nav
+
+.nav-link {
   color: #555255;
 }
