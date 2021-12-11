@@ -117,7 +117,7 @@
     <div class="container">
       <h2 class="title"> Pending volunteers </h2>
 
-      <% if @my_volunteers.present? && @volunteering.status == "pending" %>
+      <% if @my_volunteers.present? && @volunteering.status = "pending" %>
         <div class="project-list">
           <div class="d-flex flex-wrap justify-content-center">
             <% @my_volunteers.each do |volunteer| %>
@@ -156,7 +156,7 @@
     <%# Confirmed Volunteers %>
     <div class="container">
       <h2 class="title"> Confirmed volunteers </h2>
-      <% if @my_volunteers.present? && @volunteering.status == "confirmed" %>
+      <% if @my_volunteers.present? && @volunteering.status = "confirmed" %>
         <div class="project-list">
           <div class="d-flex flex-wrap justify-content-center">
             <% @my_volunteers.each do |volunteer| %>
@@ -188,7 +188,7 @@
             <% end %>
           </div>
         </div>
-      <% else %>
+      <% else @volunteering.status = "pending" && @volunteering.status = "rejected" %>
         <p class="s-text" style="text-align: center;">You don't have confirmed volunteers.</p>
       <% end %>
 
@@ -196,7 +196,7 @@
     <%# Rejected Volunteers %>
     <div class="container">
       <h2 class="title"> Rejected volunteers </h2>
-      <% if @my_volunteers.present? && @volunteering.status == "rejected" %>
+      <% if @my_volunteers.present? && @volunteering.status = "rejected" %>
         <div class="project-list">
           <div class="d-flex flex-wrap justify-content-center">
             <% @my_volunteers.each do |volunteer| %>
@@ -231,11 +231,11 @@
       <% else %>
         <p class="s-text" style="text-align: center;">You don't have rejected volunteers.</p>
       <% end %>
+
+      <%= render "shared/footer" %>
     </div>
   </div>
   <% end %>
-
-  <%= render "shared/footer" %>
   </div>
 
 </div>
