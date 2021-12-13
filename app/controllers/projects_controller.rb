@@ -51,6 +51,12 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     @project.update(project_params)
+    if @project.status == "closed"
+      @project.volunteerings.where(status: "confirmed").each do |volunteer|
+        volunteer.user.update(level: volunteer.user.level + 5)
+      end
+      @project.user.update(level: current_user.level + 10)
+    end
     redirect_to project_path(@project)
   end
 
@@ -59,6 +65,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to dashboard_path
   end
+
 
   private
 

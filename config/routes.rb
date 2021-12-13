@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   get "profile", to: "pages#profile", as: "profile"
   get '/users/:id', to: 'users#show', as: "users"
   get "inbox", to: "pages#inbox", as: "inbox"
+
 end

@@ -112,7 +112,7 @@ project_5 = Project.new(
   user_id: User.third.id,
   title: "Beach Cleanup Sunday",
   location: "Canggu, Bali, Indonesia",
-  description: "Cleaning Echo Beach",
+  description: "Cleaning Echo Beach Cleaning Echo Beach Cleaning Echo Beach Cleaning Echo Beach Cleaning Echo Beach Cleaning Echo Beach Cleaning Echo Beach",
   contact: Faker::PhoneNumber.cell_phone_in_e164,
   status: "open",
   start_date: Date.today + 1.day,
