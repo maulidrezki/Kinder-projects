@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :about]
 
   def index
     if params[:query].present?
@@ -66,6 +66,8 @@ class ProjectsController < ApplicationController
     redirect_to dashboard_path
   end
 
+
+  def about; end
 
   private
 
