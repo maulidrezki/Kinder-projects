@@ -94,9 +94,43 @@
       </div>
 
       <h2 class="title ml-3"> Wishlist </h2>
-      <% @favourited.each do |project| %>
-        <%= project.title %>
-      <% end %>
+
+      <div class="project-list">
+        <div class="d-flex flex-wrap justify-content-center">
+          <% @favourited.each do |project| %>
+            <%= link_to project, class: "text-dark text-decoration-none" do %>
+              <div class="card-product mb-3">
+                <%= cl_image_tag project.photos.key, class: "card-product-img" %>
+                <div class="card-product-infos">
+                  <h2> <%= project.title %> </h2>
+                  <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= project.location %> </p>
+                  <p> <i class="fas fa-calendar-check" style="colot: #555255"></i> <%= project.start_date%> ~ <%= project.end_date%> </p>
+                  <div class="d-flex justify-content-between">
+                    <div class="project-status">
+                      <% if project.status == "open" %>
+                        <p> <i class="fas fa-users" style="color: #4C977B" ></i> <%= project.status %> </p>
+                      <% else %>
+                        <p> <i class="fas fa-users" style="color: #423D52" ></i> <%= project.status %> </p>
+                      <% end %>
+                    </div>
+                    <div class="my-fav">
+                      <% if (current_user && !current_user.favorited?(project) || !user_signed_in?) %>
+                        <%= link_to project_favourites_path(project), class: "fav-btn", method: :post do %>
+                          <i class="far fa-heart"></i>
+                        <% end %>
+                      <% else %>
+                        <%= link_to project_favourites_path(project), class: "fav-btn", method: :delete do %>
+                          <i class="fas fa-heart" style="color: #CE326A"></i>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 
