@@ -2,6 +2,8 @@ import consumer from "./consumer";
 
 const initChatroomCable = () => {
   const messagesContainer = document.getElementById('messages');
+  const projectsInInbox = document.querySelectorAll('#project-inbox .project-card-link');
+
   if (messagesContainer) {
     const id = messagesContainer.dataset.projectId;
 
@@ -11,6 +13,19 @@ const initChatroomCable = () => {
         messagesContainer.insertAdjacentHTML('beforeend', data);
       },
     });
+  }
+
+  if (projectsInInbox) {
+    projectsInInbox.forEach((project) => {
+      const id = project.dataset.projectId;
+
+      consumer.subscriptions.create({ channel: "ProjectChannel", id: id }, {
+        received(data) {
+          const container = project.querySelector(`#last-project-${id}-message`);
+          container.innerHTML = data;
+        }
+      })
+    })
   }
 }
 

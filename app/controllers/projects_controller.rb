@@ -50,12 +50,36 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    previous_dates = [@project.start_date, @project.end_date, @project.start_time, @project.end_time]
     @project.update(project_params)
+    changed_dates = [@project.start_date, @project.end_date, @project.start_time, @project.end_time]
     if @project.status == "closed"
       @project.volunteerings.where(status: "confirmed").each do |volunteer|
         volunteer.user.update(level: volunteer.user.level + 5)
       end
       @project.user.update(level: current_user.level + 10)
+    elsif @project.status == "cancelled"
+      Message.create!(
+        user: @project.user,
+        project: @project,
+        content: "Sorry, your project was cancelled."
+      )
+
+      ProjectChannel.broadcast_to(
+        @project,
+        render_to_string(partial: "messages/last_message", locals: { project: @project })
+      )
+    elsif !(previous_dates - changed_dates).empty?
+      Message.create!(
+        user: @project.user,
+        project: @project,
+        content: "Your project date/time changed."
+      )
+
+      ProjectChannel.broadcast_to(
+        @project,
+        render_to_string(partial: "messages/last_message", locals: { project: @project })
+      )
     end
     redirect_to project_path(@project)
   end
