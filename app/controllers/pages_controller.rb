@@ -27,6 +27,8 @@ class PagesController < ApplicationController
     @my_projects.each do |project|
       @my_volunteers << { volunteers: project.volunteerings, project: project }
     end
+
+    @favourited = current_user.all_favorited
   end
 
   def profile
