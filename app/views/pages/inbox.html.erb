@@ -27,16 +27,17 @@
   <h2 class="title ml-3"> My Inbox </h2>
 </div>
 
-<div class="project-list">
+<div class="project-list" id="project-inbox">
   <div class="d-flex flex-wrap justify-content-center">
     <% @volunteer_projects.each do |project| %>
-    <%= link_to project_messages_path(project), class: "text-dark text-decoration-none" do %>
+    <%= link_to project_messages_path(project), class: "text-dark text-decoration-none project-card-link", data: { "project-id": project.id } do %>
       <div class="card-product-inbox mb-3 mt-3">
         <%= cl_image_tag project.photos.key, class: "card-product-img-inbox" %>
           <div class="card-product-infos-inbox">
             <h2> <%= project.title %> Chat Group </h2>
-            <p> <i class="fas fa-envelope-open-text" style="color: #ED462F"></i>Last Message By <%= project.messages.last.user.display_name%>:</p>
-            <p> <%= project.messages.last.content.truncate(50) %> </P>
+            <div id="last-project-<%= project.id %>-message">
+              <%= render partial: "messages/last_message", locals: { project: project } %>
+            </div>
               <div class="project-status">
                 <% if project.volunteerings.size == 0 %>
                   <p> <i class="fas fa-users" style="color: #423D52" ></i> 0 </p>
@@ -49,13 +50,14 @@
       <% end %>
       <% end %>
       <% @my_projects.each do |project| %>
-    <%= link_to project_messages_path(project), class: "text-dark text-decoration-none" do %>
+    <%= link_to project_messages_path(project), class: "text-dark text-decoration-none project-card-link", data: { "project-id": project.id } do %>
       <div class="card-product-inbox mb-3 mt-3">
         <%= cl_image_tag project.photos.key, class: "card-product-img" %>
           <div class="card-product-infos-inbox">
             <h2> <%= project.title %> Group</h2>
-            <p> <i class="fas fa-envelope-open-text" style="color: #ED462F"></i> Last Message By <%= project.messages.last.user.display_name%>:</p>
-            <p> <%= project.messages.last.content.truncate(50) %> </P>
+            <div id="last-project-<%= project.id %>-message">
+              <%= render partial: "messages/last_message", locals: { project: project } %>
+            </div>
               <div class="project-status">
                 <% if project.volunteerings.size == 0 %>
                   <p> <i class="fas fa-users" style="color: #423D52" ></i> 0 </p>
