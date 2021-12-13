@@ -1,10 +1,17 @@
 <div class="navbar">
 
-  <% if controller_name == "projects" %>
+  <% if controller_name == "projects" && action_name == "index" %>
     <div class="icon">
       <%= link_to root_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
         <i class = "fas fa-search" style="color: #CE326A"></i>
         <p class="text" style="color: #CE326A">Home</p>
+      <% end %>
+    </div>
+  <% elsif controller_name == "projects" && action_name == "show" && !user_signed_in? %>
+    <div class="icon">
+      <%= link_to new_project_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class="fas fa-globe-asia" style="color: #CE326A"></i>
+        <p class="text" style="color: #CE326A">Explore</p>
       <% end %>
     </div>
   <% else %>
@@ -21,6 +28,13 @@
     <div class="icon">
       <%= link_to dashboard_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
         <i class="fas fa-heart" style="color: #CE326A"></i>
+        <p class="text" style="color: #CE326A">My page</p>
+      <% end %>
+    </div>
+  <% elsif controller_name == "projects" && action_name == "show" && user_signed_in? %>
+    <div class="icon">
+      <%= link_to new_project_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class="fas fa-globe-asia" style="color: #CE326A"></i>
         <p class="text" style="color: #CE326A">My page</p>
       <% end %>
     </div>
@@ -71,12 +85,21 @@
       <% end %>
     </div>
   <% else %>
-    <div class="icon">
-      <%= link_to new_user_session_path, method: :get , class: "navbar-link text-dark text-decoration-none" do %>
-        <i class="far fa-user-circle"></i>
-        <p class="text">Log in</p>
-      <% end %>
-    </div>
+    <% if controller_name == "sessions" && action_name == "new" %>
+      <div class="icon">
+        <%= link_to new_user_session_path, method: :get , class: "navbar-link text-dark text-decoration-none" do %>
+          <i class="far fa-user-circle" style="color: #CE326A"></i>
+          <p class="text" style="color: #CE326A">Log in</p>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="icon">
+        <%= link_to new_user_session_path, method: :get , class: "navbar-link text-dark text-decoration-none" do %>
+          <i class="far fa-user-circle"></i>
+          <p class="text">Log in</p>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 
 </div>
