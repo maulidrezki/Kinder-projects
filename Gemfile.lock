@@ -67,6 +67,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    acts_as_favoritor (5.0.3)
+      activerecord (>= 5.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (10.2.5.0)
@@ -273,7 +275,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+<<<<<<< HEAD
+  acts_as_favoritor
+=======
   acts_as_favoritor!
+>>>>>>> master
   autoprefixer-rails (= 10.2.5)
   bootsnap (>= 1.4.4)
   byebug
