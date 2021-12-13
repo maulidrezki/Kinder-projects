@@ -1,3 +1,13 @@
+<% if user_signed_in? %>
+  <div class="navbar-top">
+    <div class="navbar-top-info">
+      <div class="navbar-top-back">
+        <p class="mb-0"> <i class="fas fa-chevron-left mr-1"></i> <%= link_to "Back", dashboard_path, class: "navbar-brand" %> </p>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 
 <div class="profile-header">
   <div class="profile-avatar">

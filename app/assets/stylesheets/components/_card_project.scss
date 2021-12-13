@@ -16,3 +16,11 @@
 .card-title {
   font-size: 16px;
 }
+
+.fav-btn {
+  color: #555255;
+
+  &:active, &:hover, &:visited {
+    color: #555255 !important;
+  }
+}

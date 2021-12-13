@@ -1,17 +1,15 @@
 <div class="banner vh-100" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "volunteer-02.png" %>);">
-  <div class="container">
-    <%# search %>
-    <div class="search-bar">
-      <form class="form-inline" action="/projects">
-        <input class="form-control mr-sm-2" type="search" name="query" placeholder="Where is your tribe?" aria-label="Search">
-      </form>
-    </div>
-    <%# text %>
-    <div class="banner-text">
-      <h5>Ready to start your journey?</h5>
-      <h5>Perfect</h5>
-      <i class="fas fa-chevron-down"></i>
-    </div>
+  <%# search %>
+  <div class="search-bar">
+    <form class="form-inline" action="/projects">
+      <input class="search-bar" type="search" name="query" placeholder="Where is your tribe?" aria-label="Search">
+    </form>
+  </div>
+  <%# text %>
+  <div class="banner-text">
+    <h5>Ready to start your journey?</h5>
+    <h5>Perfect</h5>
+    <i class="fas fa-chevron-down"></i>
   </div>
 </div>
 
@@ -57,8 +55,8 @@
 
   <div class="d-flex justify-content-center">
     <div class="about-sponsor" style="background-image: url(<%= image_path "volunteer-01.jpeg" %>)">
-      <p class="question"> Start your Project! </p>
-      <%= link_to "More Information", new_project_path, class: "btn btn-outline-light" %>
+      <p class="question"> Questions about sponsoring? </p>
+      <%= link_to "More Information", about_path, class: "btn btn-outline-light" %>
     </div>
   </div>
 </div>

@@ -27,6 +27,8 @@ class PagesController < ApplicationController
     @my_projects.each do |project|
       @my_volunteers << { volunteers: project.volunteerings, project: project }
     end
+
+    @favourited = current_user.all_favorited
   end
 
   def profile
@@ -35,6 +37,11 @@ class PagesController < ApplicationController
     @total_volunteered = current_user.volunteerings.length
     @my_last_project = current_user.projects.last
     @my_last_volunteer = current_user.volunteerings.last
+  end
+
+  def inbox
+    @my_projects = current_user.projects.where(status: "open")
+    @volunteer_projects = current_user.volunteer_projects.where(status: "open")
   end
 
 end

@@ -38,6 +38,13 @@
         <p class="text" style="color: #CE326A">My page</p>
       <% end %>
     </div>
+  <% elsif controller_name == "users" && action_name == "show" && user_signed_in? %>
+    <div class="icon">
+      <%= link_to users_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class="fas fa-globe-asia" style="color: #CE326A"></i>
+        <p class="text" style="color: #CE326A">My page</p>
+      <% end %>
+    </div>
   <% else %>
     <div class="icon">
       <%= link_to dashboard_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
@@ -47,43 +54,68 @@
     </div>
   <% end %>
 
-  <% if controller_name == "projects" && action_name == "new" %>
+  <% if controller_name == "projects" && action_name == "about" %>
     <div class="icon">
-      <%= link_to new_project_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+      <%= link_to about_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
         <i class="fas fa-globe-asia" style="color: #CE326A"></i>
         <p class="text" style="color: #CE326A">Projects</p>
       <% end %>
     </div>
-  <% else %>
+  <% elsif controller_name == "projects" && action_name == "new" %>
     <div class="icon">
-      <%= link_to new_project_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+      <%= link_to about_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class="fas fa-globe-asia" style="color: #CE326A"></i>
+        <p class="text" style="color: #CE326A">Projects</p>
+      <% end %>
+    </div>
+  <% elsif %>
+    <div class="icon">
+      <%= link_to about_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
         <i class="fas fa-globe-asia"></i>
         <p class="text">Projects</p>
       <% end %>
     </div>
   <% end %>
 
-  <div class="icon">
-    <%= link_to "#", method: :get, class: "navbar-link text-dark text-decoration-none" do %>
-      <i class="far fa-comment-alt"></i>
-      <p class="text">Inbox</p>
-    <% end %>
-  </div>
+  <% if controller_name == "pages" && action_name == "inbox" && user_signed_in?  %>
+    <div class="icon">
+      <%= link_to inbox_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class="far fa-comment-alt" style="color: #CE326A"></i>
+        <p class="text" style="color: #CE326A">Inbox</p>
+      <% end %>
+    </div>
+  <% else%>
+    <div class="icon">
+      <%= link_to inbox_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class="far fa-comment-alt"></i>
+        <p class="text">Inbox</p>
+      <% end %>
+    </div>
+  <% end %>
 
   <% if user_signed_in? %>
-    <div class="icon">
-      <% if controller_name == "pages" && action_name == "profile" %>
+    <% if controller_name == "pages" && action_name == "profile" %>
+      <div class="icon">
         <%= link_to profile_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
           <i class="far fa-user-circle" style="color: #CE326A"></i>
           <p class="text" style="color: #CE326A">Profile</p>
         <% end %>
-      <% else %>
+      </div>
+    <% elsif controller_name == "registrations" && action_name == "edit" %>
+      <div class="icon">
+        <%= link_to edit_user_registration_path, method: :get , class: "navbar-link text-dark text-decoration-none" do %>
+          <i class="far fa-user-circle" style="color: #CE326A"></i>
+          <p class="text" style="color: #CE326A">Profile</p>
+        <% end %>
+      </div>
+    <% elsif %>
+      <div class="icon">
         <%= link_to profile_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
           <i class="far fa-user-circle"></i>
           <p class="text">Profile</p>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   <% else %>
     <% if controller_name == "sessions" && action_name == "new" %>
       <div class="icon">
@@ -92,7 +124,21 @@
           <p class="text" style="color: #CE326A">Log in</p>
         <% end %>
       </div>
-    <% else %>
+    <% elsif controller_name == "registrations" && action_name == "new" %>
+      <div class="icon">
+        <%= link_to new_user_session_path, method: :get , class: "navbar-link text-dark text-decoration-none" do %>
+          <i class="far fa-user-circle" style="color: #CE326A"></i>
+          <p class="text" style="color: #CE326A">Log in</p>
+        <% end %>
+      </div>
+    <% elsif controller_name == "passwords" && action_name == "new" %>
+      <div class="icon">
+        <%= link_to new_user_session_path, method: :get , class: "navbar-link text-dark text-decoration-none" do %>
+          <i class="far fa-user-circle" style="color: #CE326A"></i>
+          <p class="text" style="color: #CE326A">Log in</p>
+        <% end %>
+      </div>
+    <% elsif %>
       <div class="icon">
         <%= link_to new_user_session_path, method: :get , class: "navbar-link text-dark text-decoration-none" do %>
           <i class="far fa-user-circle"></i>
