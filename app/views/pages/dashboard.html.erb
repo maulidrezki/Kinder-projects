@@ -100,7 +100,7 @@
     <div class="container">
       <h2 class="title ml-3"> My Project </h2>
       <% if @my_projects.empty? %>
-      <p class="d-text" style="text-align: center;">You don't have project yet!</p>
+      <p class="d-text" style="text-align: center;">You don't have projects yet!</p>
       <% end %>
 
       <div class="project-list">
@@ -131,7 +131,7 @@
 
       <h2 class="title ml-3"> My Volunteering </h2>
       <% if @volunteer_projects.empty? %>
-      <p class="d-text" style="text-align: center;">You haven't joined a project!</p>
+      <p class="d-text" style="text-align: center;">you haven't join a project</p>
       <% end %>
       <div class="project-list">
         <div class="d-flex flex-wrap justify-content-center">
@@ -170,9 +170,9 @@
                   <div class="d-flex justify-content-between">
                     <div class="project-status">
                       <% if project.status == "open" %>
-                        <p> <i class="fas fa-users" style="color: #4C977B" ></i> <%= project.status %> </p>
+                        <p> <i class="fas fa-users" style="color: #4C977B"></i> <%= project.status %> </p>
                       <% else %>
-                        <p> <i class="fas fa-users" style="color: #423D52" ></i> <%= project.status %> </p>
+                        <p> <i class="fas fa-users" style="color: #423D52"></i> <%= project.status %> </p>
                       <% end %>
                     </div>
                     <div class="my-fav">
@@ -200,7 +200,7 @@
     <div class="container mb-2">
       <h2 class="title ml-3"> My Project </h2>
       <% if @my_past_projects.empty? %>
-      <p class="d-text" style="text-align: center;">You haven't joined a project!</p>
+      <p class="d-text" style="text-align: center;">No History yet!</p>
       <% end %>
       <div class="project-list">
         <div class="d-flex flex-wrap justify-content-center">
@@ -230,7 +230,7 @@
     <div class="container mb-2">
       <h2 class="title ml-3"> My Volunteering </h2>
       <% if @my_volunteer_past_projects.empty? %>
-      <p class="d-text" style="text-align: center;">You haven't joined a project!</p>
+      <p class="d-text" style="text-align: center;">No History yet!</p>
       <% end %>
       <div class="project-list">
       <div class="d-flex flex-wrap justify-content-center">
