@@ -275,11 +275,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-<<<<<<< HEAD
   acts_as_favoritor
-=======
-  acts_as_favoritor!
->>>>>>> master
   autoprefixer-rails (= 10.2.5)
   bootsnap (>= 1.4.4)
   byebug
