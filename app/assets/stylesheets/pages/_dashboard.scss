@@ -31,3 +31,64 @@
 .volunteer-avatar {
   height: 100%;
 }
+
+.trophy-wrapper {
+  height: 38px;
+  width: 38px;
+  font-size: large;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  z-index: 8;
+  position: absolute;
+  color: #F5A833;
+  box-shadow: 1px 1px 1px rgba(128, 128, 128, 0.676);
+}
+
+.circle-wrapper {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  color: grey;
+  z-index: 9;
+  position: absolute;
+  box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.676);
+}
+
+.dimmed-bar {
+  background-color: rgba(179, 175, 175, 0.566);
+}
+
+.bright-bar {
+  background-color: #4c977b92;
+}
+
+.progress {
+  height: 10px;
+  box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.676);
+}
+
+.text-level {
+  z-index: 9;
+  position: absolute;
+  p {
+    color: black;
+  }
+}
+
+.text-small {
+  font-size: smaller;
+  color: black;
+}
+
+.progress-transparent {
+  height: 10px;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
