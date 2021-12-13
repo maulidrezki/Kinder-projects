@@ -92,6 +92,11 @@
           <% end %>
         </div>
       </div>
+
+      <h2 class="title ml-3"> Wishlist </h2>
+      <% @favourited.each do |project| %>
+        <%= project.title %>
+      <% end %>
     </div>
   </div>
 

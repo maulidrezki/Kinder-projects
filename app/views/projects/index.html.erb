@@ -56,7 +56,16 @@
                 <% end %>
               </div>
               <div class="my-fav">
-                <p> <i class="far fa-heart"></i> </p>
+                <% if (current_user && !current_user.favorited?(project) || !user_signed_in?) %>
+                  <%= link_to project_favourites_path(project), class: "fav-btn", method: :post do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to project_favourites_path(project), class: "fav-btn", method: :delete do %>
+                    <i class="fas fa-heart" style="color: #CE326A"></i>
+                  <% end %>
+
+                <% end %>
               </div>
             </div>
           </div>

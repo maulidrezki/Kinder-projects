@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  # acts_as_favoritable
+  acts_as_favoritable
 
   belongs_to :user
 
