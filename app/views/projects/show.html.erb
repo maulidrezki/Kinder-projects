@@ -117,10 +117,10 @@
     <div class="container">
       <h2 class="title"> Pending volunteers </h2>
 
-      <% if @my_volunteers.present? && @volunteering.status = "pending" %>
+      <% if !@pending_volunteers.first[:volunteers].empty? %>
         <div class="project-list">
           <div class="d-flex flex-wrap justify-content-center">
-            <% @my_volunteers.each do |volunteer| %>
+            <% @pending_volunteers.each do |volunteer| %>
               <% if volunteer[:volunteers].length > 0 %>
                 <% volunteer[:volunteers].each do |volunteering| %>
                   <% if volunteering.status = "pending" %>
@@ -130,17 +130,18 @@
                       <% else %>
                         <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "card-product-img") %>
                       <% end %>
-                    <div class="card-product-infos">
-                      <%= link_to users_path(volunteering.user.id, volunteering: volunteering.id), class: "text-dark text-decoration-none" do %>
-                        <h2> <strong><%= volunteering.user.first_name %> <%= volunteering.user.last_name %></strong> </h2>
-                        <p> <%= volunteer[:project].title %> </p>
-                        <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= volunteer[:project].location %> </p>
-                        <div class="project-card-actions-dashboard">
-                          <% if volunteering.status == "pending" %>
-                            <p class ="volunteer-status-pending font-weight-lighter"> <%= volunteering.status.capitalize %> </p>
-                          <% end %>
-                        </div>
-                      <% end  %>
+                      <div class="card-product-infos">
+                        <%= link_to users_path(volunteering.user.id, volunteering: volunteering.id), class: "text-dark text-decoration-none" do %>
+                          <h2> <strong><%= volunteering.user.first_name %> <%= volunteering.user.last_name %></strong> </h2>
+                          <p> <%= volunteer[:project].title %> </p>
+                          <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= volunteer[:project].location %> </p>
+                          <div class="project-card-actions-dashboard">
+                            <% if volunteering.status == "pending" %>
+                              <p class ="volunteer-status-pending font-weight-lighter"> <%= volunteering.status.capitalize %> </p>
+                            <% end %>
+                          </div>
+                        <% end  %>
+                      </div>
                     </div>
                   <% end %>
                 <% end %>
@@ -156,10 +157,10 @@
     <%# Confirmed Volunteers %>
     <div class="container">
       <h2 class="title"> Confirmed volunteers </h2>
-      <% if @my_volunteers.present? && @volunteering.status = "confirmed" %>
+      <% if !@confirmed_volunteers.first[:volunteers].empty? %>
         <div class="project-list">
           <div class="d-flex flex-wrap justify-content-center">
-            <% @my_volunteers.each do |volunteer| %>
+            <% @confirmed_volunteers.each do |volunteer| %>
               <% if volunteer[:volunteers].length > 0 %>
                 <% volunteer[:volunteers].each do |volunteering| %>
                   <% if volunteering.status = "confirmed" %>
@@ -196,10 +197,10 @@
     <%# Rejected Volunteers %>
     <div class="container">
       <h2 class="title"> Rejected volunteers </h2>
-      <% if @my_volunteers.present? && @volunteering.status = "rejected" %>
+      <% if !@rejected_volunteers.first[:volunteers].empty? %>
         <div class="project-list">
           <div class="d-flex flex-wrap justify-content-center">
-            <% @my_volunteers.each do |volunteer| %>
+            <% @rejected_volunteers.each do |volunteer| %>
               <% if volunteer[:volunteers].length > 0 %>
                 <% volunteer[:volunteers].each do |volunteering| %>
                   <% if volunteering.status = "rejected" %>
