@@ -7,6 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import  { initChatroomCable } from "../channels/project_channel"
 
 Rails.start()
 Turbolinks.start()
@@ -26,6 +27,7 @@ import { shareProject } from "./share_project"
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
+  initChatroomCable();
   // Call your functions here, e.g:
   // initSelect2();
   shareProject();
