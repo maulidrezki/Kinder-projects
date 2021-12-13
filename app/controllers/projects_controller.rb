@@ -14,8 +14,19 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @volunteering = Volunteering.new
+
     @my_volunteers = []
     @my_volunteers << { volunteers: @project.volunteerings, project: @project }
+
+    @pending_volunteers = []
+    @pending_volunteers << { volunteers: @project.volunteerings.where(status: "pending"), project: @project }
+
+
+    @confirmed_volunteers = []
+    @confirmed_volunteers << { volunteers: @project.volunteerings.where(status: "confirmed"), project: @project }
+
+    @rejected_volunteers = []
+    @rejected_volunteers << { volunteers: @project.volunteerings.where(status: "rejected"), project: @project }
   end
 
   def new
