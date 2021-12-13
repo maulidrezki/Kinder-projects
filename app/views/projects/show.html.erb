@@ -50,7 +50,6 @@
         <div class="col-12">
           <h2 class="p-show-t">
             <%= @project.title %>
-            <button class="btn" id="share-project" data-title="<%= @project.title %>" data-description="<%= @project.description %>"><i class="fas fa-user-plus" style="color: #4267B2; font-size: 20px"></i></button>
           </h2>
         </div>
         <div class="col-12">
@@ -101,11 +100,16 @@
     </div>
 
     <% if current_user != @project.user && ((current_user && !Volunteering.find_by(user: current_user, project: @project)) || !user_signed_in?) %>
-      <div class="edit-btn d-flex align-items-center mt-3 p-4 flex-column">
-
-        <%= link_to "I'm interested!", project_volunteerings_path(@project), method: :post, class: "btn btn-blue mr-2" %>
-      <% elsif (current_user && Volunteering.find_by(user: current_user, project: @project)) %>
-        <<%= link_to "Cancel", volunteering_path(Volunteering.find_by(user: current_user, project: @project)),method: :delete,  class: "btn btn-secondary mr-2"%>
+      <div class="join-container">
+        <div class="d-flex justifu-content-center">
+          <%# <button class="btn" id="share-project" data-title="<%= @project.title" data-description="<%= @project.description %>
+          <%= link_to "Join", project_volunteerings_path(@project), method: :post, class: "btn btn-outline-secondary mr-2" %>
+          <%= link_to "Share", "#", class: "btn btn-outline-primary" %>
+        </div>
+      </div>
+    <% elsif (current_user && Volunteering.find_by(user: current_user, project: @project)) %>
+      <div class="d-flex justifu-content-center">
+        <%= link_to "Cancel", volunteering_path(Volunteering.find_by(user: current_user, project: @project)),method: :delete,  class: "btn btn-outline-secondary mr-2"%>
       </div>
     <% end %>
 
