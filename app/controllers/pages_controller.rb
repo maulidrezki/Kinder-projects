@@ -39,4 +39,8 @@ class PagesController < ApplicationController
     @my_last_volunteer = current_user.volunteerings.last
   end
 
+  def inbox
+    @volunteer_projects = current_user.volunteer_projects.where(status: "open")
+  end
+
 end
