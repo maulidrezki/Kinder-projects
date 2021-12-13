@@ -42,21 +42,24 @@
 <%# my last project %>
 <% unless @my_last_project.nil? %>
   <div class="container">
-    <h4 class="title mb-2"> My Last Project </h4>
-    <div class="row">
-        <div class="col-12">
-          <div class="my-project-card-dashboard">
-            <%= cl_image_tag(@my_last_project.photos.key, class: "project-card-image-dashboard") %>
-            <div class="project-card-info-dashboard">
+    <h4 class="title"> My Last Project </h4>
+
+    <div class="project-list">
+      <div class="d-flex flex-wrap justify-content-center">
+        <%= link_to project_path(@my_last_project.id), class: "text-dark text-decoration-none" do %>
+          <div class="card-product mb-3 mt-3">
+            <%= cl_image_tag @my_last_project.photos.key, class: "card-product-img" %>
+            <div class="card-product-infos">
               <h2><%= @my_last_project.title %></h2>
-              <p><%= @my_last_project.description.truncate(36) %></p>
-              <div class="project-card-actions-dashboard">
-                <%= link_to 'More info', project_path(@my_last_project.id) %>
-              </div>
+              <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= @my_last_project.location %> </p>
+              <p> <i class="fas fa-calendar-check" style="colot: #555255"></i> <%= @my_last_project.start_date%> ~ <%= @my_last_project.end_date%> </p>
+              <p> <i class="fas fa-info-circle"></i> More information </p>
             </div>
           </div>
-        </div>
+        <% end %>
+      </div>
     </div>
+
   </div>
 <% end %>
 
@@ -64,20 +67,23 @@
 <% unless @my_last_volunteer.nil? %>
   <div class="container">
     <h4 class="title mb-2"> My Last Volunteer </h4>
-    <div class="row">
-        <div class="col-12">
-          <div class="my-project-card-dashboard">
-            <%= cl_image_tag(@my_last_volunteer.project.photos.key, class: "project-card-image-dashboard") %>
-            <div class="project-card-info-dashboard">
+
+    <div class="project-list">
+      <div class="d-flex flex-wrap justify-content-center">
+        <%= link_to project_path(@my_last_volunteer.id), class: "text-dark text-decoration-none" do %>
+          <div class="card-product mb-3 mt-3">
+            <%= cl_image_tag(@my_last_volunteer.project.photos.key, class: "card-product-img") %>
+            <div class="card-product-infos">
               <h2><%= @my_last_volunteer.project.title %></h2>
-              <p><%= @my_last_volunteer.project.description.truncate(36) %></p>
-              <div class="project-card-actions-dashboard">
-                <%= link_to 'More info', project_path(@my_last_volunteer.id) %>
-              </div>
+              <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= @my_last_volunteer.project.location %> </p>
+              <p> <i class="fas fa-calendar-check" style="colot: #555255"></i> <%= @my_last_volunteer.project.start_date%> ~ <%= @my_last_volunteer.project.end_date%> </p>
+              <p> <i class="fas fa-info-circle"></i> More information </p>
             </div>
           </div>
-        </div>
+        <% end %>
+      </div>
     </div>
+
   </div>
 <% end %>
 <%= render "shared/footer" %>
