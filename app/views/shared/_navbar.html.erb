@@ -47,16 +47,16 @@
     </div>
   <% end %>
 
-  <% if controller_name == "projects" && action_name == "new" %>
+  <% if controller_name == "projects" && action_name == "about" %>
     <div class="icon">
-      <%= link_to new_project_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+      <%= link_to about_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
         <i class="fas fa-globe-asia" style="color: #CE326A"></i>
         <p class="text" style="color: #CE326A">Projects</p>
       <% end %>
     </div>
   <% else %>
     <div class="icon">
-      <%= link_to new_project_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+      <%= link_to about_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
         <i class="fas fa-globe-asia"></i>
         <p class="text">Projects</p>
       <% end %>

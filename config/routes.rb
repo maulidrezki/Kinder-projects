@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :projects, only: :index
   resources :projects do
     resources :messages, only: [:index, :create]
     resources :volunteerings, only: [:create]
@@ -18,4 +17,5 @@ Rails.application.routes.draw do
   get "profile", to: "pages#profile", as: "profile"
   get '/users/:id', to: 'users#show', as: "users"
   get "inbox", to: "pages#inbox", as: "inbox"
+  get 'about', to: 'projects#about'
 end
