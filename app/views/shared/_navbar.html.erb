@@ -77,16 +77,16 @@
     </div>
   <% end %>
 
-  <% if controller_name == "messages" && action_name == "index" && user_signed_in?  %>
+  <% if controller_name == "pages" && action_name == "inbox" && user_signed_in?  %>
     <div class="icon">
-      <%= link_to project_messages_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
-        <i class="far fa-comment-alt"></i>
-        <p class="text">Inbox</p>
+      <%= link_to inbox_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+        <i class="far fa-comment-alt" style="color: #CE326A"></i>
+        <p class="text" style="color: #CE326A">Inbox</p>
       <% end %>
     </div>
   <% else%>
     <div class="icon">
-      <%= link_to "#", method: :get, class: "navbar-link text-dark text-decoration-none" do %>
+      <%= link_to inbox_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
         <i class="far fa-comment-alt"></i>
         <p class="text">Inbox</p>
       <% end %>
