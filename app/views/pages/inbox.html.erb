@@ -19,5 +19,24 @@
       </div>
       <% end %>
       <% end %>
+      <% @my_projects.each do |project| %>
+    <%= link_to project_messages_path(project), class: "text-dark text-decoration-none" do %>
+      <div class="card-product mb-3 mt-3">
+        <%= cl_image_tag project.photos.key, class: "card-product-img" %>
+          <div class="card-product-infos">
+            <h2> <%= project.title %> </h2>
+            <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= project.location %> </p>
+            <p> <i class="fas fa-calendar-check" style="colot: #555255"></i> <%= project.start_date%> ~ <%= project.end_date%> </p>
+              <div class="project-status">
+                <% if project.volunteerings.size == 0 %>
+                  <p> <i class="fas fa-users" style="color: #423D52" ></i> 0 </p>
+                <% else %>
+                  <p> <i class="fas fa-users" style="color: #4C977B" ></i> <%= project.volunteerings.size %> <%= project.capacity ? "/ #{project.capacity}" : nil %> Confirmed </p>
+                <% end %>
+              </div>
+          </div>
+      </div>
+      <% end %>
+      <% end %>
   </div>
 </div>

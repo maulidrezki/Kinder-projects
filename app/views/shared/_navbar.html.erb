@@ -77,7 +77,6 @@
     </div>
   <% end %>
 
-
   <% if controller_name == "messages" && action_name == "index" && user_signed_in?  %>
     <div class="icon">
       <%= link_to project_messages_path, method: :get, class: "navbar-link text-dark text-decoration-none" do %>
@@ -93,7 +92,6 @@
       <% end %>
     </div>
   <% end %>
-
 
   <% if user_signed_in? %>
     <% if controller_name == "pages" && action_name == "profile" %>

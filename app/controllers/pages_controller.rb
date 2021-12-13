@@ -40,6 +40,7 @@ class PagesController < ApplicationController
   end
 
   def inbox
+    @my_projects = current_user.projects.where(status: "open")
     @volunteer_projects = current_user.volunteer_projects.where(status: "open")
   end
 
