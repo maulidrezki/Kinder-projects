@@ -2,18 +2,40 @@
 .card-product-inbox {
   // overflow: hidden;
   height: 120px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 360px;
-  border-radius: 20px;
+  border-top: solid;
+  border-width: 0.5px;
+  border-color: #55525581;
+  // border-radius: 20px;
 }
 
+.project-card-link:last-child {
+  border-bottom: solid;
+    border-width: 0.5px;
+    border-color: #55525581;
+}
+/* .card-product-inbox.bottom-chat:last-child {
+    border-bottom: none;
+    border-width: 0.5px;
+    border-color: #55525581;
+} */
+
 .card-product-img-inbox {
-  height: 100%;
-  width: 120px;
+  height: 80px;
+  width: 80px;
   object-fit: cover;
-  border-radius: 20px 0 0 20px;
+  border-radius: 50%;
+
+}
+
+.title {
+  margin: 30px 0 0 0;
+  color: #4C977B;
+  font-weight: bold;
 }
 
 .card-product-inbox h2 {
@@ -31,7 +53,7 @@
 }
 
 .card-product-infos-inbox {
-  padding: 16px;
+  padding: 16px 4px 16px 16px;
   width: 240px;
 }
 
@@ -46,5 +68,20 @@
 }
 
 .message-color {
-  color: red;
+  color: #555255;
+}
+
+
+
+
+.chats-tap {
+  background-image: linear-gradient(#555255, #55525581);
+  border-radius: 8px 8px 0 0;
+  padding: 0;
+
+  p {
+    font-size: x-small;
+    color: white;
+    margin: 4px;
+  }
 }
