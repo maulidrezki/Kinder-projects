@@ -107,12 +107,17 @@
         <div class="d-flex justifu-content-center">
           <%# <button class="btn" id="share-project" data-title="<%= @project.title" data-description="<%= @project.description %>
           <%= link_to "Join", project_volunteerings_path(@project), method: :post, class: "btn btn-outline-secondary mr-2" %>
-          <%= link_to "Share", "#", class: "btn btn-outline-primary" %>
+          <button class="btn btn-outline-primary" id="share-project" data-title="<%= @project.title %>" data-description="<%= @project.description %>">Share</button>
         </div>
       </div>
     <% elsif (current_user && Volunteering.find_by(user: current_user, project: @project)) %>
-      <div class="d-flex justifu-content-center">
+      <div class="d-flex justify-content-center">
         <%= link_to "Cancel", volunteering_path(Volunteering.find_by(user: current_user, project: @project)),method: :delete,  class: "btn btn-outline-secondary mr-2"%>
+        <button class="btn btn-outline-primary" id="share-project" data-title="<%= @project.title %>" data-description="<%= @project.description %>">Share</button>
+      </div>
+    <% else %>
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-outline-primary" id="share-project" data-title="<%= @project.title %>" data-description="<%= @project.description %>">Share</button>
       </div>
     <% end %>
 
