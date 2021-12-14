@@ -1,71 +1,75 @@
+<form class="search-container" action="/projects">
+  <input id="searchBar" class="searchbar" name="query" type="text" placeholder="Where is your vibe?" aria-label="Search">
+  <%# <button type="submit" id="btnSearch" class="btn btn-search"><i class="fa fa-search"></i></button> %>
+</form>
+
 <div class ="homepage">
-<div class="banner vh-100" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "volunteer-02.png" %>);">
-  <%# search %>
-  <div class="maintitle">
-    <h1 class="main-title font-cursive">KINDER</h1>
-    <div class="main-subtitle">
-      <h3 class="m-live mr-2 font-cursive"> Live </h3> <h3 class="m-text mr-2 font-cursive"> together, </h3> <h3 class="m-grow mr-2 font-cursive"> Grow </h3> <h3 class="m-text font-cursive"> together </h3>
+  <div class="banner vh-100" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "volunteer-02.png" %>);">
+    <%# search %>
+    <div class="maintitle">
+      <h1 class="main-title font-cursive">KINDER</h1>
+      <div class="main-subtitle">
+        <h3 class="m-live mr-2 font-cursive"> Live </h3> <h3 class="m-text mr-2 font-cursive"> together, </h3> <h3 class="m-grow mr-2 font-cursive"> Grow </h3> <h3 class="m-text font-cursive"> together </h3>
+      </div>
+    </div>
+    <%# text %>
+    <div class="banner-text">
+      <h5>Ready to start your journey?</h5>
+      <h5>Perfect</h5>
+      <i class="fas fa-chevron-down"></i>
     </div>
   </div>
-  <form class="search-container" action="/projects">
-    <input id="searchBar" class="searchbar" name="query" type="text" placeholder="" aria-label="Search">
-    <%# <button type="submit" id="btnSearch" class="btn btn-search"><i class="fa fa-search"></i></button> %>
-  </form>
 
-  <%# text %>
-  <div class="banner-text">
-    <h5>Ready to start your journey?</h5>
-    <h5>Perfect</h5>
-    <i class="fas fa-chevron-down"></i>
-  </div>
-</div>
-
-<div class="text-center">
-  <h2 class="l-title"> Inspiration for your Journey </h2>
-  <div class="d-flex justify-content-center">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <% @projects.each_with_index do |project, index| %>
-          <div class="carousel-item <%= 'active' if index.zero? %>">
-            <%= link_to project, class: "text-dark text-decoration-none" do %>
-              <div class="card-project">
-                <%= cl_image_tag project.photos.key, class: "card-project-img" %>
-                <div class="card-body">
-                  <h5 class="card-title"> <strong><%= project.title%></strong> </h5>
-                  <%= link_to "More info", project_path(project), class: "btn btn-outline-secondary" %>
+  <div class="text-center">
+    <h2 class="l-title"> Inspiration for your Journey </h2>
+    <div class="d-flex justify-content-center">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <% @projects.each_with_index do |project, index| %>
+            <div class="carousel-item <%= 'active' if index.zero? %>">
+              <%= link_to project, class: "text-dark text-decoration-none" do %>
+                <div class="car-project">
+                  <%= cl_image_tag project.photos.key, class: "car-img" %>
+                  <div class="car-body">
+                    <h5 class="car-title"> <strong><%= project.title%></strong> </h5>
+                  </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
+          <% end %>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="l-title"> Discover KINDER experiences </h2>
+    <div class="d-flex justify-content-center">
+      <%# <div class="card-list"> %>
+        <%= link_to projects_path, class: "text-dark text-decoration-none" do %>
+          <div class="card-list-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path "volunteer-04.jpeg" %>)">
+            <p class="card-list-text">Tribes in town</p>
+            <%= link_to "Browse Projects", projects_path, class: "btn btn-outline-light" %>
           </div>
         <% end %>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+      <%# </div> %>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div class="about-sponsor" style="background-image: url(<%= image_path "volunteer-01.jpeg" %>)">
+        <p class="question"> Questions about sponsoring? </p>
+        <%= link_to "More Information", about_path, class: "btn btn-outline-light" %>
       </div>
     </div>
   </div>
-
-  <h2 class="l-title"> Discover KINDER experiences </h2>
-  <div class="d-flex justify-content-center">
-    <div class="card-list">
-      <div class="card-list-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path "volunteer-04.jpeg" %>)">
-        <p class="card-list-text">Tribes in town</p>
-        <%= link_to "Browse Projects", projects_path, class: "btn btn-outline-light" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="d-flex justify-content-center">
-    <div class="about-sponsor" style="background-image: url(<%= image_path "volunteer-01.jpeg" %>)">
-      <p class="question"> Questions about sponsoring? </p>
-      <%= link_to "More Information", about_path, class: "btn btn-outline-light" %>
-    </div>
-  </div>
 </div>
-</div>
+
 <%= render "shared/footer" %>
+
+<%# <%= javascript_pack_tag 'home_car' %>
