@@ -12,6 +12,10 @@
     border-bottom: 1px solid $gray-200;
     margin-bottom: 0;
   }
+
+  h5 {
+    font-weight: bold;
+  }
 }
 
 #messages {
@@ -48,6 +52,10 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
+.blue-back {
+  color: #4267B2;
+}
+
 #new_message i{
   font-size: 26px;
 }
@@ -65,4 +73,12 @@
 
 #message_content {
   padding-top: 10px;
+}
+
+.my_message {
+  color: #4C977B;
+}
+
+.other_message {
+  color: #F5A833;
 }
