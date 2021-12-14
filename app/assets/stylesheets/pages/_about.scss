@@ -25,3 +25,33 @@
 .about-img {
   width: 100vw;
 }
+
+.card-about {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+
+}
+
+.about-container-cards {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2%;
+  margin: 3%;
+}
+
+.card-about-image {
+  padding-right: 4%;
+  width: 40%;
+  img {
+    width: 100%;
+  }
+
+}
+
+
+.card-about-content {
+  width: 60%;
+
+}
