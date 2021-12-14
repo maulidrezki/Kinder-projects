@@ -7,57 +7,67 @@
     </div>
     <div class="about-t d-flex justify-content-center">
       <h3 class="about-text font-cursive mr-2"> Spread </h3>
-      <h3 class="about-text font-cursive mr-2"> Positive energy </h3>
+      <h3 class="about-text font-cursive mr-2"> Positive energy and </h3>
     </div>
     <div class="about-t d-flex justify-content-center">
       <h3 class="love font-cursive mr-2" style="color: #CE326A"> Love </h3>
-      <h3 class="about-text font-cursive mb-4"> to Community </h3>
+      <h3 class="about-text font-cursive mb-4"> to the Community </h3>
     </div>
   </div>
 </div>
 
-<%= image_tag "volunteer-01.jpeg", class: "about-img" %>
+<%# <%= image_tag "volunteer-01.jpeg", class: "about-img" %>
+
+
 <div class="container">
   <div class="about-q mt-4"></div>
 </div>
 
-<div class="my-1 mx-3">
-  <div class= "row">
-    <div class= "col-4">
-      <h4 class="about-text font-cursive mr-2"> IMAGE HERE</h4>
+<div class="about-container-cards">
+
+  <div class= "card-about">
+    <div class= "card-about-image">
+      <%= image_tag "step_1.png" %>
     </div>
-    <div class= "col-8">
+    <div class= "card-about-content">
       <h4 class="about-text font-cursive mr-2"> List your vibe</h4>
       <p class= "text-small"> List a project that contributes to the community- something that vibes with every fibre of your being; something you’re passionate about!</p>
     </div>
   </div>
 
-  <div class= "row">
-    <div class= "col-4">
-      <h4 class="about-text font-cursive mr-2"> IMAGE HERE</h4>
+
+  <div class= "card-about">
+    <div class= "card-about-image">
+      <%= image_tag "step_2.png" %>
     </div>
-    <div class= "col-8">
+    <div class= "card-about-content">
       <h4 class="about-text font-cursive mr-2">Find your tribe</h4>
       <p class= "text-small"> Get published on our app and let your tribe find you! You can also share the link with your family and friends. </p>
     </div>
   </div>
 
 
-  <div class= "row">
-    <div class= "col-4">
-      <h4 class="about-text font-cursive mr-2"> IMAGE HERE</h4>
+  <div class= "card-about">
+    <div class= "card-about-image">
+      <%= image_tag "step_3.png" %>
     </div>
-    <div class= "col-8">
+    <div class= "card-about-content">
       <h4 class="about-text font-cursive mr-2">Launch your project!</h4>
       <p class= "text-small"> Launch your project with your tribe and together, spread love to the community! </p>
     </div>
   </div>
 
+<<<<<<< HEAD
   <div class="d-flex justify-content-center">
     <%= link_to "List my project", new_project_path, method: :get, class: "btn btn-outline-secondary m-3" %>
+=======
+  <div class="d-flex justify-content-center mb-3">
+    <%= link_to "List my project", new_project_path, method: :get, class: "btn btn-outline-secondary" %>
+>>>>>>> master
   </div>
-
 </div>
+
+
 
 
 <%= render "shared/footer" %>
