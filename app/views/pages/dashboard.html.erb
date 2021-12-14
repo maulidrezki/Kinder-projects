@@ -206,7 +206,7 @@
         <div class="d-flex flex-wrap justify-content-center">
           <% @my_past_projects.each do |project| %>
             <%= link_to project_path(project), class: "text-dark text-decoration-none" do%>
-              <div class="card-product mb-3 mt-3">
+              <div class="card-product mb-4">
                 <%= cl_image_tag project.photos.key, class: "project-card-image-dashboard" %>
                 <div class="card-product-infos">
                   <h2> <%= project.title %> </h2>
@@ -236,7 +236,7 @@
       <div class="d-flex flex-wrap justify-content-center">
         <% @my_volunteer_past_projects.each do |project| %>
           <%= link_to project_path(project), class: "text-dark text-decoration-none" do %>
-            <div class="card-product mb-3 mt-3">
+            <div class="card-product mb-4">
               <%= cl_image_tag project.photos.key, class: "card-product-img" %>
               <div class="card-product-infos">
                 <h2> <%= project.title %> </h2>
