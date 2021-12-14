@@ -1,9 +1,8 @@
 .chatroom {
-   height: calc(100vh - 70px);
+  height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-top: 1px solid $gray-200;
   margin: 4% 4% 2% 4%;
 
 
@@ -11,6 +10,10 @@
     padding: 0.5rem 1rem;
     border-bottom: 1px solid $gray-200;
     margin-bottom: 0;
+  }
+
+  h5 {
+    font-weight: bold;
   }
 }
 
@@ -31,7 +34,6 @@
 .search-form-control .btn {
   position: absolute;
   top: 4px;
-  // bottom: 8px;
   right: 8px;
 }
 
@@ -46,6 +48,10 @@
   border: 1px solid #4267B2;
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.blue-back {
+  color: #4267B2;
 }
 
 #new_message i{
@@ -65,4 +71,12 @@
 
 #message_content {
   padding-top: 10px;
+}
+
+.my_message {
+  color: #4C977B;
+}
+
+.other_message {
+  color: #F5A833;
 }
