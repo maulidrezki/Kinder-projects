@@ -1,10 +1,10 @@
 <div class ="homepage">
 <div class="banner vh-100" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "volunteer-02.png" %>);">
   <%# search %>
-  <div class="container">
-    <input id="searchBar" class="searchbar" type="text" placeholder="">
-    <a id="btnSearch" class="btn-search"><i class="fa fa-search"></i></a>
-  </div>
+  <form class="search-container" action="/projects">
+    <input id="searchBar" class="searchbar" name="query" type="text" placeholder="" aria-label="Search">
+    <button type="submit" id="btnSearch" class="btn btn-search"><i class="fa fa-search"></i></button>
+  </form>
 
   <%# text %>
   <div class="banner-text">
@@ -15,7 +15,7 @@
 </div>
 
 <div class="text-center">
-  <h2 class="title"> Inspiration for your Journey </h2>
+  <h2 class="l-title"> Inspiration for your Journey </h2>
   <div class="d-flex justify-content-center">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <h2 class="title"> Discover KINDER experiences </h2>
+  <h2 class="l-title"> Discover KINDER experiences </h2>
   <div class="d-flex justify-content-center">
     <div class="card-list">
       <div class="card-list-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path "volunteer-04.jpeg" %>)">
