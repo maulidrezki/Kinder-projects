@@ -1,9 +1,15 @@
 <div class ="homepage">
 <div class="banner vh-100" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "volunteer-02.png" %>);">
   <%# search %>
+  <div class="maintitle">
+    <h1 class="main-title font-cursive">KINDER</h1>
+    <div class="main-subtitle">
+      <h3 class="m-live mr-2 font-cursive"> Live </h3> <h3 class="m-text mr-2 font-cursive"> together, </h3> <h3 class="m-grow mr-2 font-cursive"> Grow </h3> <h3 class="m-text font-cursive"> together </h3>
+    </div>
+  </div>
   <form class="search-container" action="/projects">
     <input id="searchBar" class="searchbar" name="query" type="text" placeholder="" aria-label="Search">
-    <button type="submit" id="btnSearch" class="btn btn-search"><i class="fa fa-search"></i></button>
+    <%# <button type="submit" id="btnSearch" class="btn btn-search"><i class="fa fa-search"></i></button> %>
   </form>
 
   <%# text %>
