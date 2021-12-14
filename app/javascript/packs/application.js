@@ -22,6 +22,7 @@ ActiveStorage.start()
 // External imports
 import "bootstrap";
 import { shareProject } from "./share_project"
+import { scrollSearch } from "./scroll_search"
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -31,4 +32,5 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   shareProject();
+  scrollSearch();
 });
