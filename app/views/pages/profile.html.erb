@@ -7,7 +7,7 @@
     <% end %>
   </div>
   <div class="name-edit">
-    <h4><%= @user.first_name %> <%= @user.last_name %></h4>
+    <h4><%= @user.first_name %> <%= @user.last_name %>&nbsp; </h4>
     <%= link_to edit_user_registration_path(current_user), class: "edit-button-profile" do %>
       <i class = "fas fa-edit"></i>
     <% end %>
@@ -22,12 +22,16 @@
 
 
 <%# user summary %>
-<div class="sumary-user">
+<div class="summary-user">
   <div class="profile-numbers">
     <div class="profile-level">
       <h3>MY KINDER LEVEL</h3>
       <h3><%= @user.level %></h3>
     </div>
+    <div>
+      <%= render partial: "shared/user_level"%>
+    </div>
+    <div class= "mt-5"></div>
     <div class="profile-listed">
       <h4>TOTAL LISTED PROJECTS</h4>
       <h4><%= @total_listed_projects %></h4>
