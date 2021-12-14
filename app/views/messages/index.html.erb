@@ -1,11 +1,22 @@
-<h1>#<%= @project.title %></h1>
-<div id="messages" data-project-id="<%= @project.id %>">
-  <% @project.messages.each do |message| %>
-  <%= render "message", message: message%>
-  <% end %>
-</div>
+<div class="chatroom">
+  <h1><%= @project.title %> Chat Room</h1>
+       <div class="navbar-top-back">
+        <p class="mb-0"> <i class="fas fa-chevron-left mr-1"></i> <%= link_to "Back", inbox_path, class: "navbar-brand" %> </p>
+      </div>
 
-<%= simple_form_for [ @project, @message ], remote: true do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message #{@project.title} group" %>
-  <%= f.submit%>
-<% end %>
+  <div id="messages" data-project-id="<%= @project.id %>">
+    <% @project.messages.each do |message| %>
+    <%= render "message", message: message%>
+    <% end %>
+  </div>
+
+    <div class="search-form-control">
+      <%= simple_form_for [ @project, @message ], remote: true do |f| %>
+      <%= f.input :content, label: false, placeholder: "Type your message..." %>
+      <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-arrow-circle-up"></i></button>
+      <%# <%= f.submit %>
+      <% end %>
+    </div>
+
+</div>
