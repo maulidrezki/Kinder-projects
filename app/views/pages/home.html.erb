@@ -1,10 +1,10 @@
 <div class="banner vh-100" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "volunteer-02.png" %>);">
   <%# search %>
-  <div class="search-bar">
-    <form class="form-inline" action="/projects">
-      <input class="search-bar" type="search" name="query" placeholder="Where is your tribe?" aria-label="Search">
-    </form>
+  <div class="container">
+    <input id="searchBar" class="searchbar" type="text" placeholder="">
+    <a id="btnSearch" class="btn-search"><i class="fa fa-search"></i></a>
   </div>
+
   <%# text %>
   <div class="banner-text">
     <h5>Ready to start your journey?</h5>
