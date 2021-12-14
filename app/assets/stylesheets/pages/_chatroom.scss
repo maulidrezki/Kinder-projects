@@ -1,9 +1,8 @@
 .chatroom {
-   height: calc(100vh - 70px);
+  height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-top: 1px solid $gray-200;
   margin: 4% 4% 2% 4%;
 
 
@@ -35,7 +34,6 @@
 .search-form-control .btn {
   position: absolute;
   top: 4px;
-  // bottom: 8px;
   right: 8px;
 }
 
