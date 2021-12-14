@@ -3,13 +3,13 @@ class FavouritesController < ApplicationController
     @project = Project.find(params[:project_id])
 
     current_user.favorite(@project)
-    redirect_to projects_path
+    redirect_to request.referer
   end
 
   def destroy
     @project = Project.find(params[:project_id])
 
     current_user.unfavorite(@project)
-    redirect_to projects_path
+    redirect_to request.referer
   end
 end
