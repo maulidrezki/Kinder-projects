@@ -1,14 +1,10 @@
 // landing
 
-.container {
+.search-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-
-.fa {
-  margin-top: 60px;
 }
 
 .searchbar {
@@ -25,7 +21,11 @@
   font-weight: bold;
   border-bottom: white solid 2px;
   transition: 0.3s;
-  border-radius: 50px;
+  border-radius: 50px
+}
+
+.fa {
+  margin-top: 68px;
 }
 
 .searchbar::placeholder {
@@ -37,14 +37,14 @@
 }
 
 .searchbar:focus {
-  width: 400px;
+  width: 280px;
   // font-family:
   font-size: 1em;
   font-weight: bold;
   transition: 0.3s;
   border-bottom: white solid 2px;
   outline: none;
-  text-align: left;
+  text-align: center;
 }
 
 .btn-search {
