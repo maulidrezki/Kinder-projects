@@ -72,5 +72,3 @@ gem 'geocoder'
 
 # cloudinary
 gem 'cloudinary', '~> 1.16.0'
-
-gem 'acts_as_favoritor', github: 'jonhue/acts_as_favoritor'
