@@ -33,8 +33,8 @@
   border: none;
   // font-family:
   // margin-top: 324px;
-  font-size: 1em;
-  font-weight: bold;
+  font-size: 0.9em;
+  font-weight: lighter;
   border-bottom: white solid 2px;
   transition: 0.3s;
   border-radius: 50px
@@ -43,7 +43,7 @@
 .searchbar::placeholder {
   color: #E0E0E0;
   // font-family:
-  font-size: 0.9rem;
+  font-size: 0.9em;
   font-weight: lighter;
   text-align: center;
 }
@@ -90,7 +90,7 @@
 .index-search-bar::placeholder {
   color: #E0E0E0;
   // font-family:
-  font-size: 1em;
+  font-size: 0.9em;
   // font-weight:
   text-align: center;
 }
@@ -98,8 +98,8 @@
 .index-search-bar:focus {
   width: 400px;
   // font-family:
-  font-size: 1em;
-  font-weight: bold;
+  font-size: 0.9em;
+  font-weight: lighter;
   transition: 0.3s;
   outline: none;
 }
