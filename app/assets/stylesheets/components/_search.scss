@@ -8,24 +8,21 @@
 }
 
 .searchbar {
+  display: flex;
+  justify-content: center;
   float: right;
-  background-color: none;
+  // background-color: none;
   color: #555255;
   padding: 6px 10px;
-  width: 120px;
+  width: 180px;
   border: none;
-  margin-top: 60px;
-  margin-right: 8px;
+  margin-top: 10px;
   // font-family:
   font-size: 1em;
   font-weight: bold;
   border-bottom: white solid 2px;
   transition: 0.3s;
   border-radius: 50px
-}
-
-.fa {
-  margin-top: 68px;
 }
 
 .searchbar::placeholder {
