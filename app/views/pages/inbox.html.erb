@@ -1,73 +1,48 @@
-<% if user_signed_in? %>
-  <div class="navbar-top">
-    <div class="navbar-top-info">
-      <div class="navbar-top-back">
-        <%# <p class="mb-0"> <i class="fas fa-chevron-left mr-1"></i> <%= link_to "Back", root_path, class: "navbar-brand" %>
-      </div>
-      <div class="navbar-top-dt">
-        <div class="d-flex my-0 align-items-center">
-          <div class="navbar-top-text">
-            <p class="my-0"> <%= current_user.display_name %> </p>
-            <p class="my-0"> <i class="fas fa-trophy", style="color: #F5A833"></i> <%= current_user.level %> </p>
-          </div>
-          <div class="navbar-top-avatar">
-            <% if current_user.avatar.attached?%>
-              <%= cl_image_tag current_user.avatar.key, class: "navbar-top-avatar-img" %>
-            <% else %>
-              <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "navbar-top-avatar-img") %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
 <div class="container">
-  <h2 class="title ml-3"> My Inbox </h2>
+  <h2 class="title text-center">Kinder <i class="far fa-comments"></i></h2>
 </div>
 
 <div class="project-list" id="project-inbox">
   <div class="d-flex flex-wrap justify-content-center">
-    <% @volunteer_projects.each do |project| %>
-    <%= link_to project_messages_path(project), class: "text-dark text-decoration-none project-card-link", data: { "project-id": project.id } do %>
-      <div class="card-product-inbox mb-3 mt-3">
-        <%= cl_image_tag project.photos.key, class: "card-product-img-inbox" %>
-          <div class="card-product-infos-inbox">
-            <h2> <%= project.title %> Chat Group </h2>
-            <div id="last-project-<%= project.id %>-message">
-              <%= render partial: "messages/last_message", locals: { project: project } %>
-            </div>
-              <div class="project-status">
-                <% if project.volunteerings.size == 0 %>
-                  <p> <i class="fas fa-users" style="color: #423D52" ></i> 0 </p>
-                <% else %>
-                  <p> <i class="fas fa-users" style="color: #4C977B" ></i> <%= project.volunteerings.size %> <%= project.capacity ? "/ #{project.capacity}" : nil %>   </p>
-                <% end %>
-              </div>
-          </div>
+    <% unless @volunteer_projects.empty? %>
+      <div class="d-flex justify-content-start" style="width: 360px">
+        <div class="chats-tap">
+          <p>My volunteer chats</p>
+        </div>
       </div>
+      <% @volunteer_projects.each do |project| %>
+        <%= link_to project_messages_path(project), class: "text-dark text-decoration-none project-card-link", data: { "project-id": project.id } do %>
+        <div class="card-product-inbox">
+          <%= cl_image_tag project.photos.key, class: "card-product-img-inbox" %>
+            <div class="card-product-infos-inbox">
+              <h2> <%= project.title %> Chat Group </h2>
+              <div id="last-project-<%= project.id %>-message">
+                <%= render partial: "messages/last_message", locals: { project: project } %>
+              </div>
+            </div>
+        </div>
       <% end %>
       <% end %>
+    <% end %>
+    <% unless @my_projects.empty? %>
+      <div class="d-flex justify-content-start" style="width: 360px">
+        <div class="chats-tap">
+          <p>My project chats</p>
+        </div>
+      </div>
       <% @my_projects.each do |project| %>
-    <%= link_to project_messages_path(project), class: "text-dark text-decoration-none project-card-link", data: { "project-id": project.id } do %>
-      <div class="card-product-inbox mb-3 mt-3">
-        <%= cl_image_tag project.photos.key, class: "card-product-img" %>
-          <div class="card-product-infos-inbox">
-            <h2> <%= project.title %> Group</h2>
-            <div id="last-project-<%= project.id %>-message">
-              <%= render partial: "messages/last_message", locals: { project: project } %>
-            </div>
-              <div class="project-status">
-                <% if project.volunteerings.size == 0 %>
-                  <p> <i class="fas fa-users" style="color: #423D52" ></i> 0 </p>
-                <% else %>
-                  <p> <i class="fas fa-users" style="color: #4C977B" ></i> <%= project.volunteerings.size %> <%= project.capacity ? "/ #{project.capacity}" : nil %> Confirmed </p>
-                <% end %>
+        <%= link_to project_messages_path(project), class: "text-dark text-decoration-none project-card-link", data: { "project-id": project.id } do %>
+        <div class="card-product-inbox bottom-chat">
+          <%= cl_image_tag project.photos.key, class: "card-product-img-inbox" %>
+            <div class="card-product-infos-inbox">
+              <h2> <%= project.title %> Chat Group </h2>
+              <div id="last-project-<%= project.id %>-message">
+                <%= render partial: "messages/last_message", locals: { project: project } %>
               </div>
-          </div>
-      </div>
+            </div>
+        </div>
       <% end %>
       <% end %>
+    <% end %>
   </div>
 </div>

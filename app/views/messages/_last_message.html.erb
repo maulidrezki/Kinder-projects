@@ -1,4 +1,9 @@
 <% if project.messages.last %>
-  <p> <i class="fas fa-envelope-open-text" style="color: #ED462F"></i> Last Message By <%= project.messages.last.user.display_name%>:</p>
-  <p class="message-color"> <%= project.messages.last.content.truncate(50) %> </P>
+  <% if project.messages.last.user_id == current_user.id %>
+    <p class="message-color"><i class="fas fa-check"></i> <%= project.messages.last.content.truncate(50) %> </p>
+  <% else %>
+    <p class="message-color"> <strong><%= project.messages.last.user.display_name %></strong>: <%= project.messages.last.content.truncate(50) %> </p>
+  <% end %>
+<% else %>
+  <p class="message-color"> <strong><%= current_user.display_name %></strong>, start the conversation now!</p>
 <% end %>
