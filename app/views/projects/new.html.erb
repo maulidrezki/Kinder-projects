@@ -1,6 +1,6 @@
 <div class="container">
   <div class="form-headers-projects">
-    <h1 class="p-title">Apply Project</h1>
+    <h1 class="p-title">My project details</h1>
   </div>
   <div>
     <%= simple_form_for(@project) do |project| %>
@@ -8,11 +8,11 @@
         <label class="string optional">Display name</label>
         <input class="form-control string optional" type="text" value="<%=current_user.display_name%>" readonly disabled>
       </div>
-      <%= project.input :contact %>
-      <%= project.input :title %>
-      <%= project.input :description, input_html: {placeholder: "minimum 65 characters", class: "placeholder-tint"}%>
-      <%= project.input :location %>
-      <%= project.input :capacity %>
+      <%= project.input :contact, input_html: {placeholder: "e.g. +60 1234567!", class: "placeholder-tint"}%>
+      <%= project.input :title, input_html: {placeholder: "Enter a title that can be easily searched!", class: "placeholder-tint"}%>
+      <%= project.input :description, input_html: {placeholder: "Describe the nature and purpose of your project in minimum 65 characters", class: "placeholder-tint"}%>
+      <%= project.input :location, input_html: {placeholder: "Location of project", class: "placeholder-tint"}%>
+      <%= project.input :capacity, input_html: {placeholder: "Number of volunteers- if applicable", class: "placeholder-tint"}%>
       <%= project.input :start_date, html5: true %>
       <%= project.input :end_date, html5: true %>
       <%= project.input :start_time %>
