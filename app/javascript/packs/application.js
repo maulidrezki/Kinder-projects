@@ -19,6 +19,8 @@ ActiveStorage.start()
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 
+import { previewImageOnFileSelect } from "../packs/photo_preview"
+
 // External imports
 import "bootstrap";
 import { shareProject } from "./share_project"

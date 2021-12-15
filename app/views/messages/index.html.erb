@@ -15,7 +15,8 @@
   <div class="search-form-control">
     <%= simple_form_for [ @project, @message ], remote: true do |f| %>
     <%= f.input :content, label: false, placeholder: "Type your message..." %>
-    <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: "<i class=\"fa fa-plus\"></i></button>".html_safe %>
+    <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo', id:'photo-input'}, label: "<i class=\"fa fa-plus\"></i></button>".html_safe %>
+    <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
     <button name="button" type="submit" class="btn btn-flat">
     <i class="fas fa-arrow-circle-up"></i></button>
     <% end %>
