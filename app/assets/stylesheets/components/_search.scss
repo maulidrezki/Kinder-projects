@@ -44,9 +44,10 @@
 .searchbar::placeholder {
   color: #555252;
   // font-family:
-  font-size: 0.9em;
+  font-size: 1em;
   font-weight: lighter;
   text-align: center;
+  z-index: 3;
 }
 
 .searchbar:focus {
