@@ -1,55 +1,57 @@
-<div class="container">
-  <h2 class="chat-title text-center">Kinder <i class="far fa-comments"></i></h2>
-</div>
-<div class="no-message-alert">
+<div class="inbox-wrapper">
+  <div class="container">
+    <h2 class="chat-title text-center">Kinder <i class="far fa-comments"></i></h2>
+  </div>
+
   <% if @volunteer_projects.empty? && @my_projects.empty? %>
-    <p class="m-3 text-secondary" style="text-align: left;">Oops! You don't have any open conversations yet.</p>
-    <p class="m-3 text-secondary" style="text-align: left;">Join a project and start chatting! 😄</p>
+    <div class="no-message-alert">
+      <p class="m-3 text-secondary" style="text-align: left;">Oops! You don't have any open conversations yet.</p>
+      <p class="m-3 text-secondary" style="text-align: left;">Join a project and start chatting! 😄</p>
+    </div>
   <% end %>
-</div>
 
-
-<div class="project-list" id="project-inbox">
-  <div class="d-flex flex-wrap justify-content-center">
-    <% unless @volunteer_projects.empty? %>
-      <div class="d-flex justify-content-start" style="width: 360px">
-        <div class="chats-tap">
-          <p>My volunteer chats</p>
+  <div class="project-list" id="project-inbox">
+    <div class="d-flex flex-wrap justify-content-center">
+      <% unless @volunteer_projects.empty? %>
+        <div class="d-flex justify-content-start" style="width: 360px">
+          <div class="chats-tap">
+            <p>My volunteer chats</p>
+          </div>
         </div>
-      </div>
-      <% @volunteer_projects.each do |project| %>
-        <%= link_to project_messages_path(project), class: "text-dark text-decoration-none project-card-link", data: { "project-id": project.id } do %>
-        <div class="card-product-inbox">
-          <%= cl_image_tag project.photos.key, class: "card-product-img-inbox" %>
-            <div class="card-product-infos-inbox">
-              <h2> <%= project.title %> Chat Group </h2>
-              <div id="last-project-<%= project.id %>-message">
-                <%= render partial: "messages/last_message", locals: { project: project } %>
+        <% @volunteer_projects.each do |project| %>
+          <%= link_to project_messages_path(project), class: "text-dark text-decoration-none project-card-link", data: { "project-id": project.id } do %>
+          <div class="card-product-inbox">
+            <%= cl_image_tag project.photos.key, class: "card-product-img-inbox" %>
+              <div class="card-product-infos-inbox">
+                <h2> <%= project.title %> Chat Group </h2>
+                <div id="last-project-<%= project.id %>-message">
+                  <%= render partial: "messages/last_message", locals: { project: project } %>
+                </div>
               </div>
-            </div>
-        </div>
+          </div>
+        <% end %>
+        <% end %>
       <% end %>
-      <% end %>
-    <% end %>
-    <% unless @my_projects.empty? %>
-      <div class="d-flex justify-content-start" style="width: 360px">
-        <div class="chats-tap">
-          <p>My project chats</p>
+      <% unless @my_projects.empty? %>
+        <div class="d-flex justify-content-start" style="width: 360px">
+          <div class="chats-tap">
+            <p>My project chats</p>
+          </div>
         </div>
-      </div>
-      <% @my_projects.each do |project| %>
-        <%= link_to project_messages_path(project), class: "text-dark text-decoration-none project-card-link", data: { "project-id": project.id } do %>
-        <div class="card-product-inbox bottom-chat">
-          <%= cl_image_tag project.photos.key, class: "card-product-img-inbox" %>
-            <div class="card-product-infos-inbox">
-              <h2> <%= project.title %> Chat Group </h2>
-              <div id="last-project-<%= project.id %>-message">
-                <%= render partial: "messages/last_message", locals: { project: project } %>
+        <% @my_projects.each do |project| %>
+          <%= link_to project_messages_path(project), class: "text-dark text-decoration-none project-card-link", data: { "project-id": project.id } do %>
+          <div class="card-product-inbox bottom-chat">
+            <%= cl_image_tag project.photos.key, class: "card-product-img-inbox" %>
+              <div class="card-product-infos-inbox">
+                <h2> <%= project.title %> Chat Group </h2>
+                <div id="last-project-<%= project.id %>-message">
+                  <%= render partial: "messages/last_message", locals: { project: project } %>
+                </div>
               </div>
-            </div>
-        </div>
+          </div>
+        <% end %>
+        <% end %>
       <% end %>
-      <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
