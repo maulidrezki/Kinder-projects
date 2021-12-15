@@ -6,4 +6,7 @@
         </div>
         </i>
       <p><%= message.content %></p>
+      <% if message.photo.attached? %>
+        <%= cl_image_tag message.photo.key, class: "message-img"%>
+      <%end%>
     </div>
