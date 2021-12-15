@@ -1,6 +1,13 @@
 <div class="container">
   <h2 class="chat-title text-center">Kinder <i class="far fa-comments"></i></h2>
 </div>
+<div class="no-message-alert">
+  <% if @volunteer_projects.empty? && @my_projects.empty? %>
+    <p class="m-3 text-secondary" style="text-align: left;">Oops! You don't have any open conversations yet.</p>
+    <p class="m-3 text-secondary" style="text-align: left;">Join a project and start chatting! 😄</p>
+  <% end %>
+</div>
+
 
 <div class="project-list" id="project-inbox">
   <div class="d-flex flex-wrap justify-content-center">
