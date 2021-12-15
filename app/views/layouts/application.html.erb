@@ -20,7 +20,9 @@
   </head>
 
   <body>
+    <% unless params[:controller] == 'messages' && params[:action]  =- 'index' %>
     <%= render 'shared/navbar' %>
+    <% end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
   </body>

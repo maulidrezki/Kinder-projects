@@ -1,4 +1,5 @@
 <div class="chatroom">
+
   <div class="navbar-top-back">
     <%= link_to inbox_path, class: "navbar-brand" do%>
     <h5><i class="fas fa-chevron-left mr-1 blue-back"></i> <%= @project.title %>  Room</h5>
@@ -11,13 +12,13 @@
     <% end %>
   </div>
 
-    <div class="search-form-control">
-      <%= simple_form_for [ @project, @message ], remote: true do |f| %>
-      <%= f.input :content, label: false, label_html: { class: 'placeholder'}, placeholder: "Type your message..." %>
-      <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: "<i class=\"fa fa-plus\"></i></button>".html_safe %>
-      <button name="button" type="submit" class="btn btn-flat">
-      <i class="fas fa-arrow-circle-up"></i></button>
-      <% end %>
-    </div>
+  <div class="search-form-control">
+    <%= simple_form_for [ @project, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "Type your message..." %>
+    <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: "<i class=\"fa fa-plus\"></i></button>".html_safe %>
+    <button name="button" type="submit" class="btn btn-flat">
+    <i class="fas fa-arrow-circle-up"></i></button>
+    <% end %>
+  </div>
 
 </div>
