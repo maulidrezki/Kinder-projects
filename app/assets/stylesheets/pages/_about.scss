@@ -3,19 +3,19 @@
 }
 
 .live {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .grow {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .love {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .about-text {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .about-q {
@@ -59,15 +59,14 @@
   width: 60%;
 }
 
-.list {
-  margin-bottom: 8px;
-  margin-right: 16px;
-  color: rgb(61, 59, 59);
+.guide-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Roboto', sans-serif
 }
 
-.info-text {
+.g-text {
   font-size: 16px;
-  margin-top: 24px;
-  margin-left: 24px;
-  margin-bottom: 12px;
+  font-family: 'Roboto', sans-serif
 }
