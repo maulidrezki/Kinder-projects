@@ -13,7 +13,8 @@ class Project < ApplicationRecord
   validates :title, :location, :photos, :start_date, :description, presence: true
   validates :description, length: { minimum: 65 }
   validates :status, presence: true, inclusion: { in: PROJECT_STATUS }
-  validate :end_date_after_start_date?, :start_date_after_today?
+  validate :end_date_after_start_date?, :start_date_after_today?, :end_date_before_today?
+
 
   def end_date_after_start_date?
     if end_date && end_date < start_date
@@ -24,6 +25,12 @@ class Project < ApplicationRecord
   def start_date_after_today?
     if start_date && start_date < Date.today
       errors.add :start_date, "must be after today"
+    end
+  end
+
+  def end_date_before_today?
+    if end_date < Date.today && (status == "open" || status == "cancelled")
+      errors.add :status, "can't change the status of an expired project"
     end
   end
 

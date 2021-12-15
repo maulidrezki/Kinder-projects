@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :expired_projects
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
@@ -12,5 +13,9 @@ class ApplicationController < ActionController::Base
 
   def destroy_user_session_path
     redirect_to root
+  end
+
+  def expired_projects
+    Project.where("end_date < ?", Date.today).update_all(status: "closed")
   end
 end

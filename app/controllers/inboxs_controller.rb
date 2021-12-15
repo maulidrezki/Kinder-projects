@@ -1,5 +1,5 @@
 class InboxsController < ApplicationController
-    def show
+  def show
     @inbox = Chatroom.find(params[:id])
   end
 end
