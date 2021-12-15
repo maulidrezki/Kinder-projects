@@ -1,4 +1,7 @@
 <div class="profile-header">
+  <%= link_to destroy_user_session_path, method: :delete, class: "exit-button-profile" do %>
+    <p>Log out  <i class = "fas fa-sign-out-alt"></i></p>
+  <% end %>
   <div class="profile-avatar">
     <% if @user.avatar.attached?%>
       <%= cl_image_tag @user.avatar.key, height: 100, width: 100, crop: :fill %>
@@ -43,6 +46,3 @@
   </div>
 </div>
 <br><br>
-<%= link_to destroy_user_session_path, method: :delete, class: "exit-button-profile" do %>
-  <p>Log out  <i class = "fas fa-sign-out-alt"></i></p>
-<% end %>
