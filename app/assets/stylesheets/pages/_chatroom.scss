@@ -1,9 +1,9 @@
 .chatroom {
-  height: calc(100vh - 70px);
+  // height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 4% 4% 2% 4%;
+  margin: 4% 4% 0% 4%;
 
 
    h1 {
@@ -25,16 +25,17 @@
 }
 
 .search-form-control {
-  position: relative;
-  border-radius: 50px;
-  margin: 4% 4% 2% 4%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 
 .search-form-control .btn {
   position: absolute;
   top: 4px;
-  right: 8px;
+  right: 0px;
 }
 
 .search-form-control .form-control {
@@ -69,9 +70,13 @@
   }
 }
 
+.message_content {
+  margin: 0;
+}
+
 #message_content {
+  padding-left: 43px;
   padding-top: 10px;
-  padding-left: 40px;
 }
 
 .my_message {
@@ -90,7 +95,7 @@
 
 .placeholder {
   position: absolute;
-  left: 58px;
+  left: 70px;
 }
 
 .upload-photo {
@@ -99,4 +104,8 @@
   top: 10px;
   // right: 64px;
   left: 8px;
+}
+
+.message_photo {
+  margin-bottom: 0;
 }
