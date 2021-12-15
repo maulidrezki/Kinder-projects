@@ -12,7 +12,10 @@
   padding-bottom: 2%;
   border-radius: 10px;
 
-   &:hover {
+}
+
+.btn-pink:hover {
     background-color: rgb(80, 78, 78) !important;
-  }
+    color: white;
+    text-decoration: none;
 }
