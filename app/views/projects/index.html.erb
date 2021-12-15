@@ -55,17 +55,27 @@
                   <p> <i class="fas fa-users" style="color: #423D52" ></i> <%= project.status %> </p>
                 <% end %>
               </div>
-              <div class="my-fav">
-                <% if (current_user && !current_user.favorited?(project) || !user_signed_in?) %>
-                  <%= link_to project_favourites_path(project), class: "fav-btn", method: :post do %>
-                    <i class="far fa-heart"></i>
-                  <% end %>
+              <% if user_signed_in? && current_user != project.user %>
+                <% if current_user && !current_user.favorited?(project) %>
+                  <div class="my-fav">
+                    <%= link_to project_favourites_path(project), class: "fav-btn", method: :post do %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
+                  </div>
                 <% else %>
-                  <%= link_to project_favourites_path(project), class: "fav-btn", method: :delete do %>
-                    <i class="fas fa-heart" style="color: #CE326A"></i>
-                  <% end %>
+                  <div class="my-fav">
+                    <%= link_to project_favourites_path(project), class: "fav-btn", method: :delete do %>
+                      <i class="fas fa-heart" style="color: #CE326A"></i>
+                    <% end %>
+                  </div>
                 <% end %>
-              </div>
+              <% else %>
+                <div class="my-fav">
+                  <%# <%= link_to project_favourites_path(project), class: "fav-btn", method: :post do %>
+                    <%# <i class="far fa-heart"></i> %>
+                  <%# <% end %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
