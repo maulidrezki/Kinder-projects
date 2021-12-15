@@ -14,9 +14,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
+  before_create :default_level
 
   def volunteer_projects
     projects = Project.includes(:volunteerings).where(volunteerings: { user_id: id })
+  end
+
+  def default_level
+    self.level = 0
   end
 
 end
