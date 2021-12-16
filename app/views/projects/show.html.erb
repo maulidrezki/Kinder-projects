@@ -102,7 +102,7 @@
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <%# Pending Volunteers %>
     <div class="container">
-      <h2 class="dash-title m-3"> Pending volunteers </h2>
+      <h2 class="dash-title m-3"> Pending tribe </h2>
 
       <% if !@pending_volunteers.first[:volunteers].empty? %>
         <div class="project-list">
@@ -143,7 +143,7 @@
 
     <%# Confirmed Volunteers %>
     <div class="container">
-      <h2 class="dash-title m-3"> Confirmed volunteers </h2>
+      <h2 class="dash-title m-3"> Confirmed tribe </h2>
       <% if !@confirmed_volunteers.first[:volunteers].empty? %>
         <div class="project-list">
           <div class="d-flex flex-wrap justify-content-center">
@@ -183,7 +183,7 @@
     </div>
     <%# Rejected Volunteers %>
     <div class="container">
-      <h2 class="dash-title m-3"> Rejected volunteers </h2>
+      <h2 class="dash-title m-3"> Rejected tribe </h2>
       <% if !@rejected_volunteers.first[:volunteers].empty? %>
         <div class="project-list">
           <div class="d-flex flex-wrap justify-content-center">
