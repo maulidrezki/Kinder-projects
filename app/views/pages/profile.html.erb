@@ -31,13 +31,18 @@
       <h3>MY KINDER LEVEL</h3>
       <h3><%= @user.level %></h3>
     </div>
-    <div>
+    <div class="current-user-level">
       <%= render partial: "shared/user_level"%>
     </div>
+    <p class="profile-level-detail" style="color: #423D52"><strong>Become a Kind Master!</strong></p>
+    <p class="profile-level-detail"><i class="fas fa-plus-circle"></i> Earn <strong>5 pts</strong> each time you join and complete a project hosted by another Kinder user.</p>
+    <p class="profile-level-detail"><i class="fas fa-plus-circle"></i> Earn <strong>10 pts</strong> each time you list and complete a project hosted by you.</p>
+    <p class="profile-level-detail"><strong style="color: #423D52">Remember 💡</strong> Your Kinder level adds value to your profile when applying for projects and attracts volunteers to your listed projects.</p>
+
   </div>
 </div>
 
-<div class="summary-user">
+<div class="summary-user mb-4">
     <div class="profile-listed">
       <h4>TOTAL LISTED PROJECTS</h4>
       <h4><%= @total_listed_projects %></h4>
@@ -47,3 +52,5 @@
       <h4><%= @total_volunteered %></h4>
     </div>
 </div>
+
+<%= render "shared/footer" %>
