@@ -1,39 +1,14 @@
-<% if user_signed_in? %>
-  <div class="navbar-top">
-    <div class="navbar-top-info">
-      <div class="navbar-top-back">
-        <%# <p class="mb-0"> <i class="fas fa-chevron-left mr-1"></i> <%= link_to "Back", root_path, class: "navbar-brand" %>
-      </div>
-      <div class="navbar-top-dt">
-        <div class="d-flex my-0 align-items-center">
-          <div class="navbar-top-text">
-            <p class="my-0"> <%= current_user.display_name %> </p>
-            <p class="my-0"> <i class="fas fa-trophy", style="color: #F5A833"></i> <%= current_user.level %> </p>
-          </div>
-          <div class="navbar-top-avatar">
-            <% if current_user.avatar.attached?%>
-              <%= cl_image_tag current_user.avatar.key, class: "navbar-top-avatar-img" %>
-            <% else %>
-              <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "navbar-top-avatar-img") %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<div class="p-search-bar">
+<div class="p-search-bar mt-5">
   <form class="index-form-inline" action="/projects">
-    <input class="index-search-bar" type="search" name="query" placeholder="" aria-label="Search">
+    <input class="index-search-bar" type="search" name="query" placeholder="Tell us your vibe.." aria-label="Search">
   </form>
 </div>
 
 <div class="search-guide">
   <% if @query.present? %>
-    <p> You searched for "<strong><%= @query %></strong>" </p>
+    <p> Returning search for "<strong><%= @query %></strong>" </p>
   <% else %>
-    <p> What are you looking for? <strong>Search!</strong> </p>
+    <p> What are you looking for? </p>
   <% end %>
 </div>
 
@@ -55,17 +30,27 @@
                   <p> <i class="fas fa-users" style="color: #423D52" ></i> <%= project.status %> </p>
                 <% end %>
               </div>
-              <div class="my-fav">
-                <% if (current_user && !current_user.favorited?(project) || !user_signed_in?) %>
-                  <%= link_to project_favourites_path(project), class: "fav-btn", method: :post do %>
-                    <i class="far fa-heart"></i>
-                  <% end %>
+              <% if user_signed_in? && current_user != project.user %>
+                <% if current_user && !current_user.favorited?(project) %>
+                  <div class="my-fav">
+                    <%= link_to project_favourites_path(project), class: "fav-btn", method: :post do %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
+                  </div>
                 <% else %>
-                  <%= link_to project_favourites_path(project), class: "fav-btn", method: :delete do %>
-                    <i class="fas fa-heart" style="color: #CE326A"></i>
-                  <% end %>
+                  <div class="my-fav">
+                    <%= link_to project_favourites_path(project), class: "fav-btn", method: :delete do %>
+                      <i class="fas fa-heart" style="color: #CE326A"></i>
+                    <% end %>
+                  </div>
                 <% end %>
-              </div>
+              <% else %>
+                <div class="my-fav">
+                  <%# <%= link_to project_favourites_path(project), class: "fav-btn", method: :post do %>
+                    <%# <i class="far fa-heart"></i> %>
+                  <%# <% end %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

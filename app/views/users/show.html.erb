@@ -19,9 +19,6 @@
   </div>
   <div class="name-edit">
     <h4><%= @user.first_name %> <%= @user.last_name %></h4>
-    <%= link_to edit_user_registration_path(current_user), class: "edit-button-profile" do %>
-      <i class = "fas fa-edit"></i>
-    <% end %>
   </div>
 </div>
 
@@ -42,58 +39,84 @@
 <br>
 
 
+
 <%# about me %>
-<div class="profile-about-me">
-  <h4>ABOUT ME</h4>
-  <p><%= @user.about_me %></p>
+<div class="profile-about-me mb-3">
+  <h4>ABOUT <%= @user.first_name.upcase %></h4>
+  <p class="mt-2"><%= @user.about_me %></p>
+  <h4><i class="fas fa-envelope mt-2"></i> <%= link_to @user.email, "mailto:#{@user.email}" %></h4>
 </div>
 
 
-<%# my last project %>
-<% unless @my_last_project.nil? %>
-  <div class="container">
-    <h4 class="title"> My Last Project </h4>
-
-    <div class="project-list">
-      <div class="d-flex flex-wrap justify-content-center">
-        <%= link_to project_path(@my_last_project.id), class: "text-dark text-decoration-none" do %>
-          <div class="card-product mb-3 mt-3">
-            <%= cl_image_tag @my_last_project.photos.key, class: "card-product-img" %>
-            <div class="card-product-infos">
-              <h2><%= @my_last_project.title %></h2>
-              <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= @my_last_project.location %> </p>
-              <p> <i class="fas fa-calendar-check" style="colot: #555255"></i> <%= @my_last_project.start_date%> ~ <%= @my_last_project.end_date%> </p>
-              <p> <i class="fas fa-info-circle"></i> More information </p>
-            </div>
-          </div>
-        <% end %>
-      </div>
+<%# user summary %>
+<div class="summary-user">
+  <div class="profile-numbers">
+    <div class="profile-level">
+      <h3><%= @user.first_name.upcase %>'S KINDER LEVEL</h3>
+      <h3><%= @user.level %></h3>
     </div>
-
-  </div>
-<% end %>
-
-<%# my last volunteer %>
-<% unless @my_last_volunteer.nil? %>
-  <div class="container">
-    <h4 class="title mb-2"> My Last Volunteer </h4>
-
-    <div class="project-list">
-      <div class="d-flex flex-wrap justify-content-center">
-        <%= link_to project_path(@my_last_volunteer.id), class: "text-dark text-decoration-none" do %>
-          <div class="card-product mb-3 mt-3">
-            <%= cl_image_tag(@my_last_volunteer.project.photos.key, class: "card-product-img") %>
-            <div class="card-product-infos">
-              <h2><%= @my_last_volunteer.project.title %></h2>
-              <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= @my_last_volunteer.project.location %> </p>
-              <p> <i class="fas fa-calendar-check" style="colot: #555255"></i> <%= @my_last_volunteer.project.start_date%> ~ <%= @my_last_volunteer.project.end_date%> </p>
-              <p> <i class="fas fa-info-circle"></i> More information </p>
-            </div>
-          </div>
-        <% end %>
-      </div>
+    <div>
+      <%= render partial: "shared/user_level"%>
     </div>
-
+    <div class= "mt-5"></div>
+    <div class="profile-listed">
+      <h4>TOTAL LISTED PROJECTS</h4>
+      <h4><%= @total_listed_projects %></h4>
+    </div>
+    <div class="profile-volunteered">
+      <h4>TOTAL JOINED PROJECTS</h4>
+      <h4><%= @total_volunteered %></h4>
+    </div>
   </div>
-<% end %>
+</div>
+
+<div class="last-project-volunteer">
+  <%# my last project %>
+  <% unless @my_last_project.nil? %>
+    <div class="container">
+      <h4 class="title mt-5 about-header"><%= @user.first_name.upcase %>'S LAST PROJECT</h4>
+
+      <div class="project-list">
+        <div class="d-flex flex-wrap justify-content-center">
+          <%= link_to project_path(@my_last_project.id), class: "text-dark text-decoration-none" do %>
+            <div class="card-product mb-2 mt-1">
+              <%= cl_image_tag @my_last_project.photos.key, class: "card-product-img" %>
+              <div class="card-product-infos">
+                <h2><%= @my_last_project.title %></h2>
+                <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= @my_last_project.location %> </p>
+                <p> <i class="fas fa-calendar-check" style="colot: #555255"></i> <%= @my_last_project.start_date%> ~ <%= @my_last_project.end_date%> </p>
+                <p> <i class="fas fa-info-circle"></i> More information </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+  <%# my last volunteer %>
+  <% unless @my_last_volunteer.nil? %>
+    <div class="container">
+      <h4 class="title mb-2 about-header"><%= @user.first_name.upcase %>'S LAST VOLUNTEER </h4>
+
+      <div class="project-list">
+        <div class="d-flex flex-wrap justify-content-center">
+          <%= link_to project_path(@my_last_volunteer.id), class: "text-dark text-decoration-none" do %>
+            <div class="card-product mb-3 mt-3">
+              <%= cl_image_tag(@my_last_volunteer.project.photos.key, class: "card-product-img") %>
+              <div class="card-product-infos">
+                <h2><%= @my_last_volunteer.project.title %></h2>
+                <p> <i class="fas fa-map-marker-alt" style="color: #ED462F"></i> <%= @my_last_volunteer.project.location %> </p>
+                <p> <i class="fas fa-calendar-check" style="colot: #555255"></i> <%= @my_last_volunteer.project.start_date%> ~ <%= @my_last_volunteer.project.end_date%> </p>
+                <p> <i class="fas fa-info-circle"></i> More information </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+</div>
 <%= render "shared/footer" %>

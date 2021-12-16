@@ -8,6 +8,8 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import  { initChatroomCable } from "../channels/project_channel"
+import { previewImageOnFileSelect } from "../packs/photo_preview"
+
 
 Rails.start()
 Turbolinks.start()
@@ -19,10 +21,12 @@ ActiveStorage.start()
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
 
+
 // External imports
 import "bootstrap";
 import { shareProject } from "./share_project"
 import { scrollSearch } from "./scroll_search"
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -33,4 +37,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   shareProject();
   scrollSearch();
+  previewImageOnFileSelect();
 });

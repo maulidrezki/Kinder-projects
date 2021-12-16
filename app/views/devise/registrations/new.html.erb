@@ -1,5 +1,5 @@
 <div class="container mt-4">
-  <h2 class="s-title" style="text-align: center;">Welcome to KINDER</h2>
+  <h2 class="s-title" style="text-align: center; font-family: 'Permanent Marker', cursive;">Welcome to KINDER</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -8,22 +8,22 @@
       <%= f.input :first_name,
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "first-name" }%>
+                  input_html: {placeholder: "Your first name", class: "placeholder-tint"}%>
       <%= f.input :last_name,
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "last-name" }%>
+                  input_html: {placeholder: "Your last name", class: "placeholder-tint"}%>
       <%= f.input :display_name,
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "nickname" }%>
+                  input_html: {placeholder: "Name to display", class: "placeholder-tint"}%>
           <%= f.input :email,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
       <%= f.input :password,
                   required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  hint: ("minimum #{@minimum_password_length} characters" if @minimum_password_length),
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :password_confirmation,
                   required: true,

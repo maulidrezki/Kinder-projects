@@ -1,5 +1,5 @@
 
-<div class="about-container">
+<div class="mt-5">
   <div class="about-info">
     <div class="about-t d-flex justify-content-center">
       <h3 class="live mr-2 font-cursive" style="color: #4C977B"> Live </h3> <h3 class="about-text font-cursive mr-2"> together, </h3>
@@ -11,7 +11,7 @@
     </div>
     <div class="about-t d-flex justify-content-center">
       <h3 class="love font-cursive mr-2" style="color: #CE326A"> Love </h3>
-      <h3 class="about-text font-cursive mb-4"> to the Community </h3>
+      <h3 class="about-text font-cursive"> to the Community </h3>
     </div>
   </div>
 </div>
@@ -31,7 +31,7 @@
     </div>
     <div class= "card-about-content">
       <h4 class="about-text font-cursive mr-2"> List your vibe</h4>
-      <p class= "text-small"> List a project that contributes to the community- something that vibes with every fibre of your being; something you’re passionate about!</p>
+      <p class= "text-small"> List a project that vibes with your passion!</p>
     </div>
   </div>
 
@@ -42,7 +42,7 @@
     </div>
     <div class= "card-about-content">
       <h4 class="about-text font-cursive mr-2">Find your tribe</h4>
-      <p class= "text-small"> Get published on our app and let your tribe find you! You can also share the link with your family and friends. </p>
+      <p class= "text-small"> Get published on our app and let your tribe find you!</p>
     </div>
   </div>
 
@@ -53,16 +53,48 @@
     </div>
     <div class= "card-about-content">
       <h4 class="about-text font-cursive mr-2">Launch your project!</h4>
-      <p class= "text-small"> Launch your project with your tribe and together, spread love to the community! </p>
+      <p class= "text-small"> Launch your project and spread love to the community! </p>
     </div>
   </div>
 
-  <div class="d-flex justify-content-center">
-    <%= link_to "List my project", new_project_path, method: :get, class: "btn btn-outline-secondary m-3" %>
-  </div>
 </div>
 
+<div class="guide-container p-4">
+  <table class="guide-table table-borderless">
+    <thead>
+     <h2 class="guide-title mb-4"> <i class="fas fa-check-circle"></i> Guidelines for Sponsors </h2></th>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="g-text align-baseline">1</th>
+        <td> <p class="g-info mb-4"> Describe <strong>project details</strong>, especially <strong>skills</strong> required for your project. </p></td>
+      </tr>
+      <tr>
+        <th class="g-text align-baseline">2</th>
+        <td> <p class="g-info mb-4"> Set project <strong>goals and expectations</strong> clearly. </p></td>
+      </tr>
+      <tr>
+        <th class="g-text align-baseline">3</th>
+        <td> <p class="g-info mb-4"> <strong>Safety</strong> is important for all! Make sure to list measures
+        being taken to mitigate risks due to COVID-19. Your volunteers should be
+        aware of special equipment or clothing needed for the project. </p></td>
+      </tr>
+      <tr>
+        <th class="g-text align-baseline">4</th>
+        <td> <p class="g-info mb-4"> Projects must be in <strong>located in Bali, Indonesia</strong>.
+        Projects outside of Bali will be removed. </p></td>
+      </tr>
+      <tr>
+        <th class="g-text align-baseline">5</th>
+        <td> <p class="g-info mb-4"> You will receive <strong>+10 points</strong> when your project is finished! </p></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
+<div class="d-flex justify-content-center">
+  <%= link_to "List my project", new_project_path, method: :get, class: "btn-pink mb-4" %>
+</div>
 
 
 <%= render "shared/footer" %>

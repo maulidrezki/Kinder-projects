@@ -1,14 +1,16 @@
-<div class="profile-header">
-  <div class="profile-avatar">
-    <% if current_user.avatar.attached?%>
-      <%= cl_image_tag current_user.avatar.key, height: 100, width: 100, crop: :fill %>
-    <% else %>
-      <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", size: "100", crop: :fill) %>
-    <% end %>
-  </div>
-  <div>
-    <h4 class= "mb-1"><%= current_user.display_name %></h4>
-    <h4 class= "text-small mt-1 mb-1"> <%= current_user.level %> pts</h4>
+<div class= "spacing-top">
+  <div class="profile-header">
+    <div class="profile-avatar">
+      <% if current_user.avatar.attached?%>
+        <%= cl_image_tag current_user.avatar.key, height: 100, width: 100, crop: :fill %>
+      <% else %>
+        <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", size: "100", crop: :fill) %>
+      <% end %>
+    </div>
+    <div>
+      <h4 class= "mb-1"><%= current_user.display_name %></h4>
+      <h4 class= "text-small mt-1 mb-1"> <%= current_user.level %> pts</h4>
+    </div>
   </div>
 </div>
 
@@ -28,9 +30,12 @@
   <div class="tab-pane fade show active" id="project" role="tabpanel" aria-labelledby="project-tab">
     <%# Projects %>
     <div class="container">
-      <h2 class="dash-title ml-3 mt-4"> My Project </h2>
+      <div class= "mt-4 mb-1 mx-3">
+        <h2 class="dash-title"> <strong>My Vibe &#9;</strong></h2>
+        <h2 class="sub-header">My listed projects</h2>
+      </div>
       <% if @my_projects.empty? %>
-      <p class="d-text" style="text-align: center;">You don't have projects yet!</p>
+      <p class="d-text m-3 text-secondary" style="text-align: left;">You have not listed any projects yet..</p>
       <% end %>
 
       <div class="project-list">
@@ -59,9 +64,12 @@
 
 
 
-      <h2 class="dash-title ml-3"> My Volunteering </h2>
+      <div class= "mt-4 mb-1 mx-3">
+        <h2 class="dash-title"> <strong>My Vibe &#9;</strong></h2>
+        <h2 class="sub-header">Volunteered projects</h2>
+      </div>
       <% if @volunteer_projects.empty? %>
-      <p class="d-text" style="text-align: center;">you haven't join a project</p>
+      <p class="d-text m-3 text-secondary" style="text-align: left;">You have not volunteered yet..</p>
       <% end %>
       <div class="project-list">
         <div class="d-flex flex-wrap justify-content-center">
@@ -85,8 +93,10 @@
         </div>
       </div>
 
-      <h2 class="dash-title ml-3"> Wishlist </h2>
-
+      <h2 class="dash-title ml-3"> <strong>Wishlist</strong> </h2>
+      <% if @favourited.empty? %>
+      <p class="d-text m-3 text-secondary" style="text-align: left;">Your wishlist is empty...</p>
+      <% end %>
       <div class="project-list">
         <div class="d-flex flex-wrap justify-content-center">
           <% @favourited.each do |project| %>
@@ -128,9 +138,12 @@
 
   <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
     <div class="container mb-2">
-      <h2 class="dash-title ml-3"> My Project </h2>
+      <div class= "mt-4 mb-1 mx-3">
+        <h2 class="dash-title"> <strong>My Vibe &#9;</strong></h2>
+        <h2 class="sub-header">My listed projects</h2>
+      </div>
       <% if @my_past_projects.empty? %>
-      <p class="d-text" style="text-align: center;">No History yet!</p>
+      <p class="d-text m-3 text-secondary" style="text-align: left;">No project history yet..</p>
       <% end %>
       <div class="project-list">
         <div class="d-flex flex-wrap justify-content-center">
@@ -158,9 +171,12 @@
     </div>
 
     <div class="container mb-2">
-      <h2 class="dash-title ml-3"> My Volunteering </h2>
+      <div class= "mt-4 mb-1 mx-3">
+        <h2 class="dash-title"> <strong>My Vibe &#9;</strong></h2>
+        <h2 class="sub-header">Volunteered projects</h2>
+      </div>
       <% if @my_volunteer_past_projects.empty? %>
-      <p class="d-text" style="text-align: center;">No History yet!</p>
+      <p class="d-text m-3 text-secondary" style="text-align: left;">No volunteering history yet..</p>
       <% end %>
       <div class="project-list">
       <div class="d-flex flex-wrap justify-content-center">

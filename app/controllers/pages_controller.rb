@@ -41,7 +41,7 @@ class PagesController < ApplicationController
 
   def inbox
     @my_projects = current_user.projects.where(status: "open")
-    @volunteer_projects = current_user.volunteer_projects.where(status: "open")
+    @volunteer_projects = current_user.volunteer_projects.joins(:volunteerings).where(volunteerings: {status: "confirmed" }).where(status: "open")
   end
 
 end

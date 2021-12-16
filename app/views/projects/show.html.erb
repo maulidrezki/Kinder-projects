@@ -1,35 +1,5 @@
-<% if user_signed_in? %>
-  <div class="navbar-top">
-    <div class="navbar-top-info">
-      <div class="navbar-top-back">
-        <p class="mb-0"> <i class="fas fa-chevron-left mr-1"></i> <%= link_to "Back", dashboard_path, class: "navbar-brand" %> </p>
-      </div>
-      <div class="navbar-top-dt">
-        <div class="d-flex my-0 align-items-center">
-          <div class="navbar-top-text">
-            <p class="my-0"> <%= current_user.display_name %> </p>
-            <p class="my-0"> <i class="fas fa-trophy", style="color: #F5A833"></i> <%= current_user.level %> </p>
-          </div>
-          <div class="navbar-top-avatar">
-            <% if current_user.avatar.attached?%>
-              <%= cl_image_tag current_user.avatar.key, class: "navbar-top-avatar-img" %>
-            <% else %>
-              <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "navbar-top-avatar-img") %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<% else %>
-  <div class="navbar-top">
-    <div class="navbar-top-info">
-      <div class="navbar-top-back">
-        <p class="mb-0"> <i class="fas fa-chevron-left mr-1"></i> <%= link_to "List", projects_path, class: "navbar-brand" %> </p>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render "shared/top_navbar" %>
+
 <% if current_user == @project.user %>
   <%# Menu: DETAILS / VOLUNTEERS %>
   <ul class="nav nav-tabs dashboard-tabs" id="myTab" role="tablist">
@@ -75,31 +45,43 @@
       </div>
     </div>
 
-      <ul class="list-unstyled ml-2">
-        <li>
-          <p> <i class="fas fa-crown" style="color: #4C977B"></i> <%= @project.user.display_name %> </p>
-        </li>
-        <li>
-          <p> <i class="fas fa-users" style="color: #4C977B"></i> <%= @project.volunteers.size %> / <%= @project.status %> </p>
-        </li>
-        <li>
-          <p> <i class="fas fa-calendar-check" style="color: #4C977B"></i> <%= @project.start_date%> ~ <%= @project.end_date%> </p>
-        </li>
-        <li>
-          <p> <i class="fas fa-map-marker-alt" style="color: #4C977B"></i> <%= @project.location %> </p>
-        </li>
-        <li>
-          <p> <i class="fas fa-phone-square-alt" style="color: #4C977B"></i> <%= @project.contact %> </p>
-        </li>
-        <% if @project.website_link.present? %>
-          <li>
-            <p> <i class="fas fa-external-link-alt" style="color: #4C977B"></i> <%= @project.website_link %> </p>
-          </li>
-        <% end %>
-      </ul>
+      <div class="ps-table">
+        <table class="ps-table table-borderless">
+          <tbody>
+            <tr>
+              <th class="ps-textt"><i class="fas fa-crown" style="color: #4C977B"></i></th>
+              <td> <p class="ps-text"> <%= @project.user.display_name %> </p></td>
+            </tr>
+            <tr>
+              <th class="ps-textt"><i class="fas fa-users" style="color: #4C977B"></i></th>
+              <td> <p class="ps-text"> <%= @project.volunteers.size %> / <%= @project.status %> </p></td>
+            </tr>
+            <tr>
+              <th class="ps-textt"><i class="fas fa-calendar-check" style="color: #4C977B"></i></th>
+              <td> <p class="ps-text"> <%= @project.start_date%> ~ <%= @project.end_date%> </p></td>
+            </tr>
+            <tr>
+              <th class="ps-textt"><i class="fas fa-map-marker-alt" style="color: #4C977B"></i></th>
+              <td> <p class="ps-text"> <%= @project.location %> </p></td>
+            </tr>
+            <tr>
+              <th class="ps-textt"><i class="fas fa-phone-square-alt" style="color: #4C977B"></i></th>
+              <td> <p class="ps-text"> <%= @project.contact %> </p></td>
+            </tr>
+            <% if @project.website_link.present? %>
+              <tr>
+                <th class="ps-textt"><i class="fas fa-external-link-alt" style="color: #4C977B"></i></th>
+                <td> <p class="ps-text"> <%= @project.website_link %> </p></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-      <br>
-      <p><%= @project.description %>
+        <div class="ps-container">
+          <h3 class="ps-title p-2"> About us </h3>
+          <p class="ps-info p-2"> <%= @project.description %> </p>
+        </div>
       </div>
     </div>
 
@@ -132,7 +114,7 @@
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
     <%# Pending Volunteers %>
     <div class="container">
-      <h2 class="dash-title m-3"> Pending volunteers </h2>
+      <h2 class="dash-title m-3"> Pending tribe </h2>
 
       <% if !@pending_volunteers.first[:volunteers].empty? %>
         <div class="project-list">
@@ -141,7 +123,7 @@
               <% if volunteer[:volunteers].length > 0 %>
                 <% volunteer[:volunteers].each do |volunteering| %>
                   <% if volunteering.status = "pending" %>
-                    <div class="card-product mb-1">
+                    <div class="card-product mb-2">
                       <% if volunteering.user.avatar.attached?%>
                         <%= cl_image_tag volunteering.user.avatar.key, class: "card-product-img" %>
                       <% else %>
@@ -167,13 +149,13 @@
           </div>
         </div>
       <% else %>
-        <p class="s-text" style="text-align: center;">You don't have volunteers.</p>
+        <p class="s-text ml-3 text-secondary" style="text-align: left;">You don't have volunteers.</p>
       <% end %>
     </div>
 
     <%# Confirmed Volunteers %>
     <div class="container">
-      <h2 class="dash-title m-3"> Confirmed volunteers </h2>
+      <h2 class="dash-title m-3"> Confirmed tribe </h2>
       <% if !@confirmed_volunteers.first[:volunteers].empty? %>
         <div class="project-list">
           <div class="d-flex flex-wrap justify-content-center">
@@ -181,7 +163,7 @@
               <% if volunteer[:volunteers].length > 0 %>
                 <% volunteer[:volunteers].each do |volunteering| %>
                   <% if volunteering.status = "confirmed" %>
-                    <div class="card-product mb-1">
+                    <div class="card-product mb-2">
                       <% if volunteering.user.avatar.attached?%>
                         <%= cl_image_tag volunteering.user.avatar.key, class: "card-product-img" %>
                       <% else %>
@@ -207,13 +189,13 @@
           </div>
         </div>
       <% else @volunteering.status = "pending" && @volunteering.status = "rejected" %>
-        <p class="s-text" style="text-align: center;">You don't have confirmed volunteers.</p>
+        <p class="s-text ml-3 text-secondary" style="text-align: left;">You don't have confirmed volunteers.</p>
       <% end %>
 
     </div>
     <%# Rejected Volunteers %>
     <div class="container">
-      <h2 class="dash-title m-3"> Rejected volunteers </h2>
+      <h2 class="dash-title m-3"> Rejected tribe </h2>
       <% if !@rejected_volunteers.first[:volunteers].empty? %>
         <div class="project-list">
           <div class="d-flex flex-wrap justify-content-center">
@@ -221,7 +203,7 @@
               <% if volunteer[:volunteers].length > 0 %>
                 <% volunteer[:volunteers].each do |volunteering| %>
                   <% if volunteering.status = "rejected" %>
-                    <div class="card-product mb-1">
+                    <div class="card-product mb-2">
                       <% if volunteering.user.avatar.attached?%>
                         <%= cl_image_tag volunteering.user.avatar.key, class: "card-product-img" %>
                       <% else %>
@@ -247,7 +229,7 @@
           </div>
         </div>
       <% else %>
-        <p class="s-text" style="text-align: center;">You don't have rejected volunteers.</p>
+        <p class="s-text ml-3 text-secondary" style="text-align: left;">You don't have rejected volunteers.</p>
       <% end %>
 
       <%= render "shared/footer" %>

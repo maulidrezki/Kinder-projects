@@ -31,6 +31,7 @@
   color: #555255;
   padding: 6px 10px;
   width: 180px;
+  height: 40px;
   border: none;
   // font-family:
   // margin-top: 324px;
@@ -42,11 +43,12 @@
 }
 
 .searchbar::placeholder {
-  color: #E0E0E0;
+  color: #555252;
   // font-family:
-  font-size: 0.9em;
+  font-size: 1em;
   font-weight: lighter;
   text-align: center;
+  z-index: 3;
 }
 
 .searchbar:focus {
@@ -89,7 +91,7 @@
 }
 
 .index-search-bar::placeholder {
-  color: #E0E0E0;
+  color: #555252;
   // font-family:
   font-size: 0.9em;
   // font-weight:
@@ -103,6 +105,8 @@
   font-weight: lighter;
   transition: 0.3s;
   outline: none;
+  text-align: left;
+  padding-left: 20px;
 }
 
 .p-search-bar {
