@@ -1,0 +1,32 @@
+<% if user_signed_in? %>
+  <div class="navbar-top">
+    <div class="navbar-top-info">
+      <div class="navbar-top-back">
+        <p class="mb-2"> <i class="fas fa-chevron-left mr-1"></i> <%= link_to "Back", dashboard_path, class: "navbar-brand" %></p>
+      </div>
+      <div class="navbar-top-dt">
+        <div class="d-flex my-0 align-items-center">
+          <div class="navbar-top-text">
+            <p class="my-0"> Hello <%= current_user.display_name %>!</p>
+            <p class="my-0"> You have <%= current_user.level %> pts <i class="fas fa-trophy", style="color: #F5A833"></i></p>
+          </div>
+          <div class="navbar-top-avatar">
+            <% if current_user.avatar.attached?%>
+              <%= cl_image_tag current_user.avatar.key, class: "navbar-top-avatar-img" %>
+            <% else %>
+              <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg", class: "navbar-top-avatar-img") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="navbar-top">
+    <div class="navbar-top-info">
+      <div class="navbar-top-back">
+        <p class="mb-0 text-small"> <i class="fas fa-chevron-left mr-1"></i> <%= link_to "List", projects_path, class: "navbar-brand" %> </p>
+      </div>
+    </div>
+  </div>
+<% end %>
