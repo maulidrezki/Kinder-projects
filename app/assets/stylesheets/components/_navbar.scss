@@ -1,7 +1,9 @@
 // Top nav
 .navbar-top {
   flex-grow: 0;
-  padding: 20px 20px 0 20px;
+  padding: 12px 12px 12px 12px;
+  margin-bottom: 24px;
+  background-color: #E3E4E5;
 }
 
 .navbar-top-info {
@@ -29,7 +31,8 @@
 
 .navbar-top-text {
   text-align: right;
-  margin-right: 20px;
+  margin-right: 10px;
+  font-size: small;
 
 
   .p {
@@ -41,8 +44,8 @@
 }
 
 .navbar-top-avatar-img {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background-size: cover;
 }
