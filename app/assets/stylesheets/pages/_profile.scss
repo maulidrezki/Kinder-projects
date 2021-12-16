@@ -19,7 +19,7 @@
 
 .profile-about-me {
   text-align: justify;
-  margin: 4% 2% 2% 2%;
+  margin: 2% 2% 2% 2%;
   border-style: solid;
   border-width: 1px;
   border-color: rgba(39, 39, 39, 0.375);
@@ -124,4 +124,13 @@
     font-size: smaller;
     color: #423D52;
     font-weight: bold;
+}
+
+.profile-level-detail {
+  font-size: 11px;
+  margin: 2%;
+}
+
+.current-user-level {
+  margin-bottom: 40px;
 }
