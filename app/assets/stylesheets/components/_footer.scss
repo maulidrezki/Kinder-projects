@@ -1,22 +1,22 @@
 .footer {
   text-align: center;
-
   font-family: 'Roboto', sans-serif;
-  p {
+
+  .footer-text {
     margin: 2px;
     font-size: 14px;
+    margin-bottom: 8px;
   }
-  // font-family: 'Rampart One', cursive;
+
 }
 
-.icon {
-  font-size: 20px;
+.footer-icon {
+  font-size: 30px;
+  // margin-bottom: 60px;
 }
 
 .icons {
   display: flex;
   justify-content: center;
-  font-size: 30px;
-  color: #343A40;
   margin-bottom: 60px;
 }
