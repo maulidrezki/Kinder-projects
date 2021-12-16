@@ -141,7 +141,7 @@
               <% if volunteer[:volunteers].length > 0 %>
                 <% volunteer[:volunteers].each do |volunteering| %>
                   <% if volunteering.status = "pending" %>
-                    <div class="card-product mb-1">
+                    <div class="card-product mb-2">
                       <% if volunteering.user.avatar.attached?%>
                         <%= cl_image_tag volunteering.user.avatar.key, class: "card-product-img" %>
                       <% else %>
@@ -167,7 +167,7 @@
           </div>
         </div>
       <% else %>
-        <p class="s-text" style="text-align: center;">You don't have volunteers.</p>
+        <p class="s-text ml-3 text-secondary" style="text-align: left;">You don't have volunteers.</p>
       <% end %>
     </div>
 
@@ -181,7 +181,7 @@
               <% if volunteer[:volunteers].length > 0 %>
                 <% volunteer[:volunteers].each do |volunteering| %>
                   <% if volunteering.status = "confirmed" %>
-                    <div class="card-product mb-1">
+                    <div class="card-product mb-2">
                       <% if volunteering.user.avatar.attached?%>
                         <%= cl_image_tag volunteering.user.avatar.key, class: "card-product-img" %>
                       <% else %>
@@ -207,7 +207,7 @@
           </div>
         </div>
       <% else @volunteering.status = "pending" && @volunteering.status = "rejected" %>
-        <p class="s-text" style="text-align: center;">You don't have confirmed volunteers.</p>
+        <p class="s-text ml-3 text-secondary" style="text-align: left;">You don't have confirmed volunteers.</p>
       <% end %>
 
     </div>
@@ -221,7 +221,7 @@
               <% if volunteer[:volunteers].length > 0 %>
                 <% volunteer[:volunteers].each do |volunteering| %>
                   <% if volunteering.status = "rejected" %>
-                    <div class="card-product mb-1">
+                    <div class="card-product mb-2">
                       <% if volunteering.user.avatar.attached?%>
                         <%= cl_image_tag volunteering.user.avatar.key, class: "card-product-img" %>
                       <% else %>
@@ -247,7 +247,7 @@
           </div>
         </div>
       <% else %>
-        <p class="s-text" style="text-align: center;">You don't have rejected volunteers.</p>
+        <p class="s-text ml-3 text-secondary" style="text-align: left;">You don't have rejected volunteers.</p>
       <% end %>
 
       <%= render "shared/footer" %>

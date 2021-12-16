@@ -1,0 +1,17 @@
+{
+  "background_color": "white",
+  "description": "KINDER is for sharing information about local projects and connecting communities hosting projects in Bali, Indonesia. Live together, grow together. Spread positive energy and love to the community!",
+  "display": "fullscreen",
+  "name": "KINDER",
+  "icons": [
+    <% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select {|f| !File.directory? f} %>
+    <% files.each_with_index do |file, index| %>
+      <% match = file.match(/android-icon-(?<size>\d{2,3}x\d{2,3}).png/) %>
+      {
+        "src": "<%= image_path "icons/#{file}" %>",
+        "sizes": "<%= match && match[:size] %>",
+        "type": "image/png"
+      }<%= "," unless (files.size - 1) == index %>
+    <% end %>
+  ]
+}
