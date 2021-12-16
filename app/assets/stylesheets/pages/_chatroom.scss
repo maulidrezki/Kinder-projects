@@ -92,6 +92,13 @@
   height: 180px;
   width: 180px;
   border-radius: 10px;
+  object-fit: cover;
+}
+
+#photo-input {
+  height: 180px;
+  width: 180px;
+  border-radius: 10px;
 }
 
 .placeholder {
@@ -109,4 +116,12 @@
 
 .message_photo {
   margin-bottom: 0;
+}
+
+#photo-preview{
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+  opacity: 0.8;
+  border: 1px dotted #F5A833;
 }
